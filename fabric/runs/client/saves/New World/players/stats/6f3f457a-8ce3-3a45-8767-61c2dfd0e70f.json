@@ -1,0 +1,28 @@
+{
+  "stats": {
+    "minecraft:killed": {
+      "minecraft:sulfur_cube": 4
+    },
+    "minecraft:dropped": {
+      "minecraft:magma_block": 1
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 5912,
+      "minecraft:time_since_rest": 6490,
+      "minecraft:walk_one_cm": 1169,
+      "minecraft:total_world_time": 10808,
+      "minecraft:fly_one_cm": 283604,
+      "minecraft:mob_kills": 4,
+      "minecraft:sneak_time": 84,
+      "minecraft:play_time": 6490,
+      "minecraft:damage_dealt": 240,
+      "minecraft:jump": 149,
+      "minecraft:time_since_death": 6490,
+      "minecraft:drop": 1
+    },
+    "minecraft:used": {
+      "minecraft:magma_block": 1
+    }
+  },
+  "DataVersion": 4790
+}

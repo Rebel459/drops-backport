@@ -1,0 +1,17 @@
+/summon minecraft:sulfur_cube
+/give @s minecraft:sulfur
+/summon minecraft:sulfur_cube
+/locate biome minecraft:plains
+/tp @s -529 83 -776
+/locate biome minecraft:plains
+/summon minecraft:sulfur_cube
+/give @s minecraft:potent_sulfur
+/time set day
+/summon minecraft:sulfur_cube
+/time set day
+/summon minecraft:sulfur_cube
+/attribute @s minecraft:air_drag_modifier modifier add hehe -10 add_value
+/attribute @s minecraft:air_drag_modifier modifier remove hehe
+/summon minecraft:sulfur_cube
+/time set day
+/summon minecraft:sulfur_cube

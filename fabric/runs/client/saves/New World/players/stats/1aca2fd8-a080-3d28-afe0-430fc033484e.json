@@ -1,0 +1,45 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 20621,
+      "minecraft:walk_one_cm": 11449,
+      "minecraft:mob_kills": 4,
+      "minecraft:walk_under_water_one_cm": 76,
+      "minecraft:damage_dealt": 400,
+      "minecraft:play_time": 20621,
+      "minecraft:jump": 515,
+      "minecraft:time_since_death": 20621,
+      "minecraft:drop": 3,
+      "minecraft:sprint_one_cm": 24073,
+      "minecraft:fall_one_cm": 675,
+      "minecraft:total_world_time": 32968,
+      "minecraft:fly_one_cm": 545161,
+      "minecraft:walk_on_water_one_cm": 16,
+      "minecraft:crouch_one_cm": 48,
+      "minecraft:sneak_time": 258
+    },
+    "minecraft:dropped": {
+      "minecraft:sand": 1,
+      "minecraft:snowball": 18
+    },
+    "minecraft:used": {
+      "minecraft:spruce_log": 9,
+      "minecraft:packed_ice": 1,
+      "minecraft:sand": 2,
+      "minecraft:water_bucket": 2,
+      "minecraft:potent_sulfur": 22,
+      "minecraft:magma_block": 9,
+      "minecraft:sulfur": 6
+    },
+    "minecraft:killed": {
+      "minecraft:sulfur_cube": 4
+    },
+    "minecraft:picked_up": {
+      "minecraft:spruce_log": 2,
+      "minecraft:iron_block": 1,
+      "minecraft:sand": 17,
+      "minecraft:snowball": 18
+    }
+  },
+  "DataVersion": 4790
+}

@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin\java.exe
+ - --sun-misc-unsafe-memory-access=allow
+ - -jar
+ - C:\Users\bryce\.gradle\caches\modules-2\files-2.1\net.neoforged.jst\jst-cli-bundle\2.0.6\41bc2dcac9fe41493bee064a7e07b63a5d08348\jst-cli-bundle-2.0.6.jar
+ - --problems-report
+ - C:\Users\bryce\Development\Minecraft\Workspaces\drops-backported\common\build\tmp\neoformruntime\20260805-221702_transformSources\problems.json
+ - --libraries-list
+ - ./libraries.txt
+ - --in-format
+ - ARCHIVE
+ - --out-format
+ - ARCHIVE
+ - --enable-accesstransformers
+ - --access-transformer
+ - C:\Users\bryce\Development\Minecraft\Workspaces\drops-backported\common\src\main\resources\META-INF\accesstransformer.cfg
+ - C:\Users\bryce\.gradle\caches\neoformruntime\intermediate_results\patch_9b65244c8723c20b5c66f287b277f9d7c0c4f8da_output.zip
+ - ./output.zip
+--------------------------------------------------------------------------------
+
