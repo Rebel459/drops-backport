@@ -33,6 +33,9 @@ public final class DBParticleTypes {
     public static final Supplied<ParticleType<GeyserParticleOptions>> GEYSER_PLUME = register(
             "geyser_plume", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec
     );
+    public static final Supplied<SimpleParticleType> RED_POPLAR_LEAVES = register("red_poplar_leaves", false);
+    public static final Supplied<SimpleParticleType> ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves", false);
+    public static final Supplied<SimpleParticleType> YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves", false);
 
     private static Supplied<SimpleParticleType> register(final String name, final boolean overrideLimiter) {
         return PARTICLES.register(name, () -> new SimpleParticleType(overrideLimiter));

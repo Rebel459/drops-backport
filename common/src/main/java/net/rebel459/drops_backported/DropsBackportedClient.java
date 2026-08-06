@@ -1,17 +1,23 @@
 package net.rebel459.drops_backported;
 
+import net.minecraft.client.particle.ParticleResources;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeRenderer;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SmallSulfurCubeModel;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeModel;
+import net.rebel459.drops_backported.client.particle.geyser.GeyserBaseParticle;
+import net.rebel459.drops_backported.client.particle.geyser.GeyserEruptionParticle;
 import net.rebel459.drops_backported.client.particle.SulfurBubbleParticle;
-import net.rebel459.drops_backported.entity.sulfur_cube.SulfurCube;
+import net.rebel459.drops_backported.client.particle.geyser.GeyserPlumeParticle;
+import net.rebel459.drops_backported.particle.GeyserParticleOptions;
 import net.rebel459.drops_backported.registry.DBEntityTypes;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
 import net.rebel459.unified.platform.client.UnifiedClientHelpers;
 
-import java.util.function.Supplier;
 import net.rebel459.drops_backported.client.particle.SulfurCubeGooParticleProvider;
-import net.minecraft.world.entity.EntityType;
+
+import java.util.function.Supplier;
 
 public class DropsBackportedClient {
 
@@ -24,6 +30,10 @@ public class DropsBackportedClient {
         UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(SulfurCubeRenderer.SULFUR_CUBE_SMALL_INNER, SmallSulfurCubeModel::createInnerBodyLayer);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.SULFUR_BUBBLES, SulfurBubbleParticle.Provider::new);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.SULFUR_CUBE_GOO, SulfurCubeGooParticleProvider::new);
+        UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER, _ -> new GeyserEruptionParticle.Provider());
+        UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER_BASE, GeyserBaseParticle.Provider::new);
+        UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER_POOF, GeyserBaseParticle.Provider::new);
+        UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER_PLUME, GeyserPlumeParticle.Provider::new);
         UnifiedClientHelpers.ENTITY_RENDERERS.addEntityRenderer(DBEntityTypes.SULFUR_CUBE::get, SulfurCubeRenderer::new);
     }
 }

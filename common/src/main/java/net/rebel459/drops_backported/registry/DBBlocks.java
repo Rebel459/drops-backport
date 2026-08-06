@@ -3,6 +3,7 @@ package net.rebel459.drops_backported.registry;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.rebel459.drops_backported.DropsBackported;
@@ -11,6 +12,7 @@ import net.rebel459.drops_backported.block.ShelfMushroomBlock;
 import net.rebel459.drops_backported.block.straw_bed.StrawBedBlock;
 import net.rebel459.drops_backported.block.poplar_leaves.AmbientLeavesBlockSoundPlayer;
 import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlock;
+import net.rebel459.drops_backported.block.sulfur_spike.SulfurSpikeBlock;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.drops_backported.sound.DBSoundTypes;
 import net.rebel459.drops_backported.tag.DBBlockTags;
@@ -81,7 +83,7 @@ public class DBBlocks {
             .creativeInventoryPlacement(() -> Blocks.PALE_OAK_BUTTON, () -> Blocks.PALE_OAK_LOG, () -> Blocks.PALE_OAK_SHELF, () -> Blocks.PALE_OAK_HANGING_SIGN, () -> Items.PALE_OAK_CHEST_BOAT)
             .setLeafSoundType(DBSoundTypes.POPLAR_LEAVES)
             .setWoodSoundType(() -> SoundType.WOOD)
-            .createSapling(PoplarSaplingBlock::new, MapColor.PLANT)
+            .createSapling(PoplarSaplingBlock::new, MapColor.PLANT, () -> Items.PALE_OAK_SAPLING)
             .build();
 
     public static final SuppliedBlock STRAW_BED = BLOCKS.register("straw_bed",
@@ -99,7 +101,7 @@ public class DBBlocks {
             "red_poplar_leaves",
             p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
                     0.01F,
-                    DBParticleTypes.RED_POPLAR_LEAVES,
+                    DBParticleTypes.RED_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
                     p
             ),
@@ -109,7 +111,7 @@ public class DBBlocks {
             "orange_poplar_leaves",
             p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
                     0.01F,
-                    DBParticleTypes.ORANGE_POPLAR_LEAVES,
+                    DBParticleTypes.ORANGE_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
                     p
             ),
@@ -119,7 +121,7 @@ public class DBBlocks {
             "yellow_poplar_leaves",
             p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
                     0.01F,
-                    DBParticleTypes.YELLOW_POPLAR_LEAVES,
+                    DBParticleTypes.YELLOW_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
                     p
             ),
@@ -150,7 +152,26 @@ public class DBBlocks {
     );
 
     public static final ColoredBlockSet CUSHION = BLOCK_BUILDERS.coloredBlockSet("cushion", ColoredBlockPreset.DEFAULT)
+            .creativeInventoryPlacement(() -> Blocks.PINK_BED)
             .build();
+
+    public static final SuppliedBlock SULFUR_SPIKE = BLOCKS.register(
+            "sulfur_spike",
+            p -> new SulfurSpikeBlock(SULFUR.getBase().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_YELLOW)
+                    .forceSolidOn()
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .noOcclusion()
+                    .sound(DBSoundTypes.SULFUR_SPIKE.get())
+                    .randomTicks()
+                    .strength(1.5F, 3.0F)
+                    .dynamicShape()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(Blocks::never)
+                    .noOcclusion()
+    );
 
     private static Supplier<BlockBehaviour.Properties> leavesProperties(final Supplier<SoundType> soundType, MapColor color) {
         return () -> BlockBehaviour.Properties.of()

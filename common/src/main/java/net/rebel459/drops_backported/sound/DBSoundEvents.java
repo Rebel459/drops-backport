@@ -11,6 +11,8 @@ public final class DBSoundEvents {
 
     public static final Supplied<SoundEvent> MUSIC_DISC_BOUNCE = SOUNDS.register("music_disc.bounce");
 
+    public static final Supplied<SoundEvent> MUSIC_OVERWORLD_SULFUR_CAVES = SOUNDS.register("music.overworld.sulfur_caves");
+
     public static final Supplied<SoundEvent> BUCKET_EMPTY_SULFUR_CUBE = SOUNDS.register("item.bucket.empty_sulfur_cube");
     public static final Supplied<SoundEvent> BUCKET_FILL_SULFUR_CUBE = SOUNDS.register("item.bucket.fill_sulfur_cube");
     public static final Supplied<SoundEvent> SULFUR_CUBE_ABSORB = SOUNDS.register("entity.sulfur_cube.absorb");
