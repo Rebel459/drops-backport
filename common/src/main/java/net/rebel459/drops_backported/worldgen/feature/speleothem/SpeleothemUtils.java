@@ -1,4 +1,4 @@
-package net.rebel459.drops_backported.worldgen.feature;
+package net.rebel459.drops_backported.worldgen.feature.speleothem;
 
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;

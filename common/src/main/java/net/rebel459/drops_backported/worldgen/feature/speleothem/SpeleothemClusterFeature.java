@@ -1,4 +1,4 @@
-package net.rebel459.drops_backported.worldgen.feature;
+package net.rebel459.drops_backported.worldgen.feature.speleothem;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

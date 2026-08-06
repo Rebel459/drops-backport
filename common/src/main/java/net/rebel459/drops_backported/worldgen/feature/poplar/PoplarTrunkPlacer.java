@@ -1,4 +1,4 @@
-package net.rebel459.drops_backported.worldgen.trunk;
+package net.rebel459.drops_backported.worldgen.feature.poplar;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
