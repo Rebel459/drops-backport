@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Specification-Title: Drops Backported
-Specification-Vendor: Rebel459
-Implementation-Title: fabric
-Implementation-Vendor: Rebel459
-Built-On-Minecraft: 26.1.2
-

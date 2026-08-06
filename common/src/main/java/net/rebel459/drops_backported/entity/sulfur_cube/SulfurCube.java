@@ -67,7 +67,7 @@ import net.rebel459.drops_backported.registry.DBAttributes;
 import net.rebel459.drops_backported.registry.DBEntityTypes;
 import net.rebel459.drops_backported.registry.DBItems;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
-import net.rebel459.drops_backported.registry.DBSoundEvents;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 import org.jspecify.annotations.Nullable;
 
 public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable {

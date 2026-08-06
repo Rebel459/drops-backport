@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantFloat;
 import net.rebel459.drops_backported.DropsBackported;
 import net.rebel459.drops_backported.entity.sulfur_cube.SulfurCubeArchetype;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 
 public final class DBSulfurCubeArchetypes {
     public static final SulfurCubeArchetype REGULAR = SulfurCubeArchetype.register(

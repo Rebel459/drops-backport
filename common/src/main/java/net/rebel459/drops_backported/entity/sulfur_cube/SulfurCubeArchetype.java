@@ -9,12 +9,11 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.rebel459.drops_backported.registry.DBSoundEvents;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 
 public record SulfurCubeArchetype(
     Identifier id,

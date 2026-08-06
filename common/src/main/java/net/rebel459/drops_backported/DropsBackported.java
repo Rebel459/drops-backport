@@ -1,12 +1,8 @@
 package net.rebel459.drops_backported;
 
 import net.minecraft.resources.Identifier;
-import net.rebel459.drops_backported.registry.DBSulfurCubeArchetypes;
-import net.rebel459.drops_backported.registry.DBEntityTypes;
-import net.rebel459.drops_backported.registry.DBAttributes;
-import net.rebel459.drops_backported.registry.DBItems;
-import net.rebel459.drops_backported.registry.DBParticleTypes;
-import net.rebel459.drops_backported.registry.DBSoundEvents;
+import net.rebel459.drops_backported.registry.*;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 
 public class DropsBackported {
 
@@ -16,6 +12,9 @@ public class DropsBackported {
         DBSulfurCubeArchetypes.init();
         DBParticleTypes.init();
         DBEntityTypes.init();
+        DBBlocks.init();
+        DBBlockEntityTypes.init();
+        DBParticleTypes.init();
         DBItems.init();
     }
 

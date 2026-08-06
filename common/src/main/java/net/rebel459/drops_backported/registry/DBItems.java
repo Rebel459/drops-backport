@@ -7,6 +7,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.material.Fluids;
 import net.rebel459.drops_backported.DropsBackported;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.registry.SuppliedItem;
 
