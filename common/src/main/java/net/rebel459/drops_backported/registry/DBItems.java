@@ -3,10 +3,12 @@ package net.rebel459.drops_backported.registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.material.Fluids;
 import net.rebel459.drops_backported.DropsBackported;
+import net.rebel459.drops_backported.sound.DBJukeboxSongs;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.registry.SuppliedItem;
@@ -17,12 +19,23 @@ public final class DBItems {
     public static final SuppliedItem SULFUR_CUBE_BUCKET = ITEMS.register(
         "sulfur_cube_bucket",
         p -> new MobBucketItem(DBEntityTypes.SULFUR_CUBE.get(), Fluids.EMPTY, DBSoundEvents.BUCKET_EMPTY_SULFUR_CUBE.get(), p),
-        () -> new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+        () -> new Item.Properties()
+                .stacksTo(1)
+                .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final SuppliedItem SULFUR_CUBE_SPAWN_EGG = ITEMS.register(
-        "sulfur_cube_spawn_egg",
-        SpawnEggItem::new,
-        () -> new Item.Properties().spawnEgg(DBEntityTypes.SULFUR_CUBE.get())
+            "sulfur_cube_spawn_egg",
+            SpawnEggItem::new,
+            () -> new Item.Properties()
+                    .spawnEgg(DBEntityTypes.SULFUR_CUBE.get())
+    );
+    public static final SuppliedItem MUSIC_DISC_BOUNCE = ITEMS.register(
+            "music_disc_bounce",
+            Item::new,
+            () -> new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+                    .jukeboxPlayable(DBJukeboxSongs.BOUNCE)
     );
 
     private DBItems() {}

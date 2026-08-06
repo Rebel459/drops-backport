@@ -80,6 +80,26 @@ public final class DBSoundEvents {
     public static final Supplied<SoundEvent> CINNABAR_HIT = SOUNDS.register("block.cinnabar.hit");
     public static final Supplied<SoundEvent> CINNABAR_FALL = SOUNDS.register("block.cinnabar.fall");
 
+    public static final Supplied<SoundEvent> SHELF_MUSHROOM_BREAK = SOUNDS.register("block.shelf_mushroom.break");
+    public static final Supplied<SoundEvent> SHELF_MUSHROOM_FALL = SOUNDS.register("block.shelf_mushroom.fall");
+    public static final Supplied<SoundEvent> SHELF_MUSHROOM_PLACE = SOUNDS.register("block.shelf_mushroom.place");
+    public static final Supplied<SoundEvent> SHELF_MUSHROOM_STEP = SOUNDS.register("block.shelf_mushroom.step");
+    public static final Supplied<SoundEvent> SHELF_MUSHROOM_BOUNCE = SOUNDS.register("block.shelf_mushroom.bounce");
+    public static final Supplied<SoundEvent> POPLAR_LEAVES_BREAK = SOUNDS.register("block.poplar_leaves.break");
+    public static final Supplied<SoundEvent> POPLAR_LEAVES_HIT = SOUNDS.register("block.poplar_leaves.hit");
+    public static final Supplied<SoundEvent> POPLAR_LEAVES_FALL = SOUNDS.register("block.poplar_leaves.fall");
+    public static final Supplied<SoundEvent> POPLAR_LEAVES_PLACE = SOUNDS.register("block.poplar_leaves.place");
+    public static final Supplied<SoundEvent> POPLAR_LEAVES_STEP = SOUNDS.register("block.poplar_leaves.step");
+    public static final Holder<SoundEvent> POPLAR_LEAVES_AMBIENT = SOUNDS.registerForHolder("block.poplar_leaves.ambient");
+    public static final Supplied<SoundEvent> STRAW_BED_BREAK = SOUNDS.register("block.straw_bed.break");
+    public static final Supplied<SoundEvent> STRAW_BED_BREAK_LEAVE = SOUNDS.register("block.straw_bed.break_leave");
+    public static final Supplied<SoundEvent> STRAW_BED_STEP = SOUNDS.register("block.straw_bed.step");
+    public static final Supplied<SoundEvent> STRAW_BED_PLACE = SOUNDS.register("block.straw_bed.place");
+    public static final Supplied<SoundEvent> STRAW_BED_HIT = SOUNDS.register("block.straw_bed.hit");
+    public static final Supplied<SoundEvent> STRAW_BED_FALL = SOUNDS.register("block.straw_bed.fall");
+    public static final Supplied<SoundEvent> RED_SHRUB_BREAK = SOUNDS.register("block.red_shrub.break");
+    public static final Supplied<SoundEvent> RED_SHRUB_PLACE = SOUNDS.register("block.red_shrub.place");
+
     private DBSoundEvents() {}
 
     public static void init() {}

@@ -1,21 +1,24 @@
 package net.rebel459.drops_backported.registry;
 
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.rebel459.drops_backported.DropsBackported;
+import net.rebel459.drops_backported.block.PoplarSaplingBlock;
+import net.rebel459.drops_backported.block.ShelfMushroomBlock;
+import net.rebel459.drops_backported.block.straw_bed.StrawBedBlock;
+import net.rebel459.drops_backported.block.poplar_leaves.AmbientLeavesBlockSoundPlayer;
 import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlock;
+import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.drops_backported.sound.DBSoundTypes;
+import net.rebel459.drops_backported.tag.DBBlockTags;
 import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.util.builder.BlockPreset;
-import net.rebel459.unified.util.builder.BlockSet;
-import net.rebel459.unified.util.builder.ColoredBlockPreset;
-import net.rebel459.unified.util.builder.ColoredBlockSet;
+import net.rebel459.unified.util.builder.*;
 import net.rebel459.unified.util.registry.SuppliedBlock;
+
+import java.util.function.Supplier;
 
 public class DBBlocks {
 
@@ -73,6 +76,96 @@ public class DBBlocks {
             () -> BlockBehaviour.Properties.ofFullCopy(SULFUR.getBase().get()).sound(DBSoundTypes.POTENT_SULFUR.get())
                     .mapColor(MapColor.GOLD)
     );
+
+    public static final WoodSet POPLAR = BLOCK_BUILDERS.woodSet("poplar", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_LIGHT_GRAY)
+            .creativeInventoryPlacement(() -> Blocks.PALE_OAK_BUTTON, () -> Blocks.PALE_OAK_LOG, () -> Blocks.PALE_OAK_SHELF, () -> Blocks.PALE_OAK_HANGING_SIGN, () -> Items.PALE_OAK_CHEST_BOAT)
+            .setLeafSoundType(DBSoundTypes.POPLAR_LEAVES)
+            .setWoodSoundType(() -> SoundType.WOOD)
+            .createSapling(PoplarSaplingBlock::new, MapColor.PLANT)
+            .build();
+
+    public static final SuppliedBlock STRAW_BED = BLOCKS.register("straw_bed",
+            StrawBedBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_YELLOW)
+                    .sound(DBSoundTypes.STRAW_BED.get())
+                    .strength(0.2F)
+                    .noOcclusion()
+                    .ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY)
+    );
+
+    public static final SuppliedBlock RED_POPLAR_LEAVES = BLOCKS.register(
+            "red_poplar_leaves",
+            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+                    0.01F,
+                    DBParticleTypes.RED_POPLAR_LEAVES,
+                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+                    p
+            ),
+            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_RED)
+    );
+    public static final SuppliedBlock ORANGE_POPLAR_LEAVES = BLOCKS.register(
+            "orange_poplar_leaves",
+            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+                    0.01F,
+                    DBParticleTypes.ORANGE_POPLAR_LEAVES,
+                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+                    p
+            ),
+            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_ORANGE)
+    );
+    public static final SuppliedBlock YELLOW_POPLAR_LEAVES = BLOCKS.register(
+            "yellow_poplar_leaves",
+            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+                    0.01F,
+                    DBParticleTypes.YELLOW_POPLAR_LEAVES,
+                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+                    p
+            ),
+            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_YELLOW)
+    );
+
+    public static final SuppliedBlock RED_SHRUB = BLOCKS.register(
+            "red_shrub",
+            BushBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.CRIMSON_NYLIUM)
+                    .replaceable()
+                    .noCollision()
+                    .instabreak()
+                    .sound(DBSoundTypes.RED_SHRUB.get())
+                    .ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY)
+    );
+
+    public static final SuppliedBlock SHELF_MUSHROOM = BLOCKS.register(
+            "shelf_mushroom",
+            ShelfMushroomBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_YELLOW)
+                    .sound(DBSoundTypes.SHELF_MUSHROOM.get())
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)
+    );
+
+    public static final ColoredBlockSet CUSHION = BLOCK_BUILDERS.coloredBlockSet("cushion", ColoredBlockPreset.DEFAULT)
+            .build();
+
+    private static Supplier<BlockBehaviour.Properties> leavesProperties(final Supplier<SoundType> soundType, MapColor color) {
+        return () -> BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
+                .strength(0.2F)
+                .randomTicks()
+                .sound(soundType.get())
+                .noOcclusion()
+                .isValidSpawn(Blocks::ocelotOrParrot)
+                .isSuffocating(Blocks::never)
+                .ignitedByLava()
+                .pushReaction(PushReaction.DESTROY)
+                .isRedstoneConductor(Blocks::never)
+                .mapColor(color);
+    }
 
     public static void init() {}
 }
