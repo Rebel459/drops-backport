@@ -1,25 +1,52 @@
 {
   "type": "minecraft:weighted_random_selector",
-  "features": [
-    {
-      "data": "minecraft:red_poplar_leaf_litter",
-      "weight": 200
-    },
-    {
-      "data": "minecraft:orange_poplar_leaf_litter",
-      "weight": 240
-    },
-    {
-      "data": "minecraft:yellow_poplar_leaf_litter",
-      "weight": 90
-    },
-    {
-      "data": "minecraft:spruce_checked",
-      "weight": 27
-    },
-    {
-      "data": "minecraft:fallen_poplar_tree",
-      "weight": 120
-    }
-  ]
+  "config": {
+    "features": [
+      {
+        "data": {
+          "feature": "minecraft:red_poplar_leaf_litter",
+          "placement": []
+        },
+        "weight": 200
+      },
+      {
+        "data": {
+          "feature": "minecraft:orange_poplar_leaf_litter",
+          "placement": []
+        },
+        "weight": 240
+      },
+      {
+        "data": {
+          "feature": "minecraft:yellow_poplar_leaf_litter",
+          "placement": []
+        },
+        "weight": 90
+      },
+      {
+        "data": {
+          "feature": "minecraft:spruce",
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:spruce_sapling"
+                }
+              }
+            }
+          ]
+        },
+        "weight": 27
+      },
+      {
+        "data": {
+          "feature": "minecraft:fallen_poplar_tree",
+          "placement": []
+        },
+        "weight": 120
+      }
+    ]
+  }
 }

@@ -3,6 +3,7 @@ package net.rebel459.drops_backported;
 import net.minecraft.resources.Identifier;
 import net.rebel459.drops_backported.registry.*;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
+import net.rebel459.drops_backported.worldgen.DBWorldgenCodecs;
 
 public class DropsBackported {
 
@@ -16,6 +17,7 @@ public class DropsBackported {
         DBBlockEntityTypes.init();
         DBParticleTypes.init();
         DBItems.init();
+        DBWorldgenCodecs.init();
     }
 
     public static void init() {}

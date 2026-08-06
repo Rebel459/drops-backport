@@ -5,9 +5,15 @@
       {
         "feature": {
           "type": "minecraft:speleothem",
-          "base_block": "minecraft:sulfur",
-          "pointed_block": "minecraft:sulfur_spike",
-          "replaceable_blocks": "#minecraft:sulfur_spike_replaceable_blocks"
+          "config": {
+            "base_block": {
+              "Name": "minecraft:sulfur"
+            },
+            "pointed_block": {
+              "Name": "minecraft:sulfur_spike"
+            },
+            "replaceable_blocks": "#minecraft:sulfur_spike_replaceable_blocks"
+          }
         },
         "placement": [
           {
@@ -42,9 +48,15 @@
       {
         "feature": {
           "type": "minecraft:speleothem",
-          "base_block": "minecraft:sulfur",
-          "pointed_block": "minecraft:sulfur_spike",
-          "replaceable_blocks": "#minecraft:sulfur_spike_replaceable_blocks"
+          "config": {
+            "base_block": {
+              "Name": "minecraft:sulfur"
+            },
+            "pointed_block": {
+              "Name": "minecraft:sulfur_spike"
+            },
+            "replaceable_blocks": "#minecraft:sulfur_spike_replaceable_blocks"
+          }
         },
         "placement": [
           {
