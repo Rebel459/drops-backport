@@ -5,17 +5,20 @@ import net.rebel459.drops_backported.client.entity.cushion.CushionRenderer;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SmallSulfurCubeModel;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeModel;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeRenderer;
+import net.rebel459.drops_backported.client.item.ExplorerMapItemModel;
 import net.rebel459.drops_backported.client.particle.*;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserBaseParticle;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserEruptionParticle;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserPlumeParticle;
 import net.rebel459.drops_backported.registry.DBEntityTypes;
+import net.rebel459.drops_backported.registry.DBMapDecorationTypes;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
 import net.rebel459.unified.platform.client.UnifiedClientHelpers;
 
 public class DropsBackportedClient {
 
     public static void initRegistries() {
+        ExplorerMapItemModel.init();
     }
 
     public static void init() {

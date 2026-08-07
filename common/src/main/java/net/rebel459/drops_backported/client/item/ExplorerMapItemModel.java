@@ -22,6 +22,7 @@ import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.client.resources.model.geometry.BakedQuad.MaterialInfo;
 import net.minecraft.client.resources.model.sprite.SpriteGetter;
 import net.minecraft.client.resources.model.sprite.SpriteId;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -31,23 +32,30 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.component.MapDecorations;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
+import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+import net.rebel459.drops_backported.DropsBackported;
+import net.rebel459.drops_backported.registry.DBMapDecorationTypes;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ExplorerMapItemModel implements ItemModel {
-    private static final Identifier FILLED_MAP_MODEL = Identifier.withDefaultNamespace("item/filled_map");
-    private static final Identifier EXPLORER_FILLED_MAP_MODEL = Identifier.withDefaultNamespace("item/explorer_filled_map");
+    private static final Identifier FILLED_MAP_MODEL = DropsBackported.vanillaId("item/filled_map");
+    private static final Identifier EXPLORER_MAP_MODEL = DropsBackported.vanillaId("item/explorer_map");
     private static final List<ItemTintSource> DEFAULT_TINTS = List.of(new Constant(-1), new MapColor(4603950));
-    public static final Identifier TYPE = Identifier.fromNamespaceAndPath("drops_backported", "explorer_filled_map");
+    private static final Map<Holder<MapDecorationType>, Identifier> DECORATION_MODELS = new HashMap<>();
+    public static final Identifier TYPE = DropsBackported.modId("explorer_map");
 
     private final ItemModel defaultBaseModel;
     private final ItemModel explorerBaseModel;
+    private final Map<Holder<MapDecorationType>, ItemModel> decorationModels;
     private final ModelBaker modelBaker;
     private final SpriteGetter sprites;
     private final ModelRenderProperties properties;
@@ -57,6 +65,7 @@ public class ExplorerMapItemModel implements ItemModel {
     private ExplorerMapItemModel(
             ItemModel defaultBaseModel,
             ItemModel explorerBaseModel,
+            Map<Holder<MapDecorationType>, ItemModel> decorationModels,
             ModelBaker modelBaker,
             SpriteGetter sprites,
             ModelRenderProperties properties,
@@ -64,6 +73,7 @@ public class ExplorerMapItemModel implements ItemModel {
     ) {
         this.defaultBaseModel = defaultBaseModel;
         this.explorerBaseModel = explorerBaseModel;
+        this.decorationModels = decorationModels;
         this.modelBaker = modelBaker;
         this.sprites = sprites;
         this.properties = properties;
@@ -80,22 +90,29 @@ public class ExplorerMapItemModel implements ItemModel {
             ItemOwner owner,
             int seed
     ) {
-        Identifier decoration = this.findExplorationMapDecoration(stack, level);
+        DecorationRenderData decoration = this.findExplorationMapDecoration(stack, level);
         if (decoration == null) {
             this.defaultBaseModel.update(renderState, stack, resolver, displayContext, level, owner, seed);
             return;
         }
 
+        ItemModel decorationModel = this.decorationModels.get(decoration.type());
+        if (decorationModel != null) {
+            renderState.appendModelIdentityElement(decoration.assetId());
+            decorationModel.update(renderState, stack, resolver, displayContext, level, owner, seed);
+            return;
+        }
+
         this.explorerBaseModel.update(renderState, stack, resolver, displayContext, level, owner, seed);
-        renderState.appendModelIdentityElement(decoration);
+        renderState.appendModelIdentityElement(decoration.assetId());
         ItemStackRenderState.LayerRenderState layer = renderState.newLayer();
         this.properties.applyToLayer(layer, displayContext);
         layer.setLocalTransform(this.transformation);
-        layer.prepareQuadList().addAll(this.overlayQuads.computeIfAbsent(decoration, this::createOverlayQuads));
+        layer.prepareQuadList().addAll(this.overlayQuads.computeIfAbsent(decoration.assetId(), this::createOverlayQuads));
     }
 
-    private Identifier findExplorationMapDecoration(ItemStack stack, ClientLevel level) {
-        Identifier componentDecoration = this.findComponentDecoration(stack);
+    private DecorationRenderData findExplorationMapDecoration(ItemStack stack, ClientLevel level) {
+        DecorationRenderData componentDecoration = this.findComponentDecoration(stack);
         if (componentDecoration != null) {
             return componentDecoration;
         }
@@ -111,17 +128,17 @@ public class ExplorerMapItemModel implements ItemModel {
 
         for (MapDecoration decoration : mapData.getDecorations()) {
             if (decoration.type().value().explorationMapElement()) {
-                return decoration.getSpriteLocation();
+                return new DecorationRenderData(decoration.type(), decoration.getSpriteLocation());
             }
         }
 
         return null;
     }
 
-    private Identifier findComponentDecoration(ItemStack stack) {
+    private DecorationRenderData findComponentDecoration(ItemStack stack) {
         MapDecorations decorations = stack.getOrDefault(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY);
         for (MapDecorations.Entry entry : decorations.decorations().values()) {
-            return entry.type().value().assetId();
+            return new DecorationRenderData(entry.type(), entry.type().value().assetId());
         }
 
         return null;
@@ -166,20 +183,52 @@ public class ExplorerMapItemModel implements ItemModel {
         @Override
         public void resolveDependencies(ResolvableModel.Resolver resolver) {
             resolver.markDependency(FILLED_MAP_MODEL);
-            resolver.markDependency(EXPLORER_FILLED_MAP_MODEL);
+            resolver.markDependency(EXPLORER_MAP_MODEL);
+            DECORATION_MODELS.values().forEach(resolver::markDependency);
         }
 
         @Override
         public ItemModel bake(ItemModel.BakingContext context, Matrix4fc transformation) {
             ItemModel defaultBaseModel = new CuboidItemModelWrapper.Unbaked(FILLED_MAP_MODEL, Optional.empty(), DEFAULT_TINTS).bake(context, transformation);
-            ItemModel explorerBaseModel = new CuboidItemModelWrapper.Unbaked(EXPLORER_FILLED_MAP_MODEL, Optional.empty(), List.of()).bake(context, transformation);
-            ResolvedModel resolvedModel = context.blockModelBaker().getModel(EXPLORER_FILLED_MAP_MODEL);
+            ItemModel explorerBaseModel = new CuboidItemModelWrapper.Unbaked(EXPLORER_MAP_MODEL, Optional.empty(), List.of()).bake(context, transformation);
+            Map<Holder<MapDecorationType>, ItemModel> decorationModels = new HashMap<>();
+            DECORATION_MODELS.forEach((type, model) -> decorationModels.put(
+                    type,
+                    new CuboidItemModelWrapper.Unbaked(model, Optional.empty(), List.of()).bake(context, transformation)
+            ));
+            ResolvedModel resolvedModel = context.blockModelBaker().getModel(EXPLORER_MAP_MODEL);
             ModelRenderProperties properties = ModelRenderProperties.fromResolvedModel(
                     context.blockModelBaker(),
                     resolvedModel,
                     resolvedModel.getTopTextureSlots()
             );
-            return new ExplorerMapItemModel(defaultBaseModel, explorerBaseModel, context.blockModelBaker(), context.sprites(), properties, transformation);
+            return new ExplorerMapItemModel(defaultBaseModel, explorerBaseModel, Map.copyOf(decorationModels), context.blockModelBaker(), context.sprites(), properties, transformation);
         }
+    }
+
+    private record DecorationRenderData(Holder<MapDecorationType> type, Identifier assetId) {
+    }
+
+    public static void init() {
+        registerDecorationModel(DBMapDecorationTypes.ANCIENT_CITY, DropsBackported.vanillaId("ancient_city_map"));
+        registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMPSITE, DropsBackported.vanillaId("abandoned_campsite_map"));
+        registerDecorationModel(DBMapDecorationTypes.DESERT_PYRAMID, DropsBackported.vanillaId("desert_pyramid_map"));
+        registerDecorationModel(DBMapDecorationTypes.MINESHAFT, DropsBackported.vanillaId("mineshaft_map"));
+        registerDecorationModel(DBMapDecorationTypes.WARM_OCEAN_RUINS, DropsBackported.vanillaId("warm_ocean_ruins_map"));
+        registerDecorationModel(MapDecorationTypes.RED_X, DropsBackported.vanillaId("buried_treasure_map"));
+        registerDecorationModel(MapDecorationTypes.DESERT_VILLAGE, DropsBackported.vanillaId("desert_village_map"));
+        registerDecorationModel(MapDecorationTypes.JUNGLE_TEMPLE, DropsBackported.vanillaId("jungle_temple_map"));
+        registerDecorationModel(MapDecorationTypes.OCEAN_MONUMENT, DropsBackported.vanillaId("ocean_monument_map"));
+        registerDecorationModel(MapDecorationTypes.PLAINS_VILLAGE, DropsBackported.vanillaId("plains_village_map"));
+        registerDecorationModel(MapDecorationTypes.SAVANNA_VILLAGE, DropsBackported.vanillaId("savanna_village_map"));
+        registerDecorationModel(MapDecorationTypes.SNOWY_VILLAGE, DropsBackported.vanillaId("snowy_village_map"));
+        registerDecorationModel(MapDecorationTypes.SWAMP_HUT, DropsBackported.vanillaId("swamp_hut_map"));
+        registerDecorationModel(MapDecorationTypes.TAIGA_VILLAGE, DropsBackported.vanillaId("taiga_village_map"));
+        registerDecorationModel(MapDecorationTypes.TRIAL_CHAMBERS, DropsBackported.vanillaId("trial_chamber_map"));
+        registerDecorationModel(MapDecorationTypes.WOODLAND_MANSION, DropsBackported.vanillaId("woodland_mansion_map"));
+    }
+
+    public static void registerDecorationModel(Holder<MapDecorationType> decorationType, Identifier model) {
+        DECORATION_MODELS.put(decorationType, model.withPrefix("item/"));
     }
 }
