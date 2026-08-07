@@ -31,9 +31,9 @@ public record SulfurCubeArchetype(
 ) {
     public static final KnockbackModifiers DEFAULT_KNOCKBACK_MODIFIERS = new KnockbackModifiers(0.33F, 0.06F);
     public static final SoundSettings DEFAULT_SOUND_SETTINGS = new SoundSettings(DBSoundEvents.SULFUR_CUBE_REGULAR_HIT, DBSoundEvents.SULFUR_CUBE_REGULAR_PUSH, 0.2F, 0.5F);
-    static final List<SulfurCubeArchetype> REGISTERED = new ArrayList<>();
+    public static final List<SulfurCubeArchetype> REGISTERED = new ArrayList<>();
 
-    static List<SulfurCubeArchetype> matching(ItemStack stack) {
+    public static List<SulfurCubeArchetype> matching(ItemStack stack) {
         return REGISTERED.stream().filter(archetype -> stack.is(archetype.items())).toList();
     }
 
