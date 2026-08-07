@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -35,6 +36,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.rebel459.drops_backport.entity.SulfurCube;
 import net.rebel459.drops_backport.registry.DBEntityTypes;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -77,12 +79,9 @@ public class SulfurCubeBucketItem extends Item {
             return InteractionResult.FAIL;
         }
 
-        if (level instanceof ServerLevel serverLevel && !this.spawn(serverLevel, stack, spawnPos)) {
+        if (level instanceof ServerLevel serverLevel && !this.placeSulfurCube(player, serverLevel, stack, spawnPos)) {
             return InteractionResult.FAIL;
         }
-
-        level.playSound(player, spawnPos, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
-        level.gameEvent(player, GameEvent.ENTITY_PLACE, spawnPos);
         if (player instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, spawnPos, stack);
         }
@@ -90,6 +89,16 @@ public class SulfurCubeBucketItem extends Item {
         player.awardStat(Stats.ITEM_USED.get(this));
         ItemStack result = ItemUtils.createFilledResult(stack, player, BucketItem.getEmptySuccessItem(stack, player));
         return InteractionResult.SUCCESS.heldItemTransformedTo(result);
+    }
+
+    public boolean placeSulfurCube(@Nullable LivingEntity user, ServerLevel level, ItemStack stack, BlockPos pos) {
+        if (!this.spawn(level, stack, pos)) {
+            return false;
+        }
+
+        level.playSound(user, pos, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
+        level.gameEvent(user, GameEvent.ENTITY_PLACE, pos);
+        return true;
     }
 
     private boolean spawn(ServerLevel level, ItemStack stack, BlockPos pos) {
@@ -150,4 +159,5 @@ public class SulfurCubeBucketItem extends Item {
                 .result()
                 .filter(bodyStack -> !bodyStack.isEmpty());
     }
+
 }

@@ -4,6 +4,7 @@
   "plugin": "net.rebel459.drops_backport.mixin.DBMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "block.DispenserBlockMixin",
     "entity.AttributesMixin",
     "entity.LivingEntityMixin",
     "entity.OwnerHurtByTargetGoalMixin",
