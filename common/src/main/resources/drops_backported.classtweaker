@@ -13,3 +13,4 @@ accessible method net/minecraft/world/level/block/BushBlock <init> (Lnet/minecra
 accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
 accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
 accessible method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType <init> (Lcom/mojang/serialization/MapCodec;)V
+accessible field net/minecraft/world/entity/Entity insideEffectCollector Lnet/minecraft/world/entity/InsideBlockEffectApplier$StepBasedCollector;

@@ -1,8 +1,12 @@
 package net.rebel459.drops_backported;
 
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.particle.ParticleResources;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.resources.Identifier;
+import net.rebel459.drops_backported.client.entity.cushion.CushionModel;
+import net.rebel459.drops_backported.client.entity.cushion.CushionRenderer;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeRenderer;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SmallSulfurCubeModel;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeModel;
@@ -28,6 +32,7 @@ public class DropsBackportedClient {
         UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(SulfurCubeRenderer.SULFUR_CUBE_INNER, SulfurCubeModel::createInnerBodyLayer);
         UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(SulfurCubeRenderer.SULFUR_CUBE_SMALL, SmallSulfurCubeModel::createOuterBodyLayer);
         UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(SulfurCubeRenderer.SULFUR_CUBE_SMALL_INNER, SmallSulfurCubeModel::createInnerBodyLayer);
+        UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(new ModelLayerLocation(Identifier.withDefaultNamespace("cushion"), "main"), CushionModel::createBodyLayer);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.SULFUR_BUBBLES, SulfurBubbleParticle.Provider::new);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.SULFUR_CUBE_GOO, SulfurCubeGooParticleProvider::new);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER, _ -> new GeyserEruptionParticle.Provider());
