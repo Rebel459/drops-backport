@@ -9,13 +9,15 @@ import net.minecraft.world.level.material.PushReaction;
 import net.rebel459.drops_backported.DropsBackported;
 import net.rebel459.drops_backported.block.PoplarSaplingBlock;
 import net.rebel459.drops_backported.block.ShelfMushroomBlock;
-import net.rebel459.drops_backported.block.poplar_leaves.AmbientLeavesBlockSoundPlayer;
+import net.rebel459.drops_backported.util.block.AmbientLeavesBlockSoundPlayer;
 import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlock;
-import net.rebel459.drops_backported.block.straw_bed.StrawBedBlock;
-import net.rebel459.drops_backported.block.sulfur_spike.SulfurSpikeBlock;
+import net.rebel459.drops_backported.block.StrawBedBlock;
+import net.rebel459.drops_backported.block.SulfurSpikeBlock;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.drops_backported.sound.DBSoundTypes;
 import net.rebel459.drops_backported.tag.DBBlockTags;
+import net.rebel459.drops_backported.util.block.UntintedParticleLeavesBlock;
+import net.rebel459.unified.platform.UnifiedHelpers;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.builder.*;
 import net.rebel459.unified.util.registry.SuppliedBlock;
@@ -34,6 +36,7 @@ public class DBBlocks {
     public static final ColoredBlockSet WOOL_SLABS = BLOCK_BUILDERS.coloredBlockSet("wool_slab", ColoredBlockPreset.WOOL)
             .function(SlabBlock::new)
             .creativeInventoryPlacement(WOOL_STAIRS.getPink())
+            .setFlammability(30, 60, 50)
             .build();
 
     public static final ColoredBlockSet CONCRETE_STAIRS = BLOCK_BUILDERS.coloredBlockSet("concrete_stairs", ColoredBlockPreset.CONCRETE)
@@ -46,7 +49,7 @@ public class DBBlocks {
             .build();
 
     public static final BlockSet CINNABAR = BLOCK_BUILDERS.blockSet("cinnabar", BlockPreset.DEFAULT, MapColor.COLOR_RED)
-            .creativeInventoryPlacement(() -> Blocks.CUT_RED_SANDSTONE_SLAB)
+            .creativeInventoryPlacement(() -> Blocks.CUT_RED_SANDSTONE_SLAB, () -> Blocks.PRISMARINE)
             .setSoundType(DBSoundTypes.CINNABAR)
             .hasChiseled(true)
             .build();
@@ -60,7 +63,7 @@ public class DBBlocks {
             .build();
 
     public static final BlockSet SULFUR = BLOCK_BUILDERS.blockSet("sulfur", BlockPreset.DEFAULT, MapColor.COLOR_YELLOW)
-            .creativeInventoryPlacement(CINNABAR_BRICKS.getWall())
+            .creativeInventoryPlacement(CINNABAR_BRICKS.getWall(), CINNABAR.getBase())
             .setSoundType(DBSoundTypes.SULFUR)
             .hasChiseled(true)
             .build();
@@ -99,7 +102,7 @@ public class DBBlocks {
 
     public static final SuppliedBlock RED_POPLAR_LEAVES = BLOCKS.register(
             "red_poplar_leaves",
-            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+            p -> new UntintedParticleLeavesBlock(
                     0.01F,
                     DBParticleTypes.RED_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
@@ -109,7 +112,7 @@ public class DBBlocks {
     );
     public static final SuppliedBlock ORANGE_POPLAR_LEAVES = BLOCKS.register(
             "orange_poplar_leaves",
-            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+            p -> new UntintedParticleLeavesBlock(
                     0.01F,
                     DBParticleTypes.ORANGE_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
@@ -119,7 +122,7 @@ public class DBBlocks {
     );
     public static final SuppliedBlock YELLOW_POPLAR_LEAVES = BLOCKS.register(
             "yellow_poplar_leaves",
-            p -> new net.rebel459.drops_backported.block.poplar_leaves.UntintedParticleLeavesBlock(
+            p -> new UntintedParticleLeavesBlock(
                     0.01F,
                     DBParticleTypes.YELLOW_POPLAR_LEAVES.get(),
                     AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
@@ -185,5 +188,18 @@ public class DBBlocks {
     }
 
     public static void init() {
+    }
+
+    public static void createProperties() {
+        UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_POPLAR_LEAVES, 0.3F);
+        UnifiedHelpers.DATA_COMPONENTS.addCompost(ORANGE_POPLAR_LEAVES, 0.3F);
+        UnifiedHelpers.DATA_COMPONENTS.addCompost(YELLOW_POPLAR_LEAVES, 0.3F);
+        UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_SHRUB, 0.3F);
+
+        final FireBlock fire = (FireBlock) Blocks.FIRE;
+        fire.setFlammable(RED_POPLAR_LEAVES.get(), 30, 60);
+        fire.setFlammable(ORANGE_POPLAR_LEAVES.get(), 30, 60);
+        fire.setFlammable(YELLOW_POPLAR_LEAVES.get(), 30, 60);
+        fire.setFlammable(RED_SHRUB.get(), 60, 100);
     }
 }

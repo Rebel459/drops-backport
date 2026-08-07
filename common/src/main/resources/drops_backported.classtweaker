@@ -22,3 +22,4 @@ accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockX 
 accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockY I
 accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockZ I
 accessible method net/minecraft/client/particle/FallingLeavesParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDLnet/minecraft/client/renderer/texture/TextureAtlasSprite;FFZZFF)V
+accessible method net/minecraft/world/level/block/FireBlock setFlammable (Lnet/minecraft/world/level/block/Block;II)V

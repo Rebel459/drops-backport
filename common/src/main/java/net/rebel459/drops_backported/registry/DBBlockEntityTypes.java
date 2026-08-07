@@ -2,7 +2,7 @@ package net.rebel459.drops_backported.registry;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.rebel459.drops_backported.DropsBackported;
-import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlockEntity;
+import net.rebel459.drops_backported.entity.PotentSulfurBlockEntity;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.registry.Supplied;
 

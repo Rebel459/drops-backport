@@ -21,6 +21,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.rebel459.drops_backported.entity.PotentSulfurBlockEntity;
 import net.rebel459.drops_backported.registry.DBBlockEntityTypes;
 import net.rebel459.drops_backported.registry.DBBlockStateProperties;
 import net.rebel459.drops_backported.registry.DBParticleTypes;

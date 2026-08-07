@@ -211,10 +211,10 @@ public class ExplorerMapItemModel implements ItemModel {
 
     public static void init() {
         registerDecorationModel(DBMapDecorationTypes.ANCIENT_CITY, DropsBackported.vanillaId("ancient_city_map"));
-        registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMPSITE, DropsBackported.vanillaId("abandoned_campsite_map"));
+        registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMP, DropsBackported.vanillaId("abandoned_campsite_map"));
         registerDecorationModel(DBMapDecorationTypes.DESERT_PYRAMID, DropsBackported.vanillaId("desert_pyramid_map"));
         registerDecorationModel(DBMapDecorationTypes.MINESHAFT, DropsBackported.vanillaId("mineshaft_map"));
-        registerDecorationModel(DBMapDecorationTypes.WARM_OCEAN_RUINS, DropsBackported.vanillaId("warm_ocean_ruins_map"));
+        registerDecorationModel(DBMapDecorationTypes.OCEAN_RUIN_WARM, DropsBackported.vanillaId("warm_ocean_ruins_map"));
         registerDecorationModel(MapDecorationTypes.RED_X, DropsBackported.vanillaId("buried_treasure_map"));
         registerDecorationModel(MapDecorationTypes.DESERT_VILLAGE, DropsBackported.vanillaId("desert_village_map"));
         registerDecorationModel(MapDecorationTypes.JUNGLE_TEMPLE, DropsBackported.vanillaId("jungle_temple_map"));

@@ -27,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
+import net.rebel459.drops_backported.util.block.HorizontalDirectionalBlock;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;

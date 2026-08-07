@@ -3,6 +3,7 @@ package net.rebel459.drops_backported;
 import net.minecraft.resources.Identifier;
 import net.rebel459.drops_backported.registry.*;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
+import net.rebel459.drops_backported.util.DBCreativeEntries;
 import net.rebel459.drops_backported.worldgen.DBWorldgenCodecs;
 
 public class DropsBackported {
@@ -22,6 +23,8 @@ public class DropsBackported {
     }
 
     public static void init() {
+        DBBlocks.createProperties();
+        DBCreativeEntries.init();
     }
 
     public static Identifier modId(String path) {

@@ -9,7 +9,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlockEntity;
+import net.rebel459.drops_backported.entity.PotentSulfurBlockEntity;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
 import org.jspecify.annotations.Nullable;
 

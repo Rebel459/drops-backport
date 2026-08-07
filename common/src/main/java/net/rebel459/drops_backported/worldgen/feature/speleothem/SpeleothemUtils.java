@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.rebel459.drops_backported.block.sulfur_spike.SpeleothemThickness;
+import net.rebel459.drops_backported.util.block.SpeleothemThickness;
 import net.rebel459.drops_backported.registry.DBBlockStateProperties;
 
 import java.util.function.Consumer;

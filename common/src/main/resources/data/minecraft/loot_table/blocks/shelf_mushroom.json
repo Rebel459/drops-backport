@@ -13,12 +13,10 @@
               "conditions": [
                 {
                   "block": "minecraft:shelf_mushroom",
+                  "condition": "minecraft:block_state_property",
                   "properties": {
                     "age": "1"
-                  },
-                  "conditions": [
-                    "minecraft:block_state_property"
-                  ]
+                  }
                 }
               ]
             },

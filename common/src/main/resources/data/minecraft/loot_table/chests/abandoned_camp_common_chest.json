@@ -333,7 +333,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_bamboo_jungle",
+              "destination": "minecraft:on_abandoned_camp_bamboo_jungle",
               "function": "minecraft:exploration_map"
             },
             {
@@ -344,7 +344,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -374,7 +374,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_cherry_grove",
+              "destination": "minecraft:on_abandoned_camp_cherry_grove",
               "function": "minecraft:exploration_map"
             },
             {
@@ -385,7 +385,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -415,7 +415,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_birch_forest",
+              "destination": "minecraft:on_abandoned_camp_birch_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -426,7 +426,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -456,7 +456,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_dappled_forest",
+              "destination": "minecraft:on_abandoned_camp_dappled_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -467,7 +467,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -497,7 +497,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_flower_forest",
+              "destination": "minecraft:on_abandoned_camp_flower_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -508,7 +508,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -538,7 +538,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_pale_garden",
+              "destination": "minecraft:on_abandoned_camp_pale_garden",
               "function": "minecraft:exploration_map"
             },
             {
@@ -549,7 +549,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -579,7 +579,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_swamp",
+              "destination": "minecraft:on_abandoned_camp_swamp",
               "function": "minecraft:exploration_map"
             },
             {
@@ -590,7 +590,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
@@ -620,7 +620,7 @@
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "#minecraft:on_abandoned_camp_windswept",
+              "destination": "minecraft:on_abandoned_camp_windswept",
               "function": "minecraft:exploration_map"
             },
             {
@@ -631,7 +631,7 @@
                 }
               },
               "on_fail": {
-                "type": "minecraft:discard"
+                "function": "minecraft:discard"
               },
               "function": "minecraft:filtered"
             }
