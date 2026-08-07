@@ -11,7 +11,9 @@
     "worldgen.NoiseGeneratorSettingsMixin",
     "worldgen.OverworldBiomeBuilderMixin"
   ],
-  "client": [],
+  "client": [
+    "client.ItemModelsMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

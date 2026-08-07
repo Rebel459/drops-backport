@@ -18,6 +18,7 @@ public class DropsBackported {
         DBParticleTypes.init();
         DBItems.init();
         DBWorldgenCodecs.init();
+        DBMapDecorationTypes.init();
     }
 
     public static void init() {}
