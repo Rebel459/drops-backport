@@ -1,653 +1,645 @@
 {
-    "type":  "minecraft:chest",
-    "pools":  [
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:arrow",
-                                          "functions":  [
-                                                            {
-                                                                "count":  4.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bone",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  2.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:cobweb",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:compass",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  2.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:gunpowder",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  2.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:fishing_rod",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:flint_and_steel",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:glass_bottle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:lead",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:leather",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bundle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:rabbit_hide",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:saddle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:white_candle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      }
-                                  ],
-                      "rolls":  {
-                                    "type":  "minecraft:uniform",
-                                    "max":  6.0,
-                                    "min":  4.0
-                                }
-                  },
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bow",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bucket",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_axe",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_boots",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_chestplate",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_leggings",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_spear",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:copper_sword",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:spyglass",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:shears",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      }
-                                  ],
-                      "rolls":  2.0
-                  },
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:bamboo_jungle"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.bamboo_jungle_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_bamboo_jungle",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:cherry_grove"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.cherry_grove_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_cherry_grove",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:birch_forest"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.birch_forest_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_birch_forest",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:dappled_forest"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.dappled_forest_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_dappled_forest",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:flower_forest"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.flower_forest_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_flower_forest",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:pale_garden"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.pale_garden_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_pale_garden",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:swamp"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.swamp_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_swamp",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:map",
-                                          "conditions":  [
-                                                             {
-                                                                 "term":  {
-                                                                              "predicate":  {
-                                                                                                "biomes":  "minecraft:windswept_forest"
-                                                                                            },
-                                                                              "condition":  "minecraft:location_check"
-                                                                          },
-                                                                 "condition":  "minecraft:inverted"
-                                                             }
-                                                         ],
-                                          "functions":  [
-                                                            {
-                                                                "name":  {
-                                                                             "translate":  "filled_map.windswept_forest_abandoned_camp"
-                                                                         },
-                                                                "target":  "item_name",
-                                                                "function":  "minecraft:set_name"
-                                                            },
-                                                            {
-                                                                "decoration":  "minecraft:abandoned_camp",
-                                                                "destination":  "#minecraft:on_abandoned_camp_windswept",
-                                                                "function":  "minecraft:exploration_map"
-                                                            },
-                                                            {
-                                                                "item_filter":  {
-                                                                                    "predicates":  {
-                                                                                                       "minecraft:map_id":  {
-
-                                                                                                                            }
-                                                                                                   }
-                                                                                },
-                                                                "on_fail":  {
-                                                                                "type":  "minecraft:discard"
-                                                                            },
-                                                                "function":  "minecraft:filtered"
-                                                            }
-                                                        ]
-                                      }
-                                  ],
-                      "rolls":  1.0
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
+          "functions": [
+            {
+              "count": 4.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cobweb",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:compass",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gunpowder",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint_and_steel",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:glass_bottle",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lead",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rabbit_hide",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:saddle",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_candle",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 6.0,
+        "min": 4.0
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bucket",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_axe",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_boots",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_chestplate",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_leggings",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_spear",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_sword",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spyglass",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shears",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 2.0
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:bamboo_jungle"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.bamboo_jungle_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_bamboo_jungle",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
                   }
-              ],
-    "random_sequence":  "minecraft:chests/abandoned_camp_common_chest"
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:cherry_grove"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.cherry_grove_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_cherry_grove",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:birch_forest"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.birch_forest_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_birch_forest",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:dappled_forest"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.dappled_forest_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_dappled_forest",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:flower_forest"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.flower_forest_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_flower_forest",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:pale_garden"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.pale_garden_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_pale_garden",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:swamp"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.swamp_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_swamp",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:map",
+          "conditions": [
+            {
+              "term": {
+                "predicate": {
+                  "biomes": "minecraft:windswept_forest"
+                },
+                "condition": "minecraft:location_check"
+              },
+              "condition": "minecraft:inverted"
+            }
+          ],
+          "functions": [
+            {
+              "name": {
+                "translate": "filled_map.windswept_forest_abandoned_camp"
+              },
+              "target": "item_name",
+              "function": "minecraft:set_name"
+            },
+            {
+              "decoration": "minecraft:abandoned_camp",
+              "destination": "#minecraft:on_abandoned_camp_windswept",
+              "function": "minecraft:exploration_map"
+            },
+            {
+              "item_filter": {
+                "predicates": {
+                  "minecraft:map_id": {
+                  }
+                }
+              },
+              "on_fail": {
+                "type": "minecraft:discard"
+              },
+              "function": "minecraft:filtered"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:chests/abandoned_camp_common_chest"
 }

@@ -13,5 +13,6 @@ public class DBBlockEntityTypes {
             "potent_sulfur", PotentSulfurBlockEntity::new, DBBlocks.POTENT_SULFUR
     );
 
-    public static void init() {}
+    public static void init() {
+    }
 }

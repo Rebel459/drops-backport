@@ -32,6 +32,7 @@ public abstract class OwnerHurtByTargetGoalMixin {
     )
     private void noWolfRetaliation(CallbackInfoReturnable<Boolean> cir) {
         DamageSource source = this.tameAnimal.getOwner().getLastDamageSource();
-        if (this.tameAnimal instanceof Wolf && source != null && source.is(TagKey.create(Registries.DAMAGE_TYPE, DropsBackported.vanillaId("no_wolf_retaliation")))) cir.setReturnValue(false);
+        if (this.tameAnimal instanceof Wolf && source != null && source.is(TagKey.create(Registries.DAMAGE_TYPE, DropsBackported.vanillaId("no_wolf_retaliation"))))
+            cir.setReturnValue(false);
     }
 }

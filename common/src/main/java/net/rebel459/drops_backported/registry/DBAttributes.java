@@ -11,19 +11,21 @@ public final class DBAttributes {
     private static final UnifiedRegistries.DeferredRegistry<Attribute> ATTRIBUTES = UnifiedRegistries.DeferredRegistry.create(DropsBackported.VANILLA_ID, BuiltInRegistries.ATTRIBUTE);
 
     public static final Holder<Attribute> AIR_DRAG_MODIFIER = ATTRIBUTES.registerForHolder(
-        "air_drag_modifier",
-        () -> new RangedAttribute("attribute.minecraft.air_drag_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
+            "air_drag_modifier",
+            () -> new RangedAttribute("attribute.minecraft.air_drag_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
     );
     public static final Holder<Attribute> BOUNCINESS = ATTRIBUTES.registerForHolder(
-        "bounciness",
-        () -> new RangedAttribute("attribute.minecraft.bounciness", 0.0, 0.0, 1.0).setSyncable(true)
+            "bounciness",
+            () -> new RangedAttribute("attribute.minecraft.bounciness", 0.0, 0.0, 1.0).setSyncable(true)
     );
     public static final Holder<Attribute> FRICTION_MODIFIER = ATTRIBUTES.registerForHolder(
-        "friction_modifier",
-        () -> new RangedAttribute("attribute.minecraft.friction_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
+            "friction_modifier",
+            () -> new RangedAttribute("attribute.minecraft.friction_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
     );
 
-    private DBAttributes() {}
+    private DBAttributes() {
+    }
 
-    public static void init() {}
+    public static void init() {
+    }
 }

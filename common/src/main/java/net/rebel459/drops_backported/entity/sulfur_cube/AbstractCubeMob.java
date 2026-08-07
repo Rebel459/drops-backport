@@ -1,7 +1,6 @@
 package net.rebel459.drops_backported.entity.sulfur_cube;
 
 import com.google.common.annotations.VisibleForTesting;
-import java.util.EnumSet;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -14,16 +13,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.ConversionType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -37,6 +27,8 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
 import org.jspecify.annotations.Nullable;
+
+import java.util.EnumSet;
 
 public abstract class AbstractCubeMob extends AgeableMob {
     protected static final EntityDataAccessor<Integer> ID_SIZE = SynchedEntityData.defineId(AbstractCubeMob.class, EntityDataSerializers.INT);
@@ -121,7 +113,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
             float radius = size / 2.0F;
 
             for (int i = 0; i < size * 16.0F; i++) {
-                float dir = this.random.nextFloat() * (float)(Math.PI * 2);
+                float dir = this.random.nextFloat() * (float) (Math.PI * 2);
                 float d = this.random.nextFloat() * 0.5F + 0.5F;
                 float xd = Mth.sin(dir) * radius * d;
                 float zd = Mth.cos(dir) * radius * d;
@@ -174,7 +166,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
     @Override
     public EntityType<? extends AbstractCubeMob> getType() {
-        return (EntityType<? extends AbstractCubeMob>)super.getType();
+        return (EntityType<? extends AbstractCubeMob>) super.getType();
     }
 
     @Override
@@ -191,10 +183,10 @@ public abstract class AbstractCubeMob extends AgeableMob {
                 float xd = (i % 2 - 0.5F) * xzCubeSpawnOffset;
                 float zd = (i / 2 - 0.5F) * xzCubeSpawnOffset;
                 this.convertTo(
-                    this.getType(),
-                    new ConversionParams(ConversionType.SPLIT_ON_DEATH, false, false, team),
-                    EntitySpawnReason.TRIGGERED,
-                    cubeMob -> this.setUpSplitCube(cubeMob, halfSize, xd, zd)
+                        this.getType(),
+                        new ConversionParams(ConversionType.SPLIT_ON_DEATH, false, false, team),
+                        EntitySpawnReason.TRIGGERED,
+                        cubeMob -> this.setUpSplitCube(cubeMob, halfSize, xd, zd)
                 );
             }
         }
@@ -215,7 +207,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
     public void push(Entity entity) {
         super.push(entity);
         if (entity instanceof IronGolem && this.isDealsDamage()) {
-            this.dealDamage((LivingEntity)entity);
+            this.dealDamage((LivingEntity) entity);
         }
     }
 
@@ -241,7 +233,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
     }
 
     protected float getAttackDamage() {
-        return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        return (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
     }
 
     @Override
@@ -316,7 +308,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
         public CubeMobMoveControl(T cubeMob) {
             super(cubeMob);
             this.cubeMob = cubeMob;
-            this.yRot = 180.0F * cubeMob.getYRot() / (float)Math.PI;
+            this.yRot = 180.0F * cubeMob.getYRot() / (float) Math.PI;
         }
 
         public void setDirection(float yRot, boolean isAggressive) {
@@ -339,7 +331,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
             } else {
                 this.operation = MoveControl.Operation.WAIT;
                 if (this.mob.onGround()) {
-                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
+                    this.mob.setSpeed((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.cubeMob.getJumpDelay();
                         if (this.isAggressive) {
@@ -356,7 +348,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
                         this.mob.setSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
+                    this.mob.setSpeed((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                 }
             }
         }
@@ -427,8 +419,8 @@ public abstract class AbstractCubeMob extends AgeableMob {
         @Override
         public boolean canUse() {
             return this.cubeMob.getTarget() == null
-                && (this.cubeMob.onGround() || this.cubeMob.isInWater() || this.cubeMob.isInLava() || this.cubeMob.hasEffect(MobEffects.LEVITATION))
-                && this.cubeMob.getMoveControl() instanceof CubeMobMoveControl;
+                    && (this.cubeMob.onGround() || this.cubeMob.isInWater() || this.cubeMob.isInLava() || this.cubeMob.hasEffect(MobEffects.LEVITATION))
+                    && this.cubeMob.getMoveControl() instanceof CubeMobMoveControl;
         }
 
         @Override

@@ -46,7 +46,7 @@ public abstract class OverworldBiomeBuilderMixin {
 
     @WrapOperation(
             method = "addUndergroundBiomes",
-            at = @At (
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;addUndergroundBiome(Ljava/util/function/Consumer;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;FLnet/minecraft/resources/ResourceKey;)V",
                     ordinal = 1

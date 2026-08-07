@@ -46,7 +46,7 @@ public class SulfurBubbleParticle extends SingleQuadParticle {
         this.xd += this.randomHorizontalWiggling();
         this.zd += this.randomHorizontalWiggling();
         this.move(this.xd, 0.0, this.zd);
-        float travelProgress = (float)((this.y - this.yStart) / (this.yEnd - this.yStart));
+        float travelProgress = (float) ((this.y - this.yStart) / (this.yEnd - this.yStart));
         this.quadSize = this.sizeStart + travelProgress * (0.15F - this.sizeStart);
         this.yPrev = this.y;
     }

@@ -106,7 +106,9 @@ public final class DBSoundEvents {
     public static final Supplied<SoundEvent> CUSHION_PLACE = SOUNDS.register("entity.cushion.place");
     public static final Supplied<SoundEvent> CUSHION_SIT = SOUNDS.register("entity.cushion.sit");
 
-    private DBSoundEvents() {}
+    private DBSoundEvents() {
+    }
 
-    public static void init() {}
+    public static void init() {
+    }
 }

@@ -1,11 +1,5 @@
 package net.rebel459.drops_backported.entity.sulfur_cube;
 
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -30,19 +24,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
@@ -69,6 +52,12 @@ import net.rebel459.drops_backported.registry.DBItems;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import org.jspecify.annotations.Nullable;
+
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable {
     private static final TagKey<net.minecraft.world.item.Item> FOOD = TagKey.create(Registries.ITEM, Identifier.withDefaultNamespace("sulfur_cube_food"));
@@ -250,8 +239,8 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
             this.dead = true;
             if (level.getGameRules().get(GameRules.TNT_EXPLODES)) {
                 Level.ExplosionInteraction interaction = level.getGameRules().get(GameRules.MOB_GRIEFING)
-                    ? Level.ExplosionInteraction.TNT
-                    : Level.ExplosionInteraction.NONE;
+                        ? Level.ExplosionInteraction.TNT
+                        : Level.ExplosionInteraction.NONE;
                 SulfurCubeArchetype.ExplosionData explosion = this.explosionData.orElse(new SulfurCubeArchetype.ExplosionData(3, false, 120));
                 level.explode(this, Explosion.getDefaultDamageSource(this.level(), this), null, this.getX(), this.getY(0.0625), this.getZ(), explosion.power(), explosion.causesFire(), interaction);
             }
@@ -565,7 +554,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
                 this.needsSync = true;
                 float threshold = this.soundSettings.pushSoundImpulseThreshold();
                 if (pushVelocity.lengthSqr() > threshold * threshold && this.pushSoundCooldown <= 0) {
-                    this.pushSoundCooldown = (int)(this.soundSettings.pushSoundCooldown() * 20.0F);
+                    this.pushSoundCooldown = (int) (this.soundSettings.pushSoundCooldown() * 20.0F);
                     this.playSound(this.soundSettings.pushSound().value());
                 }
 
@@ -654,7 +643,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
             }
         }
 
-        float bounciness = (float)this.getAttributeValue(DBAttributes.BOUNCINESS);
+        float bounciness = (float) this.getAttributeValue(DBAttributes.BOUNCINESS);
         if (!wasOnGround && this.onGround() && previousYd < -0.08 && bounciness > 0.0F) {
             movement = new Vec3(movement.x, -previousYd * bounciness, movement.z);
         }
@@ -741,12 +730,12 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
         float verticalPower = this.knockbackModifier.verticalPower();
         float originalHorizontalPower = horizontalPower;
         float originalVerticalPower = verticalPower;
-        Vec2 originalAngle = new Vec2((float)xd, (float)zd);
+        Vec2 originalAngle = new Vec2((float) xd, (float) zd);
         Vec2 newAngle = rotateHorizontalHitAngle(originalAngle, attacker.getEyePosition(), attacker.getLookAngle().normalize(), this.getBoundingBox().getCenter());
         Vec2 newPower = applyVerticalHitAnglePowerTransfer(horizontalPower, verticalPower, attacker.getEyePosition(), attacker.getLookAngle().normalize(), this.getBoundingBox().getCenter(), this.getBbHeight());
         newPower = applyVerticalPositionAnglePowerRotation(newPower.x, newPower.y, originalHorizontalPower, originalVerticalPower, attacker.position(), this.position());
         float powerMultiplier = Mth.sqrt(damage);
-        float knockbackScale = Math.max(0.0F, 1.0F - (float)this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+        float knockbackScale = Math.max(0.0F, 1.0F - (float) this.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
         horizontalPower = newPower.x * powerMultiplier * knockbackScale * 0.4F;
         verticalPower = newPower.y * powerMultiplier * knockbackScale;
         horizontalPower = Mth.clamp(horizontalPower, -128.0F, 128.0F);
@@ -760,9 +749,9 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     private static Vec2 rotateHorizontalHitAngle(Vec2 originalAngle, Vec3 attackerPosition, Vec3 attackerAimDirection, Vec3 targetCenter) {
         Vec3 attackerToTarget = targetCenter.subtract(attackerPosition).normalize();
-        float angleDiff = (float)Math.atan2(
-            attackerAimDirection.x * attackerToTarget.z - attackerAimDirection.z * attackerToTarget.x,
-            attackerAimDirection.x * attackerToTarget.x + attackerAimDirection.z * attackerToTarget.z
+        float angleDiff = (float) Math.atan2(
+                attackerAimDirection.x * attackerToTarget.z - attackerAimDirection.z * attackerToTarget.x,
+                attackerAimDirection.x * attackerToTarget.x + attackerAimDirection.z * attackerToTarget.z
         );
         return rotate(originalAngle, angleDiff * 1.6F);
     }
@@ -773,7 +762,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
         Vec3 targetBottomPos = targetCenteredPosition.add(0.0, -targetHalfHeight, 0.0);
         Vec3 attackerToTargetTop = targetTopPos.subtract(attackerPosition).normalize();
         Vec3 attackerToTargetBottom = targetBottomPos.subtract(attackerPosition).normalize();
-        float verticalHitAngleFactor = (float)Mth.clampedMap(attackerAimDirection.y, attackerToTargetTop.y, attackerToTargetBottom.y, -1.0, 1.0);
+        float verticalHitAngleFactor = (float) Mth.clampedMap(attackerAimDirection.y, attackerToTargetTop.y, attackerToTargetBottom.y, -1.0, 1.0);
         float transferredPowerRatio = Math.abs(verticalHitAngleFactor * 0.5F);
         if (verticalHitAngleFactor < 0.0F) {
             transferredPowerRatio = -transferredPowerRatio;
@@ -784,7 +773,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     private static Vec2 applyVerticalPositionAnglePowerRotation(float horizontalPower, float verticalPower, float originalHorizontalPower, float originalVerticalPower, Vec3 attackerFeetPosition, Vec3 targetFeetPosition) {
         Vec3 attackerFeetToTargetFeet = targetFeetPosition.subtract(attackerFeetPosition);
-        float verticalPositionAngle = (float)Math.atan2(-attackerFeetToTargetFeet.y, attackerFeetToTargetFeet.horizontalDistance());
+        float verticalPositionAngle = (float) Math.atan2(-attackerFeetToTargetFeet.y, attackerFeetToTargetFeet.horizontalDistance());
         Vec2 rotatedPower = rotate(new Vec2(horizontalPower, verticalPower), -verticalPositionAngle * 0.8F);
         float horizontalRatio = originalHorizontalPower > 0.0F ? Mth.abs(rotatedPower.x) / originalHorizontalPower : 0.0F;
         float verticalRatio = originalVerticalPower > 0.0F ? Mth.abs(rotatedPower.y) / originalVerticalPower : 0.0F;

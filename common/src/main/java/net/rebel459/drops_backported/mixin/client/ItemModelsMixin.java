@@ -1,8 +1,8 @@
 package net.rebel459.drops_backported.mixin.client;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.renderer.item.ItemModels;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.ItemModels;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ExtraCodecs;
 import net.rebel459.drops_backported.client.item.ExplorerMapItemModel;

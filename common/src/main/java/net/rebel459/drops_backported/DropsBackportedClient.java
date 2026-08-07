@@ -1,28 +1,22 @@
 package net.rebel459.drops_backported;
 
-import net.minecraft.client.particle.ParticleResources;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.resources.Identifier;
 import net.rebel459.drops_backported.client.entity.cushion.CushionModel;
 import net.rebel459.drops_backported.client.entity.cushion.CushionRenderer;
-import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeRenderer;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SmallSulfurCubeModel;
 import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeModel;
+import net.rebel459.drops_backported.client.entity.sulfur_cube.SulfurCubeRenderer;
 import net.rebel459.drops_backported.client.particle.*;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserBaseParticle;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserEruptionParticle;
 import net.rebel459.drops_backported.client.particle.geyser.GeyserPlumeParticle;
-import net.rebel459.drops_backported.particle.GeyserParticleOptions;
 import net.rebel459.drops_backported.registry.DBEntityTypes;
 import net.rebel459.drops_backported.registry.DBParticleTypes;
 import net.rebel459.unified.platform.client.UnifiedClientHelpers;
 
-import java.util.function.Supplier;
-
 public class DropsBackportedClient {
 
-    public static void initRegistries() {}
+    public static void initRegistries() {
+    }
 
     public static void init() {
         UnifiedClientHelpers.ENTITY_RENDERERS.addLayerDefinition(SulfurCubeRenderer.SULFUR_CUBE, SulfurCubeModel::createOuterBodyLayer);

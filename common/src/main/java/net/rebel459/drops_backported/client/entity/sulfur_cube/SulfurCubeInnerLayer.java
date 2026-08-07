@@ -27,8 +27,8 @@ public class SulfurCubeInnerLayer extends RenderLayer<SulfurCubeRenderState, Sul
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, SulfurCubeRenderState state, float yRot, float xRot) {
         int overlayCoords = state.fuseRemainingTicks > 0.0F && isLit(state.fuseRemainingTicks)
-            ? OverlayTexture.pack(OverlayTexture.u(1.0F), 10)
-            : LivingEntityRenderer.getOverlayCoords(state, 0.0F);
+                ? OverlayTexture.pack(OverlayTexture.u(1.0F), 10)
+                : LivingEntityRenderer.getOverlayCoords(state, 0.0F);
         if (!state.containedBlock.isEmpty()) {
             poseStack.pushPose();
             poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
@@ -47,6 +47,6 @@ public class SulfurCubeInnerLayer extends RenderLayer<SulfurCubeRenderState, Sul
     }
 
     private static boolean isLit(float fuse) {
-        return (int)(fuse / 5.0F) % 2 == 0;
+        return (int) (fuse / 5.0F) % 2 == 0;
     }
 }

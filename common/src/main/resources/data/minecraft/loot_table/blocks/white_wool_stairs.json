@@ -1,20 +1,20 @@
 {
-    "type":  "minecraft:block",
-    "pools":  [
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:white_wool_stairs"
-                                      }
-                                  ],
-                      "rolls":  1.0,
-                      "conditions":  [
-                                         {
-                                             "condition":  "minecraft:survives_explosion"
-                                         }
-                                     ]
-                  }
-              ],
-    "random_sequence":  "minecraft:blocks/white_wool_stairs"
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_wool_stairs"
+        }
+      ],
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:blocks/white_wool_stairs"
 }

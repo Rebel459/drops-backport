@@ -8,17 +8,13 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.block.Block;
-import net.rebel459.drops_backported.registry.DBAttributes;
 import net.rebel459.drops_backported.entity.sulfur_cube.SulfurCube;
+import net.rebel459.drops_backported.registry.DBAttributes;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -26,8 +22,8 @@ public abstract class LivingEntityMixin {
     public abstract @Nullable AttributeInstance getAttribute(Holder<Attribute> attribute);
 
     @Redirect(
-        method = "travelInAir",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;getFriction()F")
+            method = "travelInAir",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;getFriction()F")
     )
     private float applyFrictionModifier(Block block) {
         return computeModifiedFriction(block.getFriction(), getAttributeValue(DBAttributes.FRICTION_MODIFIER, 1.0F));
@@ -48,12 +44,12 @@ public abstract class LivingEntityMixin {
     }
 
     @ModifyArg(
-        method = "travelInAir",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/LivingEntity;handleRelativeFrictionAndCalculateMovement(Lnet/minecraft/world/phys/Vec3;F)Lnet/minecraft/world/phys/Vec3;"
-        ),
-        index = 1
+            method = "travelInAir",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/LivingEntity;handleRelativeFrictionAndCalculateMovement(Lnet/minecraft/world/phys/Vec3;F)Lnet/minecraft/world/phys/Vec3;"
+            ),
+            index = 1
     )
     private float applyLowFrictionInputRule(float blockFriction) {
         return blockFriction > 0.6F ? blockFriction : 0.6F;
@@ -62,7 +58,7 @@ public abstract class LivingEntityMixin {
     @Unique
     private float getAttributeValue(Holder<Attribute> attribute, float fallback) {
         AttributeInstance instance = this.getAttribute(attribute);
-        return instance == null ? fallback : (float)instance.getValue();
+        return instance == null ? fallback : (float) instance.getValue();
     }
 
     @Unique

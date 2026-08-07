@@ -2,8 +2,6 @@ package net.rebel459.drops_backported.worldgen.feature.speleothem;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.core.Direction;
@@ -15,11 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ClampedNormalFloat;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.WorldGenLevel;
@@ -30,6 +24,9 @@ import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class SpeleothemClusterFeature extends Feature<SpeleothemClusterFeature.Configuration> {
     public SpeleothemClusterFeature(Codec<Configuration> codec) {
@@ -190,8 +187,8 @@ public class SpeleothemClusterFeature extends Feature<SpeleothemClusterFeature.C
             return 0;
         } else {
             int distanceFromCenter = Math.abs(dx) + Math.abs(dz);
-            float heightMean = (float)Mth.clampedMap((double)distanceFromCenter, 0.0, (double)config.maxDistanceFromCenterAffectingHeightBias, maxHeight / 2.0, 0.0);
-            return (int)randomBetweenBiased(random, 0.0F, maxHeight, heightMean, config.heightDeviation);
+            float heightMean = (float) Mth.clampedMap((double) distanceFromCenter, 0.0, (double) config.maxDistanceFromCenterAffectingHeightBias, maxHeight / 2.0, 0.0);
+            return (int) randomBetweenBiased(random, 0.0F, maxHeight, heightMean, config.heightDeviation);
         }
     }
 
@@ -236,9 +233,9 @@ public class SpeleothemClusterFeature extends Feature<SpeleothemClusterFeature.C
         int zDistanceFromEdge = zRadius - Math.abs(dz);
         int distanceFromEdge = Math.min(xDistanceFromEdge, zDistanceFromEdge);
         return Mth.clampedMap(
-                (float)distanceFromEdge,
+                (float) distanceFromEdge,
                 0.0F,
-                (float)config.maxDistanceFromEdgeAffectingChanceOfSpeleothem,
+                (float) config.maxDistanceFromEdgeAffectingChanceOfSpeleothem,
                 config.chanceOfSpeleothemAtMaxDistanceFromCenter,
                 1.0F
         );

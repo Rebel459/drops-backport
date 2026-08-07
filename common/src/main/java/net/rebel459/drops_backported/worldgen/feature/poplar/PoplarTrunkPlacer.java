@@ -64,7 +64,7 @@ public class PoplarTrunkPlacer extends TrunkPlacer {
     }
 
     private static Function<BlockState, BlockState> getSidewaysStateModifier(final Direction branchDirection) {
-        return state -> (BlockState)state.trySetValue(RotatedPillarBlock.AXIS, branchDirection.getAxis());
+        return state -> (BlockState) state.trySetValue(RotatedPillarBlock.AXIS, branchDirection.getAxis());
     }
 
     private static List<Direction> getShuffledBranchDirections(final RandomSource random) {

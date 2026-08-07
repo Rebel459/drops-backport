@@ -21,7 +21,8 @@ public class DropsBackported {
         DBMapDecorationTypes.init();
     }
 
-    public static void init() {}
+    public static void init() {
+    }
 
     public static Identifier modId(String path) {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);

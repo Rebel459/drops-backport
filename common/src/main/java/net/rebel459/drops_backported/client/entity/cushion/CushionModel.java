@@ -6,18 +6,18 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
 public class CushionModel extends EntityModel<CushionRenderState> {
-   public CushionModel(final ModelPart root) {
-      super(root);
-   }
+    public CushionModel(final ModelPart root) {
+        super(root);
+    }
 
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition();
-      PartDefinition root = meshDefinition.getRoot();
-      root.addOrReplaceChild(
-         "cushion",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-31.0F, -4.0F, -1.0F, 16.0F, 4.0F, 16.0F, new CubeDeformation(-0.005F)),
-         PartPose.offset(23.0F, 4.0F, -7.0F)
-      );
-      return LayerDefinition.create(meshDefinition, 64, 64);
-   }
+    public static LayerDefinition createBodyLayer() {
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition root = meshDefinition.getRoot();
+        root.addOrReplaceChild(
+                "cushion",
+                CubeListBuilder.create().texOffs(0, 0).addBox(-31.0F, -4.0F, -1.0F, 16.0F, 4.0F, 16.0F, new CubeDeformation(-0.005F)),
+                PartPose.offset(23.0F, 4.0F, -7.0F)
+        );
+        return LayerDefinition.create(meshDefinition, 64, 64);
+    }
 }

@@ -23,11 +23,11 @@ public final class DBItems {
     private static final UnifiedRegistries.Items.Builders ITEM_BUILDERS = ITEMS.builders();
 
     public static final SuppliedItem SULFUR_CUBE_BUCKET = ITEMS.register(
-        "sulfur_cube_bucket",
-        p -> new MobBucketItem(DBEntityTypes.SULFUR_CUBE.get(), Fluids.EMPTY, DBSoundEvents.BUCKET_EMPTY_SULFUR_CUBE.get(), p),
-        () -> new Item.Properties()
-                .stacksTo(1)
-                .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+            "sulfur_cube_bucket",
+            p -> new MobBucketItem(DBEntityTypes.SULFUR_CUBE.get(), Fluids.EMPTY, DBSoundEvents.BUCKET_EMPTY_SULFUR_CUBE.get(), p),
+            () -> new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final SuppliedItem SULFUR_CUBE_SPAWN_EGG = ITEMS.register(
             "sulfur_cube_spawn_egg",
@@ -49,7 +49,9 @@ public final class DBItems {
             .function(CushionItem::new)
             .build();
 
-    private DBItems() {}
+    private DBItems() {
+    }
 
-    public static void init() {}
+    public static void init() {
+    }
 }

@@ -3,7 +3,6 @@ package net.rebel459.drops_backported.worldgen;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
 
 public class DBFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_POPLAR = FeatureUtils.createKey("red_poplar");

@@ -52,7 +52,7 @@ public class ShelfMushroomDecorator extends TreeDecorator {
 
     private static void placeOnStandingTree(final TreeDecorator.Context context, final List<BlockPos> logs, final RandomSource random) {
         Direction[] directions = pickTwoPerpendicularDirections(random);
-        int treeBaseY = ((BlockPos)logs.getFirst()).getY();
+        int treeBaseY = ((BlockPos) logs.getFirst()).getY();
 
         for (BlockPos logPos : logs) {
             if (isWithinDecoratableHeight(logPos, treeBaseY)) {
@@ -103,7 +103,7 @@ public class ShelfMushroomDecorator extends TreeDecorator {
     }
 
     private static boolean isFallenLog(final List<BlockPos> logs) {
-        return ((BlockPos)logs.getFirst()).getY() == ((BlockPos)logs.getLast()).getY();
+        return ((BlockPos) logs.getFirst()).getY() == ((BlockPos) logs.getLast()).getY();
     }
 
     private static Direction[] pickTwoPerpendicularDirections(final RandomSource random) {
@@ -112,8 +112,8 @@ public class ShelfMushroomDecorator extends TreeDecorator {
     }
 
     private static Direction[] perpendicularToFallenLog(final List<BlockPos> logs) {
-        BlockPos first = (BlockPos)logs.getFirst();
-        BlockPos last = (BlockPos)logs.getLast();
+        BlockPos first = (BlockPos) logs.getFirst();
+        BlockPos last = (BlockPos) logs.getLast();
         Direction.Axis logAxis = first.getX() != last.getX() ? Direction.Axis.X : Direction.Axis.Z;
         return logAxis == Direction.Axis.X ? new Direction[]{Direction.NORTH, Direction.SOUTH} : new Direction[]{Direction.EAST, Direction.WEST};
     }
@@ -130,7 +130,7 @@ public class ShelfMushroomDecorator extends TreeDecorator {
     private static void placeMushroom(final TreeDecorator.Context context, final BlockPos pos, final Direction facing, final RandomSource random) {
         context.setBlock(
                 pos,
-                (BlockState)((BlockState)DBBlocks.SHELF_MUSHROOM.defaultBlockState().setValue(ShelfMushroomBlock.AGE, random.nextInt(2)))
+                (BlockState) ((BlockState) DBBlocks.SHELF_MUSHROOM.defaultBlockState().setValue(ShelfMushroomBlock.AGE, random.nextInt(2)))
                         .setValue(ShelfMushroomBlock.FACING, facing)
         );
     }

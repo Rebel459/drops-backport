@@ -9,9 +9,9 @@ import net.minecraft.world.level.material.PushReaction;
 import net.rebel459.drops_backported.DropsBackported;
 import net.rebel459.drops_backported.block.PoplarSaplingBlock;
 import net.rebel459.drops_backported.block.ShelfMushroomBlock;
-import net.rebel459.drops_backported.block.straw_bed.StrawBedBlock;
 import net.rebel459.drops_backported.block.poplar_leaves.AmbientLeavesBlockSoundPlayer;
 import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlock;
+import net.rebel459.drops_backported.block.straw_bed.StrawBedBlock;
 import net.rebel459.drops_backported.block.sulfur_spike.SulfurSpikeBlock;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.drops_backported.sound.DBSoundTypes;
@@ -184,5 +184,6 @@ public class DBBlocks {
                 .mapColor(color);
     }
 
-    public static void init() {}
+    public static void init() {
+    }
 }

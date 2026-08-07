@@ -7,9 +7,9 @@ import net.minecraft.world.entity.EntityType;
 
 public interface DBEntityTypeTags {
 
-   TagKey<EntityType<?>> NOT_AFFECTED_BY_GEYSERS = create("not_affected_by_geysers");
+    TagKey<EntityType<?>> NOT_AFFECTED_BY_GEYSERS = create("not_affected_by_geysers");
 
-   private static TagKey<EntityType<?>> create(final String name) {
-      return TagKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(name));
-   }
+    private static TagKey<EntityType<?>> create(final String name) {
+        return TagKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(name));
+    }
 }

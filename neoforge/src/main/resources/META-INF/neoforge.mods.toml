@@ -1,38 +1,38 @@
-modLoader="javafml"
-loaderVersion="[1,)"
-license="${license}"
-issueTrackerURL="https://github.com/Rebel459/drops_backported/issues"
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "${license}"
+issueTrackerURL = "https://github.com/Rebel459/drops_backported/issues"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}-neoforge"
-displayName="${mod_name}"
-displayURL="https://github.com/Rebel459/drops_backported"
-logoFile="assets/icon.png"
-authors="${mod_author}"
-description='''
+modId = "${mod_id}"
+version = "${mod_version}-neoforge"
+displayName = "${mod_name}"
+displayURL = "https://github.com/Rebel459/drops_backported"
+logoFile = "assets/icon.png"
+authors = "${mod_author}"
+description = '''
 ${mod_description}
 '''
 
-[[dependencies.${mod_id}]]
-modId="neoforge"
-type="required"
-ordering="NONE"
-side="BOTH"
+[[dependencies.${ mod_id }]]
+modId = "neoforge"
+type = "required"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="minecraft"
-type="required"
-versionRange="${neoforge_minecraft_version}"
-ordering="NONE"
-side="BOTH"
+[[dependencies.${ mod_id }]]
+modId = "minecraft"
+type = "required"
+versionRange = "${neoforge_minecraft_version}"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="unified"
-type="required"
+[[dependencies.${ mod_id }]]
+modId = "unified"
+type = "required"
 
 [[accessTransformers]]
-file="META-INF/accesstransformer.cfg"
+file = "META-INF/accesstransformer.cfg"
 
 [[mixins]]
 config = "drops_backported.mixins.json"

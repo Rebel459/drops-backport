@@ -1,242 +1,242 @@
 {
-    "type":  "minecraft:chest",
-    "pools":  [
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:arrow",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bone",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  2.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bowl",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  2.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bread",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:coal",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  2.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:cobweb",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:glass_bottle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:leather",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:rabbit_hide",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:string",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  2.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:wheat",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:white_candle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  3.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:white_cushion",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  2.0,
-                                                                              "min":  1.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:straw_bed",
-                                          "functions":  [
-                                                            {
-                                                                "count":  {
-                                                                              "type":  "minecraft:uniform",
-                                                                              "max":  4.0,
-                                                                              "min":  2.0
-                                                                          },
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      }
-                                  ],
-                      "rolls":  {
-                                    "type":  "minecraft:uniform",
-                                    "max":  8.0,
-                                    "min":  4.0
-                                }
-                  },
-                  {
-                      "entries":  [
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:bundle",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:wooden_axe",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      },
-                                      {
-                                          "type":  "minecraft:item",
-                                          "name":  "minecraft:fishing_rod",
-                                          "functions":  [
-                                                            {
-                                                                "count":  1.0,
-                                                                "function":  "minecraft:set_count"
-                                                            }
-                                                        ]
-                                      }
-                                  ],
-                      "rolls":  1.0
-                  }
-              ],
-    "random_sequence":  "minecraft:barrels/abandoned_camp_barrel"
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:arrow",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bowl",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bread",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:coal",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cobweb",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:glass_bottle",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rabbit_hide",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wheat",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_candle",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_cushion",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:straw_bed",
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 8.0,
+        "min": 4.0
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_axe",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "functions": [
+            {
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:barrels/abandoned_camp_barrel"
 }

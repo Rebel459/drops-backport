@@ -2,7 +2,6 @@ package net.rebel459.drops_backported.worldgen.feature.speleothem;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Plane;
@@ -18,6 +17,8 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+
+import java.util.Optional;
 
 public class SpeleothemFeature extends Feature<SpeleothemFeature.Configuration> {
     public SpeleothemFeature(Codec<Configuration> codec) {

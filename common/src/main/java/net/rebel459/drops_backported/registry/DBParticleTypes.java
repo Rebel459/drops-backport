@@ -2,8 +2,8 @@ package net.rebel459.drops_backported.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -60,7 +60,9 @@ public final class DBParticleTypes {
         });
     }
 
-    private DBParticleTypes() {}
+    private DBParticleTypes() {
+    }
 
-    public static void init() {}
+    public static void init() {
+    }
 }

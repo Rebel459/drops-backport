@@ -1,69 +1,69 @@
 ﻿{
-    "values":  [
-                   "minecraft:filled_map",
-                   {
-                       "id":  "minecraft:ocean_explorer_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:woodland_explorer_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:trial_explorer_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:jungle_explorer_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:swamp_explorer_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:desert_village_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:plains_village_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:savanna_village_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:snowy_village_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:taiga_village_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:buried_treasure_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:ancient_city_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:mineshaft_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:desert_pyramid_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:abandoned_campsite_map",
-                       "required":  false
-                   },
-                   {
-                       "id":  "minecraft:warm_ocean_ruins_map",
-                       "required":  false
-                   }
-               ]
+  "values": [
+    "minecraft:filled_map",
+    {
+      "id": "minecraft:ocean_explorer_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:woodland_explorer_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:trial_explorer_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:jungle_explorer_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:swamp_explorer_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:desert_village_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:plains_village_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:savanna_village_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:snowy_village_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:taiga_village_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:buried_treasure_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:ancient_city_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:mineshaft_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:desert_pyramid_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:abandoned_campsite_map",
+      "required": false
+    },
+    {
+      "id": "minecraft:warm_ocean_ruins_map",
+      "required": false
+    }
+  ]
 }
