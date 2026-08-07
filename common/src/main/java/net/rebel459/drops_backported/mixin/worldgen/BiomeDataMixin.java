@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BiomeDataMixin {
 
     @Inject(method = "bootstrap", at = @At("TAIL"))
-    private static void bootstrapBackportedBiomes(BootstrapContext<Biome> context, CallbackInfo ci) {
+    private static void addBackportedBiomes(BootstrapContext<Biome> context, CallbackInfo ci) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
 
