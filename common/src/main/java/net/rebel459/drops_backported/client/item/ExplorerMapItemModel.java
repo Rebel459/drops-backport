@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ExplorerFilledMapItemModel implements ItemModel {
+public class ExplorerMapItemModel implements ItemModel {
     private static final Identifier FILLED_MAP_MODEL = Identifier.withDefaultNamespace("item/filled_map");
     private static final Identifier EXPLORER_FILLED_MAP_MODEL = Identifier.withDefaultNamespace("item/explorer_filled_map");
     private static final List<ItemTintSource> DEFAULT_TINTS = List.of(new Constant(-1), new MapColor(4603950));
@@ -58,7 +58,7 @@ public class ExplorerFilledMapItemModel implements ItemModel {
     private final Matrix4fc transformation;
     private final Map<Identifier, List<BakedQuad>> overlayQuads = new ConcurrentHashMap<>();
 
-    private ExplorerFilledMapItemModel(
+    private ExplorerMapItemModel(
             ItemModel defaultBaseModel,
             ItemModel explorerBaseModel,
             ModelBaker modelBaker,
@@ -91,6 +91,7 @@ public class ExplorerFilledMapItemModel implements ItemModel {
         }
 
         this.explorerBaseModel.update(renderState, stack, resolver, displayContext, level, owner, seed);
+        renderState.appendModelIdentityElement(decoration);
         ItemStackRenderState.LayerRenderState layer = renderState.newLayer();
         this.properties.applyToLayer(layer, displayContext);
         layer.setLocalTransform(this.transformation);
@@ -145,8 +146,8 @@ public class ExplorerFilledMapItemModel implements ItemModel {
         BakedQuad quad = FaceBakery.bakeQuad(
                 this.modelBaker.interner(),
                 // do not touch z, and mirror any additions / subtractions on x + y across both vectors
-                new Vector3f(6.0F, 2.0F, 8.6F),
-                new Vector3f(14.0F, 10.0F, 8.6F),
+                new Vector3f(5.0F, 3.0F, 8.6F),
+                new Vector3f(13.0F, 11.0F, 8.6F),
                 new CuboidFace.UVs(0.0F, 0.0F, 16.0F, 16.0F),
                 Quadrant.R0,
                 materialInfo,
@@ -182,7 +183,7 @@ public class ExplorerFilledMapItemModel implements ItemModel {
                     resolvedModel,
                     resolvedModel.getTopTextureSlots()
             );
-            return new ExplorerFilledMapItemModel(defaultBaseModel, explorerBaseModel, context.blockModelBaker(), context.sprites(), properties, transformation);
+            return new ExplorerMapItemModel(defaultBaseModel, explorerBaseModel, context.blockModelBaker(), context.sprites(), properties, transformation);
         }
     }
 }

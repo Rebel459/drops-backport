@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.item.ItemModels;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ExtraCodecs;
-import net.rebel459.drops_backported.client.item.ExplorerFilledMapItemModel;
+import net.rebel459.drops_backported.client.item.ExplorerMapItemModel;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,6 +21,6 @@ public class ItemModelsMixin {
 
     @Inject(method = "bootstrap", at = @At("TAIL"))
     private static void drops_backported$registerExplorerFilledMapModel(CallbackInfo ci) {
-        ID_MAPPER.put(ExplorerFilledMapItemModel.TYPE, ExplorerFilledMapItemModel.Unbaked.MAP_CODEC);
+        ID_MAPPER.put(ExplorerMapItemModel.TYPE, ExplorerMapItemModel.Unbaked.MAP_CODEC);
     }
 }
