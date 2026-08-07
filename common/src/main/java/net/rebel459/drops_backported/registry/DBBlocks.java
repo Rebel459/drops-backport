@@ -10,7 +10,7 @@ import net.rebel459.drops_backported.DropsBackported;
 import net.rebel459.drops_backported.block.PoplarSaplingBlock;
 import net.rebel459.drops_backported.block.ShelfMushroomBlock;
 import net.rebel459.drops_backported.util.block.AmbientLeavesBlockSoundPlayer;
-import net.rebel459.drops_backported.block.potent_sulfur.PotentSulfurBlock;
+import net.rebel459.drops_backported.block.PotentSulfurBlock;
 import net.rebel459.drops_backported.block.StrawBedBlock;
 import net.rebel459.drops_backported.block.SulfurSpikeBlock;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
@@ -79,7 +79,8 @@ public class DBBlocks {
     public static final SuppliedBlock POTENT_SULFUR = BLOCKS.register("potent_sulfur",
             PotentSulfurBlock::new,
             () -> BlockBehaviour.Properties.ofFullCopy(SULFUR.getBase().get()).sound(DBSoundTypes.POTENT_SULFUR.get())
-                    .mapColor(MapColor.GOLD)
+                    .mapColor(MapColor.GOLD),
+            DBBlockEntityTypes.POTENT_SULFUR
     );
 
     public static final WoodSet POPLAR = BLOCK_BUILDERS.woodSet("poplar", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_LIGHT_GRAY)

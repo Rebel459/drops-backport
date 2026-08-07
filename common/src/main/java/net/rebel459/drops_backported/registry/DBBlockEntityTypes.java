@@ -10,7 +10,7 @@ public class DBBlockEntityTypes {
     public static UnifiedRegistries.BlockEntityTypes BLOCK_ENTITY_TYPES = UnifiedRegistries.BlockEntityTypes.create(DropsBackported.VANILLA_ID);
 
     public static final Supplied<BlockEntityType<PotentSulfurBlockEntity>> POTENT_SULFUR = BLOCK_ENTITY_TYPES.register(
-            "potent_sulfur", PotentSulfurBlockEntity::new, DBBlocks.POTENT_SULFUR
+            "potent_sulfur", PotentSulfurBlockEntity::new
     );
 
     public static void init() {

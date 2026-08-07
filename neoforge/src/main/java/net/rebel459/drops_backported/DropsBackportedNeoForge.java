@@ -9,7 +9,7 @@ import net.rebel459.unified.platform.NeoForgeUnifiedRegistries;
 public class DropsBackportedNeoForge {
 
     public DropsBackportedNeoForge(IEventBus modEventBus) {
-        NeoForgeUnifiedRegistries.registerBus(DropsBackported.MOD_ID, modEventBus);
+        NeoForgeUnifiedRegistries.registerBus(DropsBackported.VANILLA_ID, modEventBus);
         DropsBackported.initRegistries();
         modEventBus.addListener(DropsBackportedNeoForge::commonSetup);
     }

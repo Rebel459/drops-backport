@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.rebel459.drops_backported.entity.sulfur_cube.SulfurCube;
+import net.rebel459.drops_backported.entity.SulfurCube;
 
 public class SulfurCubeRenderer extends MobRenderer<SulfurCube, SulfurCubeRenderState, SulfurCubeModel> {
     public static final ModelLayerLocation SULFUR_CUBE = layer("sulfur_cube", "main");

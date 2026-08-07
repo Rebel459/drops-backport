@@ -156,9 +156,6 @@ public final class DBSulfurCubeArchetypes {
             new SulfurCubeArchetype.SoundSettings(DBSoundEvents.SULFUR_CUBE_HOT_HIT, DBSoundEvents.SULFUR_CUBE_HOT_PUSH, 0.2F, 0.7F)
     );
 
-    private DBSulfurCubeArchetypes() {
-    }
-
     public static void init() {
     }
 }

@@ -6,13 +6,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.attribute.BedRule;
-import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -30,15 +28,25 @@ public class StrawBedBlock extends AbstractBedBlock {
     private static final Map<Direction, VoxelShape> FOOT_SHAPES = Util.make(() -> Shapes.rotateHorizontal(BASE_SHAPE));
     private static final Map<Direction, VoxelShape> HEAD_SHAPES = Util.make(() -> Shapes.rotateHorizontal(Shapes.or(BASE_SHAPE, PILLOW_SHAPE)));
 
-    private boolean used = false;
-
     public StrawBedBlock(final Properties properties) {
         super(properties);
     }
 
     private void destroyBed(final Level level, final BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        if (!state.is(this)) {
+            return;
+        }
+
+        Direction otherDirection = state.getValue(PART) == BedPart.HEAD ? state.getValue(FACING).getOpposite() : state.getValue(FACING);
+        BlockPos otherPos = pos.relative(otherDirection);
+        BlockState otherState = level.getBlockState(otherPos);
+
         level.playSound(null, pos, DBSoundEvents.STRAW_BED_BREAK_LEAVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-        level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+        level.removeBlock(pos, false);
+        if (otherState.is(this) && otherState.getValue(PART) != state.getValue(PART) && otherState.getValue(FACING) == state.getValue(FACING)) {
+            level.removeBlock(otherPos, false);
+        }
     }
 
     @Override
@@ -77,7 +85,7 @@ public class StrawBedBlock extends AbstractBedBlock {
 
     @Override
     public boolean shouldDestroyOnUse(Level level, BlockPos pos, BedRule bedRule) {
-        return level.environmentAttributes().getValue(EnvironmentAttributes.BED_RULE, pos) == BedRule.EXPLODES;
+        return bedRule.explodes();
     }
 
     @Override

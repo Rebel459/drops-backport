@@ -7,9 +7,9 @@
     "entity.AttributesMixin",
     "entity.LivingEntityMixin",
     "entity.OwnerHurtByTargetGoalMixin",
-    "entity.ServerPlayerMixin",
-    "level.MapItemSavedDataMixin",
     "integration.lithostitched.LithostitchedMixin",
+    "level.MapItemSavedDataMixin",
+    "worldgen.BiomeDataMixin",
     "worldgen.NoiseGeneratorSettingsMixin",
     "worldgen.OverworldBiomeBuilderMixin"
   ],

@@ -93,7 +93,7 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
                 if (shouldDestroyOnUse(level, pos, bedRule)) {
                     bedRule.errorMessage().ifPresent(player::sendOverlayMessage);
                     return this.destroyOnUse(state, level, pos, player);
-                } else if ((Boolean) state.getValue(OCCUPIED)) {
+                } else if (state.getValue(OCCUPIED)) {
                     if (!this.kickVillagerOutOfBed(level, pos)) {
                         player.sendOverlayMessage(Component.translatable("block.minecraft.bed.occupied"));
                     }

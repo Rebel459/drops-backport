@@ -12,7 +12,7 @@ public class DBCreativeEntries {
     public static void init() {
         UnifiedHelpers.CREATIVE_ENTRIES.insertAfter(
                 CreativeModeTabs.NATURAL_BLOCKS,
-                DBBlocks.CINNABAR.getBase(),
+                DBBlocks.SULFUR.getBase(),
                 DBBlocks.SULFUR_SPIKE,
                 DBBlocks.POTENT_SULFUR
         );
