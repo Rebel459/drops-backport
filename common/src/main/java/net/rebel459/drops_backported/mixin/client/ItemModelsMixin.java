@@ -20,7 +20,7 @@ public class ItemModelsMixin {
     private static ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemModel.Unbaked>> ID_MAPPER;
 
     @Inject(method = "bootstrap", at = @At("TAIL"))
-    private static void drops_backported$registerExplorerFilledMapModel(CallbackInfo ci) {
+    private static void registerExplorerFilledMapModel(CallbackInfo ci) {
         ID_MAPPER.put(ExplorerMapItemModel.TYPE, ExplorerMapItemModel.Unbaked.MAP_CODEC);
     }
 }
