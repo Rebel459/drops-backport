@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.attribute.BedRule;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,6 +29,8 @@ public class StrawBedBlock extends AbstractBedBlock {
     private static final Map<Direction, VoxelShape> FOOT_SHAPES = Util.make(() -> Shapes.rotateHorizontal(BASE_SHAPE));
     private static final Map<Direction, VoxelShape> HEAD_SHAPES = Util.make(() -> Shapes.rotateHorizontal(Shapes.or(BASE_SHAPE, PILLOW_SHAPE)));
 
+    private boolean used = false;
+
     public StrawBedBlock(final Properties properties) {
         super(properties);
     }
@@ -40,7 +43,7 @@ public class StrawBedBlock extends AbstractBedBlock {
     @Override
     protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
         Map<Direction, VoxelShape> shapes = state.getValue(PART) == BedPart.HEAD ? HEAD_SHAPES : FOOT_SHAPES;
-        return (VoxelShape) shapes.get(getConnectedDirection(state).getOpposite());
+        return shapes.get(getConnectedDirection(state).getOpposite());
     }
 
     @Override
@@ -73,12 +76,17 @@ public class StrawBedBlock extends AbstractBedBlock {
 
     @Override
     public boolean shouldDestroyOnUse(Level level, BlockPos pos, BedRule bedRule) {
-        return !bedRule.canSleep(level);
+        return level.environmentAttributes().getValue(EnvironmentAttributes.BED_RULE, pos) == BedRule.EXPLODES;
     }
 
     @Override
     public boolean shouldDestroyOnLeave(Level level, BlockPos pos, BedRule bedRule) {
-        return bedRule.canSleep(level);
+        return true;
+    }
+
+    @Override
+    public boolean canSetSpawn() {
+        return false;
     }
 
     @Override

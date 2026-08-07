@@ -33,12 +33,14 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rebel459.drops_backported.block.HorizontalDirectionalBlock;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
@@ -126,7 +128,7 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
         if (villagers.isEmpty()) {
             return false;
         } else {
-            ((Villager) villagers.get(0)).stopSleeping();
+            villagers.get(0).stopSleeping();
             return true;
         }
     }
@@ -306,4 +308,6 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
     public abstract boolean shouldDestroyOnUse(final Level level, final BlockPos pos, final BedRule bedRule);
 
     public abstract boolean shouldDestroyOnLeave(final Level level, final BlockPos pos, final BedRule bedRule);
+
+    public abstract boolean canSetSpawn();
 }
