@@ -1,5 +1,6 @@
 package net.rebel459.drops_backport.registry;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -202,5 +203,7 @@ public class DBBlocks {
         fire.setFlammable(ORANGE_POPLAR_LEAVES.get(), 30, 60);
         fire.setFlammable(YELLOW_POPLAR_LEAVES.get(), 30, 60);
         fire.setFlammable(RED_SHRUB.get(), 60, 100);
+
+        UnifiedHelpers.DATA_COMPONENTS.add(STRAW_BED.get(), DataComponents.MAX_STACK_SIZE, 16);
     }
 }
