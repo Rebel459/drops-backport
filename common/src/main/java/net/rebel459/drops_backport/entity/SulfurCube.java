@@ -6,9 +6,14 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -50,6 +55,7 @@ import net.rebel459.drops_backport.registry.DBAttributes;
 import net.rebel459.drops_backport.registry.DBEntityTypes;
 import net.rebel459.drops_backport.registry.DBItems;
 import net.rebel459.drops_backport.registry.DBParticleTypes;
+import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.util.entity.AbstractCubeMob;
 import net.rebel459.drops_backport.util.entity.SulfurCubeArchetype;
@@ -62,6 +68,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable {
+    public static final String BUCKET_BODY_ITEM_TAG = "body_item";
+    public static final String BUCKET_CUSTOM_NAME_TAG = "custom_name";
     private static final TagKey<net.minecraft.world.item.Item> FOOD = TagKey.create(Registries.ITEM, Identifier.withDefaultNamespace("sulfur_cube_food"));
     private static final TagKey<net.minecraft.world.item.Item> SWALLOWABLE = TagKey.create(Registries.ITEM, Identifier.withDefaultNamespace("sulfur_cube_swallowable"));
     private static final TagKey<DamageType> SULFUR_CUBE_WITH_BLOCK_IMMUNE_TO = TagKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("sulfur_cube_with_block_immune_to"));
@@ -162,11 +170,27 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
     @Override
     public void saveToBucketTag(ItemStack bucket) {
         Bucketable.saveDefaultDataToBucketTag(this, bucket);
+        Component customName = bucket.remove(DataComponents.CUSTOM_NAME);
         CustomData.update(DataComponents.BUCKET_ENTITY_DATA, bucket, tag -> {
             tag.putBoolean("from_bucket", this.fromBucket());
             tag.putInt("age", this.getAge());
             tag.putBoolean("age_locked", this.isAgeLocked());
+            if (customName != null) {
+                ComponentSerialization.CODEC.encodeStart(NbtOps.INSTANCE, customName)
+                        .result()
+                        .ifPresent(nameTag -> tag.put(BUCKET_CUSTOM_NAME_TAG, nameTag));
+            }
+
+            ItemStack bodyItem = this.getItemBySlot(EquipmentSlot.BODY);
+            if (!bodyItem.isEmpty()) {
+                ItemStack.CODEC.encodeStart(RegistryOps.create(NbtOps.INSTANCE, this.registryAccess()), bodyItem.copyWithCount(1))
+                        .result()
+                        .ifPresent(bodyTag -> tag.put(BUCKET_BODY_ITEM_TAG, bodyTag));
+            }
         });
+        if (customName != null) {
+            bucket.set(DataComponents.ITEM_NAME, Component.translatable("item.minecraft.sulfur_cube_bucket.named", customName));
+        }
     }
 
     @Override
@@ -175,6 +199,27 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
         this.setAge(tag.getIntOr("age", 0));
         this.setAgeLocked(tag.getBooleanOr("age_locked", false));
         this.setFromBucket(tag.getBooleanOr("from_bucket", false));
+        this.loadBucketCustomName(tag);
+        this.loadBucketBodyItem(tag);
+    }
+
+    private void loadBucketCustomName(CompoundTag tag) {
+        Tag customName = tag.get(BUCKET_CUSTOM_NAME_TAG);
+        if (customName != null) {
+            ComponentSerialization.CODEC.parse(NbtOps.INSTANCE, customName)
+                    .result()
+                    .ifPresent(this::setCustomName);
+        }
+    }
+
+    private void loadBucketBodyItem(CompoundTag tag) {
+        Tag bodyItem = tag.get(BUCKET_BODY_ITEM_TAG);
+        if (bodyItem != null) {
+            ItemStack.CODEC.parse(RegistryOps.create(NbtOps.INSTANCE, this.registryAccess()), bodyItem)
+                    .result()
+                    .ifPresent(stack -> this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, stack.copyWithCount(1)));
+            this.updateArchetypesFromBodyItem();
+        }
     }
 
     @Override
@@ -349,7 +394,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
             return equipped ? InteractionResult.SUCCESS_SERVER : InteractionResult.PASS;
         }
 
-        return Bucketable.bucketMobPickup(player, hand, this).orElse(super.mobInteract(player, hand));
+        return SulfurCubeBucketItem.bucketMobPickup(player, hand, this).orElse(super.mobInteract(player, hand));
     }
 
     public boolean equipItem(ItemStack stack) {

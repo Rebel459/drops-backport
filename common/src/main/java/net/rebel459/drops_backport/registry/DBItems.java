@@ -2,14 +2,13 @@ package net.rebel459.drops_backport.registry;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluids;
 import net.rebel459.drops_backport.DropsBackport;
 import net.rebel459.drops_backport.item.CushionItem;
+import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
 import net.rebel459.drops_backport.sound.DBJukeboxSongs;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.unified.platform.UnifiedRegistries;
@@ -24,7 +23,7 @@ public final class DBItems {
 
     public static final SuppliedItem SULFUR_CUBE_BUCKET = ITEMS.register(
             "sulfur_cube_bucket",
-            p -> new MobBucketItem(DBEntityTypes.SULFUR_CUBE.get(), Fluids.EMPTY, DBSoundEvents.BUCKET_EMPTY_SULFUR_CUBE.get(), p),
+            p -> new SulfurCubeBucketItem(DBSoundEvents.BUCKET_EMPTY_SULFUR_CUBE.get(), p),
             () -> new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)

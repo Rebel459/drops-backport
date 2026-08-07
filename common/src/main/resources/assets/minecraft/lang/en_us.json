@@ -66,6 +66,7 @@
   "item.minecraft.poplar_boat": "Poplar Boat",
   "item.minecraft.poplar_chest_boat": "Poplar Boat with Chest",
   "item.minecraft.sulfur_cube_bucket": "Bucket of Sulfur Cube",
+  "item.minecraft.sulfur_cube_bucket.named": "Bucket of %s",
   "item.minecraft.sulfur_cube_spawn_egg": "Sulfur Cube Spawn Egg",
   "subtitles.block.poplar_leaves.ambient": "Leaves rustling",
   "subtitles.block.potent_sulfur.geyser_eruption": "Sulfur spring bursts",
