@@ -1,13 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
 license = "${license}"
-issueTrackerURL = "https://github.com/Rebel459/drops_backported/issues"
+issueTrackerURL = "https://github.com/Rebel459/drops_backport/issues"
 
 [[mods]]
 modId = "${mod_id}"
 version = "${mod_version}-neoforge"
 displayName = "${mod_name}"
-displayURL = "https://github.com/Rebel459/drops_backported"
+displayURL = "https://github.com/Rebel459/drops_backport"
 logoFile = "assets/icon.png"
 authors = "${mod_author}"
 description = '''
@@ -35,6 +35,6 @@ type = "required"
 file = "META-INF/accesstransformer.cfg"
 
 [[mixins]]
-config = "drops_backported.mixins.json"
+config = "drops_backport.mixins.json"
 [[mixins]]
-config = "drops_backported-neoforge.mixins.json"
+config = "drops_backport-neoforge.mixins.json"

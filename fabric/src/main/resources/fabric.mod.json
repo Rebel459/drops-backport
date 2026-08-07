@@ -8,24 +8,24 @@
     "${mod_author}"
   ],
   "contact": {
-    "sources": "https://github.com/Rebel459/drops_backported"
+    "sources": "https://github.com/Rebel459/drops_backport"
   },
   "license": "${license}",
   "icon": "assets/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.rebel459.drops_backported.DropsBackportedFabric"
+      "net.rebel459.drops_backport.DropsBackportFabric"
     ],
     "client": [
-      "net.rebel459.drops_backported.DropsBackportedFabricClient"
+      "net.rebel459.drops_backport.DropsBackportFabricClient"
     ]
   },
   "mixins": [
-    "drops_backported.mixins.json",
-    "drops_backported-fabric.mixins.json"
+    "drops_backport.mixins.json",
+    "drops_backport-fabric.mixins.json"
   ],
-  "accessWidener": "drops_backported.classtweaker",
+  "accessWidener": "drops_backport.classtweaker",
   "depends": {
     "fabricloader": ">=0.18",
     "fabric-api": "*",
