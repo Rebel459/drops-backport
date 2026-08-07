@@ -6,15 +6,21 @@ import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.rebel459.drops_backported.DropsBackported;
+import net.rebel459.drops_backported.item.CushionItem;
 import net.rebel459.drops_backported.sound.DBJukeboxSongs;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.util.CreativeModeTabs;
+import net.rebel459.unified.util.builder.ColoredItemPreset;
+import net.rebel459.unified.util.builder.ColoredItemSet;
 import net.rebel459.unified.util.registry.SuppliedItem;
 
 public final class DBItems {
     private static final UnifiedRegistries.Items ITEMS = UnifiedRegistries.Items.create(DropsBackported.VANILLA_ID);
+    private static final UnifiedRegistries.Items.Builders ITEM_BUILDERS = ITEMS.builders();
 
     public static final SuppliedItem SULFUR_CUBE_BUCKET = ITEMS.register(
         "sulfur_cube_bucket",
@@ -37,6 +43,11 @@ public final class DBItems {
                     .rarity(Rarity.UNCOMMON)
                     .jukeboxPlayable(DBJukeboxSongs.BOUNCE)
     );
+
+    public static final ColoredItemSet CUSHION = ITEM_BUILDERS.coloredItemSet("cushion", ColoredItemPreset.DEFAULT)
+            .creativeInventoryPlacement(CreativeModeTabs.FUNCTIONAL_BLOCKS, () -> Blocks.PINK_BED)
+            .function(CushionItem::new)
+            .build();
 
     private DBItems() {}
 

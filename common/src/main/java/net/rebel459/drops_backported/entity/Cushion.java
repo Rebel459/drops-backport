@@ -7,13 +7,11 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.network.syncher.SynchedEntityData.Builder;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Continuation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -24,9 +22,10 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -36,33 +35,32 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.rebel459.drops_backported.registry.DBBlocks;
-import net.rebel459.drops_backported.registry.DBDataComponents;
+import net.rebel459.drops_backported.registry.DBItems;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import org.jspecify.annotations.Nullable;
 
 public class Cushion extends BlockAttachedEntity {
    private static final DyeColor DEFAULT_COLOR = DyeColor.WHITE;
    private static final int LIGHTNING_DROP_INVULNERABLE_TICKS = 20;
-   private static final EntityDataAccessor<DyeColor> DATA_COLOR = SynchedEntityData.defineId(Cushion.class, EntityDataSerializer.forValueType(DyeColor.STREAM_CODEC));
+   private static final EntityDataAccessor<Integer> DATA_COLOR = SynchedEntityData.defineId(Cushion.class, EntityDataSerializers.INT);
 
    public Cushion(final EntityType<Cushion> type, final Level level) {
       super(type, level);
    }
 
    public DyeColor getColor() {
-      return this.entityData.get(DATA_COLOR);
+      return DyeColor.byId(this.entityData.get(DATA_COLOR));
    }
 
    public void setColor(final DyeColor color) {
-      this.entityData.set(DATA_COLOR, color);
+      this.entityData.set(DATA_COLOR, color.getId());
    }
 
    int invulnerableTicks = 0;
 
    @Override
    public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      this.playSound(DBSoundEvents.CUSHION_BREAK, 1.0F, 1.0F);
+      this.playSound(DBSoundEvents.CUSHION_BREAK.get(), 1.0F, 1.0F);
       this.showBreakingParticles();
       if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
          if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
@@ -80,7 +78,7 @@ public class Cushion extends BlockAttachedEntity {
       if (player.isSecondaryUseActive() || this.isVehicle()) {
          return InteractionResult.PASS;
       } else if (!this.level().isClientSide() && player.startRiding(this)) {
-         this.playSound(SoundEvents.CUSHION_SIT, 1.0F, 1.0F);
+         this.playSound(DBSoundEvents.CUSHION_SIT.get(), 1.0F, 1.0F);
          return InteractionResult.SUCCESS_SERVER;
       } else {
          return InteractionResult.CONSUME;
@@ -91,13 +89,13 @@ public class Cushion extends BlockAttachedEntity {
    protected void removePassenger(final Entity passenger) {
       super.removePassenger(passenger);
       if (!this.level().isClientSide() && this.getRemovalReason() == null) {
-         this.playSound(SoundEvents.CUSHION_GET_UP, 1.0F, 1.0F);
+         this.playSound(DBSoundEvents.CUSHION_GET_UP.get(), 1.0F, 1.0F);
       }
    }
 
    @Override
    public ItemStack getPickResult() {
-      return new ItemStack(Items.CUSHION.pick(this.getColor()));
+      return new ItemStack(DBItems.CUSHION.getItemFromDye(this.getColor()).get());
    }
 
    @Override
@@ -121,10 +119,12 @@ public class Cushion extends BlockAttachedEntity {
 
    public void destroyIfInFire(final ServerLevel level) {
       if (!this.isRemoved()) {
-         level.findBlocksIn(this.getBoundingBox().nextDeflated()).filterState(state -> state.is(BlockTags.FIRE)).forEachUntil((var2, var3) -> {
-            this.hurtServer(level, this.damageSources().inFire(), 1.0F);
-            return Continuation.ABORT;
-         });
+         for (BlockPos blockPos : BlockPos.betweenClosed(nextDeflated(this.getBoundingBox()))) {
+            if (level.getBlockState(blockPos).is(BlockTags.FIRE)) {
+               this.hurtServer(level, this.damageSources().inFire(), 1.0F);
+               break;
+            }
+         }
       }
    }
 
@@ -145,7 +145,7 @@ public class Cushion extends BlockAttachedEntity {
    private void showBreakingParticles() {
       if (this.level() instanceof ServerLevel level) {
          level.sendParticles(
-            new BlockParticleOption(ParticleTypes.BLOCK, Blocks.WOOL.pick(this.getColor()).defaultBlockState()),
+            new BlockParticleOption(ParticleTypes.BLOCK, getWoolBlock(this.getColor()).defaultBlockState()),
             this.getX(),
             this.getY(0.6666666666666666),
             this.getZ(),
@@ -170,15 +170,20 @@ public class Cushion extends BlockAttachedEntity {
       AABB anchorBox = new AABB(
          boundingBox.minX, boundingBox.minY - 0.015625, boundingBox.minZ, Math.nextDown(boundingBox.maxX), boundingBox.minY, Math.nextDown(boundingBox.maxZ)
       );
-      return level.findBlocksIn(anchorBox.expandTowards(0.0, -0.125, 0.0)).forEachUntil((blockPos, blockState) -> {
+      for (BlockPos blockPos : BlockPos.betweenClosed(anchorBox.expandTowards(0.0, -0.125, 0.0))) {
+         BlockState blockState = level.getBlockState(blockPos);
          VoxelShape shape = blockState.getShape(level, blockPos);
-         return !shape.isEmpty() && shape.bounds().move(blockPos).intersects(anchorBox) ? Continuation.ABORT : Continuation.CONTINUE;
-      });
+         if (!shape.isEmpty() && shape.bounds().move(blockPos).intersects(anchorBox)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private static boolean isAnchorBuried(final Level level, final AABB boundingBox) {
       AABB restingSlice = new AABB(boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.minY + 0.015625, boundingBox.maxZ)
-         .nextDeflated();
+         .deflate(1.0E-7);
       VoxelShape exposedSurface = Shapes.create(restingSlice);
 
       for (VoxelShape collider : level.getBlockCollisions(null, restingSlice)) {
@@ -192,13 +197,38 @@ public class Cushion extends BlockAttachedEntity {
    }
 
    private static boolean isCoveredByFullBlocks(final Level level, final AABB boundingBox) {
-      for (BlockPos blockPos : BlockPos.betweenClosed(boundingBox.nextDeflated())) {
+      for (BlockPos blockPos : BlockPos.betweenClosed(nextDeflated(boundingBox))) {
          if (!level.getBlockState(blockPos).isCollisionShapeFullBlock(level, blockPos)) {
             return false;
          }
       }
 
       return true;
+   }
+
+   private static AABB nextDeflated(final AABB boundingBox) {
+      return boundingBox.deflate(1.0E-7);
+   }
+
+   private static Block getWoolBlock(final DyeColor color) {
+      return switch (color) {
+         case WHITE -> Blocks.WHITE_WOOL;
+         case ORANGE -> Blocks.ORANGE_WOOL;
+         case MAGENTA -> Blocks.MAGENTA_WOOL;
+         case LIGHT_BLUE -> Blocks.LIGHT_BLUE_WOOL;
+         case YELLOW -> Blocks.YELLOW_WOOL;
+         case LIME -> Blocks.LIME_WOOL;
+         case PINK -> Blocks.PINK_WOOL;
+         case GRAY -> Blocks.GRAY_WOOL;
+         case LIGHT_GRAY -> Blocks.LIGHT_GRAY_WOOL;
+         case CYAN -> Blocks.CYAN_WOOL;
+         case PURPLE -> Blocks.PURPLE_WOOL;
+         case BLUE -> Blocks.BLUE_WOOL;
+         case BROWN -> Blocks.BROWN_WOOL;
+         case GREEN -> Blocks.GREEN_WOOL;
+         case RED -> Blocks.RED_WOOL;
+         case BLACK -> Blocks.BLACK_WOOL;
+      };
    }
 
    @Override
@@ -213,7 +243,7 @@ public class Cushion extends BlockAttachedEntity {
 
    @Override
    protected void defineSynchedData(final Builder entityData) {
-      entityData.define(DATA_COLOR, DEFAULT_COLOR);
+      entityData.define(DATA_COLOR, DEFAULT_COLOR.getId());
    }
 
    @Override
@@ -225,33 +255,14 @@ public class Cushion extends BlockAttachedEntity {
    @Override
    protected void readAdditionalSaveData(final ValueInput input) {
       super.readAdditionalSaveData(input);
-      this.setColor((DyeColor)input.read("color", DyeColor.CODEC).orElse(DEFAULT_COLOR));
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      return type == DataComponents.CUSHION_COLOR ? castComponentValue((DataComponentType<T>)type, this.getColor()) : super.get(type);
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      this.applyImplicitComponentIfPresent(components, DBDataComponents.CUSHION_COLOR.get());
-      super.applyImplicitComponents(components);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-      if (type == DBDataComponents.CUSHION_COLOR.get()) {
-         this.setColor(castComponentValue(DBDataComponents.CUSHION_COLOR.get(), value));
-         return true;
-      } else {
-         return super.applyImplicitComponent(type, value);
-      }
+      this.setColor(input.read("color", DyeColor.CODEC).orElse(DEFAULT_COLOR));
    }
 
    private ItemStack getCushionItemStackWithData() {
-      ItemStack itemStack = new ItemStack(DBBlocks.CUSHION.pick(this.getColor()));
-      itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
+      ItemStack itemStack = new ItemStack(DBItems.CUSHION.getItemFromDye(this.getColor()).get());
+      if (this.hasCustomName()) {
+         itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
+      }
       return itemStack;
    }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:white_cushion"
+        "recipe": "minecraft:white_cushion"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

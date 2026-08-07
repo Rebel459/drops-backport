@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:red_concrete_stairs"
+        "recipe": "minecraft:red_concrete_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

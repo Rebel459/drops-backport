@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:purple_concrete_slab"
+        "recipe": "minecraft:purple_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

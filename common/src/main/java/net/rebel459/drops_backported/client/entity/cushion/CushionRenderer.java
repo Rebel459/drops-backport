@@ -2,7 +2,7 @@ package net.rebel459.drops_backported.client.entity.cushion;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,6 +17,7 @@ import net.rebel459.drops_backported.entity.Cushion;
 import java.util.EnumMap;
 
 public class CushionRenderer extends EntityRenderer<Cushion, CushionRenderState> {
+   public static final ModelLayerLocation CUSHION = new ModelLayerLocation(Identifier.withDefaultNamespace("cushion"), "main");
    private static final EnumMap<DyeColor, Identifier> TEXTURES_BY_COLOR = Util.make(new EnumMap(DyeColor.class), textures -> {
       for (DyeColor color : DyeColor.values()) {
          textures.put(color, Identifier.withDefaultNamespace("textures/entity/cushion/" + color.getName() + "_cushion.png"));
@@ -26,7 +27,7 @@ public class CushionRenderer extends EntityRenderer<Cushion, CushionRenderState>
 
    public CushionRenderer(final EntityRendererProvider.Context context) {
       super(context);
-      this.model = new CushionModel(context.bakeLayer(DBModelLayers.CUSHION));
+      this.model = new CushionModel(context.bakeLayer(CUSHION));
    }
 
    public void extractRenderState(final Cushion cushion, final CushionRenderState state, final float partialTicks) {
@@ -41,7 +42,7 @@ public class CushionRenderer extends EntityRenderer<Cushion, CushionRenderState>
       poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
       poseStack.translate(0.0, -0.25, 0.0);
       submitNodeCollector.submitModel(
-         this.model, state, poseStack, this.model.renderType(state.texture), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor
+         this.model, state, poseStack, this.model.renderType(state.texture), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
       );
       poseStack.popPose();
       super.submit(state, poseStack, submitNodeCollector, camera);

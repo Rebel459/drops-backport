@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:sulfur_wall_from_sulfur_stonecutting"
+        "recipe": "minecraft:sulfur_wall_from_sulfur_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

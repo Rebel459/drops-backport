@@ -5,21 +5,51 @@
       {
         "data": {
           "feature": "minecraft:red_poplar_leaf_litter",
-          "placement": []
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:poplar_sapling"
+                }
+              }
+            }
+          ]
         },
         "weight": 200
       },
       {
         "data": {
           "feature": "minecraft:orange_poplar_leaf_litter",
-          "placement": []
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:poplar_sapling"
+                }
+              }
+            }
+          ]
         },
         "weight": 240
       },
       {
         "data": {
           "feature": "minecraft:yellow_poplar_leaf_litter",
-          "placement": []
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:poplar_sapling"
+                }
+              }
+            }
+          ]
         },
         "weight": 90
       },
@@ -43,7 +73,17 @@
       {
         "data": {
           "feature": "minecraft:fallen_poplar_tree",
-          "placement": []
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:poplar_sapling"
+                }
+              }
+            }
+          ]
         },
         "weight": 120
       }

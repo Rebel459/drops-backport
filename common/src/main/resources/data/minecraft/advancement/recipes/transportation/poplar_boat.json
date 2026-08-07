@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:poplar_boat"
+        "recipe": "minecraft:poplar_boat"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

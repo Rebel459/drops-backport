@@ -151,10 +151,6 @@ public class DBBlocks {
                     .pushReaction(PushReaction.DESTROY)
     );
 
-    public static final ColoredBlockSet CUSHION = BLOCK_BUILDERS.coloredBlockSet("cushion", ColoredBlockPreset.DEFAULT)
-            .creativeInventoryPlacement(() -> Blocks.PINK_BED)
-            .build();
-
     public static final SuppliedBlock SULFUR_SPIKE = BLOCKS.register(
             "sulfur_spike",
             p -> new SulfurSpikeBlock(SULFUR.getBase().defaultBlockState(), p),

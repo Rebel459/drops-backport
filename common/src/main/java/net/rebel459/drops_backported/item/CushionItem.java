@@ -3,15 +3,13 @@ package net.rebel459.drops_backported.item;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
@@ -23,8 +21,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.rebel459.drops_backported.entity.Cushion;
 import net.rebel459.drops_backported.registry.DBEntityTypes;
+import net.rebel459.drops_backported.registry.DBItems;
 import net.rebel459.drops_backported.sound.DBSoundEvents;
 import net.rebel459.drops_backported.tag.DBBlockTags;
+
+import java.util.function.Consumer;
 
 public class CushionItem extends Item {
    private static final double COLLISION_SHAPE_RAYCAST_EPSILON = 0.001;
@@ -43,8 +44,8 @@ public class CushionItem extends Item {
       } else {
          BlockPlaceContext placeContext = new BlockPlaceContext(recalculatedContext);
          BlockPos blockPos = placeContext.getClickedPos();
-         Vec3 entityPos = Vec3.atCenterOfWithY(blockPos, recalculatedContext.getClickLocation().y);
-         AABB spawnAABB = DBEntityTypes.CUSHION.getSpawnAABB(entityPos);
+         Vec3 entityPos = new Vec3(blockPos.getX() + 0.5, recalculatedContext.getClickLocation().y, blockPos.getZ() + 0.5);
+         AABB spawnAABB = DBEntityTypes.CUSHION.get().getSpawnAABB(entityPos.x, entityPos.y, entityPos.z);
          if (!Cushion.canBePlacedAt(level, spawnAABB)) {
             return InteractionResult.FAIL;
          } else {
@@ -54,16 +55,17 @@ public class CushionItem extends Item {
                   return InteractionResult.FAIL;
                }
 
-               PostSpawnProcessor<Cushion> entityConfig = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-               Cushion cushion = (Cushion)DBEntityTypes.CUSHION.create(serverLevel, entityConfig, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
+               Consumer<Cushion> entityConfig = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
+               Cushion cushion = DBEntityTypes.CUSHION.get().create(serverLevel, entityConfig, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
                if (cushion == null) {
                   return InteractionResult.FAIL;
                }
 
+               cushion.setColor(getCushionColor(itemStack));
                cushion.snapTo(entityPos, Direction.fromYRot(placeContext.getRotation()).toYRot(), 0.0F);
                serverLevel.addFreshEntity(cushion);
                cushion.destroyIfInFire(serverLevel);
-               level.playSound(null, cushion.getX(), cushion.getY(), cushion.getZ(), DBSoundEvents.CUSHION_PLACE, SoundSource.BLOCKS, 0.75F, 0.8F);
+               level.playSound(null, cushion.getX(), cushion.getY(), cushion.getZ(), DBSoundEvents.CUSHION_PLACE.get(), SoundSource.BLOCKS, 0.75F, 0.8F);
                cushion.gameEvent(GameEvent.ENTITY_PLACE);
                itemStack.consume(1, placeContext.getPlayer());
             }
@@ -71,6 +73,17 @@ public class CushionItem extends Item {
             return InteractionResult.SUCCESS;
          }
       }
+   }
+
+   private static DyeColor getCushionColor(final ItemStack itemStack) {
+
+      for (var suppliedItem : DBItems.CUSHION.getRegisteredItems()) {
+         if (itemStack.is(suppliedItem.get())) {
+            return DBItems.CUSHION.getDyeFromItem(suppliedItem);
+         }
+      }
+
+      return DyeColor.WHITE;
    }
 
    private static UseOnContext recalculateContextForSpecialCollisionShapes(final UseOnContext context) {

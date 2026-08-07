@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:lime_cushion"
+        "recipe": "minecraft:lime_cushion"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

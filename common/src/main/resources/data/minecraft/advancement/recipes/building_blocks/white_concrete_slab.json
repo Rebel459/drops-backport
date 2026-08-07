@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:white_concrete_slab"
+        "recipe": "minecraft:white_concrete_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

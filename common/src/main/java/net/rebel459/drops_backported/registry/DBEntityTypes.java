@@ -23,12 +23,11 @@ public final class DBEntityTypes {
 
     public static final Supplied<EntityType<Cushion>> CUSHION = ENTITIES.register(
             "cushion",
-            () -> EntityType.Builder.of(Cushion::new, MobCategory.MISC)
+            EntityType.Builder.of(Cushion::new, MobCategory.MISC)
                     .noLootTable()
                     .sized(1.0F, 0.25F)
                     .clientTrackingRange(10)
                     .updateInterval(Integer.MAX_VALUE)
-                    .dontTrackDeltas()
     );
 
     private DBEntityTypes() {}

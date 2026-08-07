@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:white_wool_slab"
+        "recipe": "minecraft:white_wool_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

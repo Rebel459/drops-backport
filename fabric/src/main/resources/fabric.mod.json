@@ -31,7 +31,6 @@
     "fabric-api": "*",
     "minecraft": "${fabric_minecraft_version}",
     "java": ">=25",
-    "unified": "*",
-    "cloth-config": "*"
+    "unified": "*"
   }
 }

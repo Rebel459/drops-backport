@@ -8,12 +8,8 @@ dependencies {
     api "net.fabricmc:fabric-loader:${fabric_loader}"
     api "net.fabricmc.fabric-api:fabric-api:${fabric_api}"
 
-    implementation("maven.modrinth:modmenu:$modmenu_version")
-
-    api("me.shedaniel.cloth:cloth-config-fabric:$cloth_version") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
     api("maven.modrinth:unified-api:$unified_version-fabric")
+    compileOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 }
 
 loom {

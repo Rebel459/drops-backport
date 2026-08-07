@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:cinnabar_stairs_from_cinnabar_stonecutting"
+        "recipe": "minecraft:cinnabar_stairs_from_cinnabar_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

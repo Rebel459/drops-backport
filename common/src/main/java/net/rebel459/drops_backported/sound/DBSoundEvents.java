@@ -101,6 +101,10 @@ public final class DBSoundEvents {
     public static final Supplied<SoundEvent> STRAW_BED_FALL = SOUNDS.register("block.straw_bed.fall");
     public static final Supplied<SoundEvent> RED_SHRUB_BREAK = SOUNDS.register("block.red_shrub.break");
     public static final Supplied<SoundEvent> RED_SHRUB_PLACE = SOUNDS.register("block.red_shrub.place");
+    public static final Supplied<SoundEvent> CUSHION_BREAK = SOUNDS.register("entity.cushion.break");
+    public static final Supplied<SoundEvent> CUSHION_GET_UP = SOUNDS.register("entity.cushion.get_up");
+    public static final Supplied<SoundEvent> CUSHION_PLACE = SOUNDS.register("entity.cushion.place");
+    public static final Supplied<SoundEvent> CUSHION_SIT = SOUNDS.register("entity.cushion.sit");
 
     private DBSoundEvents() {}
 

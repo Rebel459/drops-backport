@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:orange_cushion"
+        "recipe": "minecraft:orange_cushion"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

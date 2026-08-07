@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:pink_concrete_stairs"
+        "recipe": "minecraft:pink_concrete_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

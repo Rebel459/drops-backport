@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:poplar_planks"
+        "recipe": "minecraft:poplar_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

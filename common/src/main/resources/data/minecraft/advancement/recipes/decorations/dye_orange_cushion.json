@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:dye_orange_cushion"
+        "recipe": "minecraft:dye_orange_cushion"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
