@@ -80,7 +80,6 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
     private int pickupTimer = 0;
     private int pushSoundCooldown = 0;
     private boolean floatsInLiquids = false;
-    private float archetypeBounce = 0.0F;
     private Optional<SulfurCubeArchetype.ExplosionData> explosionData = Optional.empty();
     private SulfurCubeArchetype.KnockbackModifiers knockbackModifier = SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS;
     private SulfurCubeArchetype.SoundSettings soundSettings = SulfurCubeArchetype.DEFAULT_SOUND_SETTINGS;
@@ -267,13 +266,33 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     @Override
     public void tick() {
-        boolean wasOnGround = this.onGround();
-        double previousYd = this.getDeltaMovement().y;
         this.updateArchetypesFromBodyItem();
         this.tickFuse();
         this.primeWhenOnPoweredPosition();
         super.tick();
-        this.applyArchetypePhysics(wasOnGround, previousYd);
+    }
+
+    @Override
+    public void travelInFluid(Vec3 input) {
+        super.travelInFluid(input);
+
+        if (this.hasBodyItem() && this.floatsInLiquids) {
+            float vibeAmount = 0.2F * Mth.sin(this.tickCount * 0.4F);
+            double immersion =
+                    this.getFluidHeight(this.isInWater() ? FluidTags.WATER : FluidTags.LAVA)
+                            - this.getFluidJumpThreshold()
+                            + vibeAmount;
+
+            if (immersion > 0.0) {
+                this.setDeltaMovement(
+                        this.getDeltaMovement().add(
+                                0.0,
+                                Math.min(1.0, immersion) * 0.04F,
+                                0.0
+                        )
+                );
+            }
+        }
     }
 
     private void tickFuse() {
@@ -613,30 +632,54 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     private void updateArchetypesFromBodyItem() {
         ItemStack current = this.getItemBySlot(EquipmentSlot.BODY);
+
         if (ItemStack.matches(current, this.lastBodyItem)) {
             return;
         }
 
+        ItemStack previous = this.lastBodyItem;
         this.lastBodyItem = current.copy();
+
+        if (!current.isEmpty()) {
+            this.removeAllGoals(goal -> true);
+            this.setSpeed(0.0F);
+        } else if (!previous.isEmpty()) {
+            this.registerGoals();
+        }
+
         this.removeArchetypeAttributeModifiers();
+
         this.floatsInLiquids = false;
-        this.archetypeBounce = 0.0F;
         this.explosionData = Optional.empty();
         this.contactDamages = List.of();
         this.knockbackModifier = SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS;
         this.soundSettings = SulfurCubeArchetype.DEFAULT_SOUND_SETTINGS;
 
         List<SulfurCubeArchetype> matches = SulfurCubeArchetype.matching(current);
+
         if (matches.isEmpty()) {
             return;
         }
 
-        this.archetypeBounce = matches.getLast().bounce();
-        this.floatsInLiquids = matches.stream().anyMatch(SulfurCubeArchetype::buoyant);
-        this.explosionData = matches.stream().map(SulfurCubeArchetype::explosion).filter(Optional::isPresent).map(Optional::get).findFirst();
-        this.contactDamages = matches.stream().map(SulfurCubeArchetype::contactDamage).filter(Optional::isPresent).map(Optional::get).toList();
+        for (SulfurCubeArchetype archetype : matches) {
+            if (archetype.buoyant()) {
+                this.floatsInLiquids = true;
+            }
+
+            if (archetype.explosion().isPresent()) {
+                this.explosionData = archetype.explosion();
+            }
+        }
+
+        this.contactDamages = matches.stream()
+                .map(SulfurCubeArchetype::contactDamage)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .toList();
+
         this.knockbackModifier = matches.getLast().knockbackModifiers();
         this.soundSettings = matches.getLast().soundSettings();
+
         matches.forEach(this::applyArchetypeAttributeModifiers);
     }
 
@@ -660,42 +703,16 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     private void addArchetypeAttributeModifier(Holder<Attribute> attribute, SulfurCubeArchetype archetype, String suffix, double amount, AttributeModifier.Operation operation) {
         AttributeInstance instance = this.getAttribute(attribute);
-        if (instance != null) {
-            instance.addOrUpdateTransientModifier(new AttributeModifier(archetypeModifierId(archetype, suffix), amount, operation));
-        }
+        if (instance != null) instance.addOrUpdateTransientModifier(new AttributeModifier(archetypeModifierId(archetype, suffix), amount, operation));
     }
 
     private void removeArchetypeAttributeModifier(Holder<Attribute> attribute, SulfurCubeArchetype archetype, String suffix) {
         AttributeInstance instance = this.getAttribute(attribute);
-        if (instance != null) {
-            instance.removeModifier(archetypeModifierId(archetype, suffix));
-        }
+        if (instance != null) instance.removeModifier(archetypeModifierId(archetype, suffix));
     }
 
     private static Identifier archetypeModifierId(SulfurCubeArchetype archetype, String suffix) {
         return Identifier.fromNamespaceAndPath(archetype.id().getNamespace(), archetype.id().getPath() + "_" + suffix);
-    }
-
-    private void applyArchetypePhysics(boolean wasOnGround, double previousYd) {
-        if (!this.hasBodyItem()) {
-            return;
-        }
-
-        Vec3 movement = this.getDeltaMovement();
-        if (this.floatsInLiquids && (this.isInWater() || this.isInLava())) {
-            float vibeAmount = 0.2F * Mth.sin(this.tickCount * 0.4F);
-            double immersion = this.getFluidHeight(this.isInWater() ? FluidTags.WATER : FluidTags.LAVA) - this.getFluidJumpThreshold() + vibeAmount;
-            if (immersion > 0.0) {
-                movement = movement.add(0.0, Math.min(1.0, immersion) * 0.04F, 0.0);
-            }
-        }
-
-        float bounciness = (float) this.getAttributeValue(DBAttributes.BOUNCINESS);
-        if (!wasOnGround && this.onGround() && previousYd < -0.08 && bounciness > 0.0F) {
-            movement = new Vec3(movement.x, -previousYd * bounciness, movement.z);
-        }
-
-        this.setDeltaMovement(movement);
     }
 
     private void applyContactDamage(Entity entity) {

@@ -6,15 +6,18 @@
   "mixins": [
     "block.DispenserBlockMixin",
     "entity.AttributesMixin",
+    "entity.EntityMixin",
     "entity.LivingEntityMixin",
     "entity.OwnerHurtByTargetGoalMixin",
     "integration.lithostitched.LithostitchedMixin",
     "level.MapItemSavedDataMixin",
+    "level.VibrationSystemMixin",
     "worldgen.BiomeDataMixin",
     "worldgen.NoiseGeneratorSettingsMixin",
     "worldgen.OverworldBiomeBuilderMixin"
   ],
   "client": [
+    "client.ClientPacketListenerMixin",
     "client.ItemModelsMixin"
   ],
   "injectors": {

@@ -2,6 +2,7 @@ package net.rebel459.drops_backport.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionResult;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.rebel459.drops_backport.registry.DBStats;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.util.block.AbstractBedBlock;
 
@@ -60,10 +62,10 @@ public class StrawBedBlock extends AbstractBedBlock {
         level.levelEvent(2014, pos, getId(state));
     }
 
-/*   @Override
+   @Override
    public Identifier getSleptInBedStatType() {
-      return Stats.SLEEP_IN_STRAW_BED;
-   }*/
+      return DBStats.SLEEP_IN_STRAW_BED;
+   }
 
     @Override
     public OptionalDouble getSleepHeight(final BlockState state, final Level level, final BlockPos pos) {

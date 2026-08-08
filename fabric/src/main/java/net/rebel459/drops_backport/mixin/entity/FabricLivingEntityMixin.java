@@ -20,19 +20,18 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Optional;
-
 @Mixin(LivingEntity.class)
 public abstract class FabricLivingEntityMixin {
+
     @Shadow
     public abstract @Nullable AttributeInstance getAttribute(Holder<Attribute> attribute);
 
-    @Shadow
-    public abstract Optional<BlockPos> getSleepingPos();
-
     @Redirect(
             method = "travelInAir",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;getFriction()F")
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/level/block/Block;getFriction()F"
+            )
     )
     private float applyFrictionModifier(Block block) {
         return computeModifiedFriction(block.getFriction(), getAttributeValue(DBAttributes.FRICTION_MODIFIER, 1.0F));

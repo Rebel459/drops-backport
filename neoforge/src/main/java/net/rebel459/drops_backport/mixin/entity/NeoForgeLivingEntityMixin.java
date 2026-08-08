@@ -31,7 +31,10 @@ public abstract class NeoForgeLivingEntityMixin {
 
     @Redirect(
             method = "travelInAir",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getFriction(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)F")
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/level/block/state/BlockState;getFriction(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)F"
+            )
     )
     private float applyFrictionModifier(BlockState state, LevelReader levelReader, BlockPos blockPos, Entity entity) {
         return computeModifiedFriction(state.getFriction(levelReader, blockPos, entity), getAttributeValue(DBAttributes.FRICTION_MODIFIER, 1.0F));

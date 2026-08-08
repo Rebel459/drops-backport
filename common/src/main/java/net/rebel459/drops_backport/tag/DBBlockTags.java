@@ -11,6 +11,7 @@ public class DBBlockTags {
     public static final TagKey<Block> REQUIRED_FOR_POPLAR_LEAF_AMBIENCE = create("required_for_poplar_leaf_ambience");
     public static final TagKey<Block> SPELEOTHEMS = create("speleothems");
     public static final TagKey<Block> CUSHION_USES_COLLISION_SHAPE = create("cushion_uses_collision_shape");
+    public static final TagKey<Block> SUPPRESSES_BOUNCE = create("suppresses_bounce");
 
     private static TagKey<Block> create(final String name) {
         return TagKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(name));

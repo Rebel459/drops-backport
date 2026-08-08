@@ -10,9 +10,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.rebel459.drops_backport.util.block.AbstractBedBlock;
 import net.rebel459.drops_backport.entity.SulfurCube;
 import net.rebel459.drops_backport.registry.DBAttributes;
+import net.rebel459.drops_backport.util.block.AbstractBedBlock;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,36 +24,25 @@ import java.util.Optional;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
+
     @Shadow
     public abstract @Nullable AttributeInstance getAttribute(Holder<Attribute> attribute);
 
     @Shadow
     public abstract Optional<BlockPos> getSleepingPos();
 
-    @ModifyConstant(method = "travelInAir", constant = @Constant(floatValue = 0.91F))
+    @ModifyConstant(
+            method = "travelInAir",
+            constant = @Constant(floatValue = 0.91F)
+    )
     private float applyHorizontalAirDragModifier(float friction) {
         return computeModifiedFriction(friction, getAttributeValue(DBAttributes.AIR_DRAG_MODIFIER, 1.0F));
     }
 
     @ModifyConstant(method = "travelInAir", constant = @Constant(floatValue = 0.98F))
     private float applyVerticalAirDragModifier(float friction) {
-        if (LivingEntity.class.cast(this) instanceof SulfurCube cube && cube.hasBodyItem()) {
-            friction = 0.91F;
-        }
-
+        if (LivingEntity.class.cast(this) instanceof SulfurCube cube && cube.hasBodyItem()) friction = 0.91F;
         return computeModifiedFriction(friction, getAttributeValue(DBAttributes.AIR_DRAG_MODIFIER, 1.0F));
-    }
-
-    @ModifyArg(
-            method = "travelInAir",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/LivingEntity;handleRelativeFrictionAndCalculateMovement(Lnet/minecraft/world/phys/Vec3;F)Lnet/minecraft/world/phys/Vec3;"
-            ),
-            index = 1
-    )
-    private float applyLowFrictionInputRule(float blockFriction) {
-        return blockFriction > 0.6F ? blockFriction : 0.6F;
     }
 
     @Unique

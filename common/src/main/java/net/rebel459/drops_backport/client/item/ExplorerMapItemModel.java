@@ -214,7 +214,7 @@ public class ExplorerMapItemModel implements ItemModel {
         registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMP, DropsBackport.vanillaId("abandoned_campsite_map"));
         registerDecorationModel(DBMapDecorationTypes.DESERT_PYRAMID, DropsBackport.vanillaId("desert_pyramid_map"));
         registerDecorationModel(DBMapDecorationTypes.MINESHAFT, DropsBackport.vanillaId("mineshaft_map"));
-        registerDecorationModel(DBMapDecorationTypes.OCEAN_RUIN_WARM, DropsBackport.vanillaId("warm_ocean_ruins_map"));
+        registerDecorationModel(DBMapDecorationTypes.WARM_OCEAN_RUINS, DropsBackport.vanillaId("warm_ocean_ruins_map"));
         registerDecorationModel(MapDecorationTypes.RED_X, DropsBackport.vanillaId("buried_treasure_map"));
         registerDecorationModel(MapDecorationTypes.DESERT_VILLAGE, DropsBackport.vanillaId("desert_village_map"));
         registerDecorationModel(MapDecorationTypes.JUNGLE_TEMPLE, DropsBackport.vanillaId("jungle_temple_map"));

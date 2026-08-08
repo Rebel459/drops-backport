@@ -27,10 +27,13 @@ public class DropsBackport {
         DBItems.init();
         DBWorldgenCodecs.init();
         DBMapDecorationTypes.init();
+        DBStats.init();
+        DBGameEvents.init();
     }
 
     public static void init() {
         DBBlocks.createProperties();
+        DBStats.initCustomStats();
         DBCreativeEntries.init();
         DispenserBlock.registerBehavior(DBItems.SULFUR_CUBE_BUCKET.get(), new DefaultDispenseItemBehavior() {
             private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();

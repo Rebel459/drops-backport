@@ -14,7 +14,7 @@ public class DBMapDecorationTypes {
     public static final Holder<MapDecorationType> ABANDONED_CAMP = register("abandoned_camp");
     public static final Holder<MapDecorationType> DESERT_PYRAMID = register("desert_pyramid");
     public static final Holder<MapDecorationType> MINESHAFT = register("mineshaft");
-    public static final Holder<MapDecorationType> OCEAN_RUIN_WARM = register("ocean_ruin_warm");
+    public static final Holder<MapDecorationType> WARM_OCEAN_RUINS = register("warm_ocean_ruins");
 
     public static void init() {
     }

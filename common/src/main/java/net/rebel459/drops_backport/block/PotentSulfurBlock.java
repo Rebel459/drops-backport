@@ -41,7 +41,7 @@ public class PotentSulfurBlock extends BaseEntityBlock {
 
     public PotentSulfurBlock(final Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState) this.defaultBlockState().setValue(STATE, PotentSulfurState.DRY));
+        this.registerDefaultState(this.defaultBlockState().setValue(STATE, PotentSulfurState.DRY));
     }
 
     @Override
