@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.entity;
+package net.rebel459.drops_backport.entity.cube;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -57,7 +57,6 @@ import net.rebel459.drops_backport.registry.DBItems;
 import net.rebel459.drops_backport.registry.DBParticleTypes;
 import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
-import net.rebel459.drops_backport.util.entity.AbstractCubeMob;
 import net.rebel459.drops_backport.util.entity.SulfurCubeArchetype;
 import org.jspecify.annotations.Nullable;
 

@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.util.block;
+package net.rebel459.drops_backport.block.speleothem;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -33,6 +33,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rebel459.drops_backport.registry.DBBlockStateProperties;
 import net.rebel459.drops_backport.tag.DBBlockTags;
+import net.rebel459.drops_backport.util.block.SpeleothemThickness;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;

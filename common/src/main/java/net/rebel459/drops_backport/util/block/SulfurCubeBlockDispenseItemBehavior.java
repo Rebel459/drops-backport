@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.block;
+package net.rebel459.drops_backport.util.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,7 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.phys.AABB;
-import net.rebel459.drops_backport.entity.SulfurCube;
+import net.rebel459.drops_backport.entity.cube.SulfurCube;
 
 public class SulfurCubeBlockDispenseItemBehavior extends DefaultDispenseItemBehavior {
    public static final SulfurCubeBlockDispenseItemBehavior INSTANCE = new SulfurCubeBlockDispenseItemBehavior();

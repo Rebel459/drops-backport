@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.block;
+package net.rebel459.drops_backport.block.bed;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,7 +19,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rebel459.drops_backport.registry.DBStats;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
-import net.rebel459.drops_backport.util.block.AbstractBedBlock;
 
 import java.util.Map;
 import java.util.OptionalDouble;

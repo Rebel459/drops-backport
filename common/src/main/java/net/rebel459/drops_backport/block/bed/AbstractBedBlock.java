@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.util.block;
+package net.rebel459.drops_backport.block.bed;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
@@ -34,6 +34,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.rebel459.drops_backport.block.HorizontalDirectionalBlock;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jspecify.annotations.Nullable;
 

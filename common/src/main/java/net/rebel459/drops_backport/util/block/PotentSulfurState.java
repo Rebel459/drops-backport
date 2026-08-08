@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.block;
+package net.rebel459.drops_backport.util.block;
 
 import net.minecraft.util.StringRepresentable;
 

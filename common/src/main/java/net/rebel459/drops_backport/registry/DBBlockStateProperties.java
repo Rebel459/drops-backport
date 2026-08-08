@@ -1,7 +1,7 @@
 package net.rebel459.drops_backport.registry;
 
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.rebel459.drops_backport.block.PotentSulfurState;
+import net.rebel459.drops_backport.util.block.PotentSulfurState;
 import net.rebel459.drops_backport.util.block.SpeleothemThickness;
 
 public class DBBlockStateProperties {

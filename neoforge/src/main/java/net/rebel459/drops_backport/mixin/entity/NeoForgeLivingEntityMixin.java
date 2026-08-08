@@ -13,7 +13,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.rebel459.drops_backport.registry.DBAttributes;
-import net.rebel459.drops_backport.util.block.AbstractBedBlock;
+import net.rebel459.drops_backport.block.bed.AbstractBedBlock;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

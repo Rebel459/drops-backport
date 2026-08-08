@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.util.block;
+package net.rebel459.drops_backport.block.leaves;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -6,6 +6,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.rebel459.drops_backport.util.block.AmbientLeavesBlockSoundPlayer;
 
 public abstract class FallingParticlesLeavesBlock extends LeavesBlock {
     protected final float leafParticleChance;

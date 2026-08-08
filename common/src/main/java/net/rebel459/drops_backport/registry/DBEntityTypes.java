@@ -4,7 +4,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.rebel459.drops_backport.DropsBackport;
 import net.rebel459.drops_backport.entity.Cushion;
-import net.rebel459.drops_backport.entity.SulfurCube;
+import net.rebel459.drops_backport.entity.cube.SulfurCube;
 import net.rebel459.unified.platform.UnifiedRegistries;
 import net.rebel459.unified.util.registry.Supplied;
 

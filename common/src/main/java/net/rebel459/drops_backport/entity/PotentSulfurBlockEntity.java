@@ -34,7 +34,7 @@ import net.minecraft.world.phys.HitResult.Type;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.rebel459.drops_backport.block.PotentSulfurBlock;
-import net.rebel459.drops_backport.block.PotentSulfurState;
+import net.rebel459.drops_backport.util.block.PotentSulfurState;
 import net.rebel459.drops_backport.particle.GeyserParticleOptions;
 import net.rebel459.drops_backport.registry.DBBlockEntityTypes;
 import net.rebel459.drops_backport.registry.DBParticleTypes;

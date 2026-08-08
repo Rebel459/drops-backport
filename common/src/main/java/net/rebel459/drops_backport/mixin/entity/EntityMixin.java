@@ -9,7 +9,7 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.rebel459.drops_backport.entity.SulfurCube;
+import net.rebel459.drops_backport.entity.cube.SulfurCube;
 import net.rebel459.drops_backport.registry.DBAttributes;
 import net.rebel459.drops_backport.registry.DBGameEvents;
 import net.rebel459.drops_backport.tag.DBBlockTags;

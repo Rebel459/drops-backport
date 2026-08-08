@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.util.entity;
+package net.rebel459.drops_backport.entity.cube;
 
 import com.google.common.annotations.VisibleForTesting;
 import net.minecraft.core.particles.ParticleOptions;

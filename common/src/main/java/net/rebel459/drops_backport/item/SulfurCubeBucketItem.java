@@ -34,7 +34,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.rebel459.drops_backport.entity.SulfurCube;
+import net.rebel459.drops_backport.entity.cube.SulfurCube;
 import net.rebel459.drops_backport.registry.DBEntityTypes;
 import org.jspecify.annotations.Nullable;
 

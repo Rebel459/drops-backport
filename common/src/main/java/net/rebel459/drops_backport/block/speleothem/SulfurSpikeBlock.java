@@ -1,7 +1,6 @@
-package net.rebel459.drops_backport.block;
+package net.rebel459.drops_backport.block.speleothem;
 
 import net.minecraft.world.level.block.state.BlockState;
-import net.rebel459.drops_backport.util.block.SpeleothemBlock;
 
 public class SulfurSpikeBlock extends SpeleothemBlock {
     private static final int MAX_GROWING_LENGTH = 2;

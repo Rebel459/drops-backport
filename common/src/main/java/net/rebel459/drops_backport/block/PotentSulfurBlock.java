@@ -27,6 +27,7 @@ import net.rebel459.drops_backport.registry.DBBlockStateProperties;
 import net.rebel459.drops_backport.registry.DBParticleTypes;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.tag.DBBlockTags;
+import net.rebel459.drops_backport.util.block.PotentSulfurState;
 import org.jspecify.annotations.Nullable;
 
 public class PotentSulfurBlock extends BaseEntityBlock {

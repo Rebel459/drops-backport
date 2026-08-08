@@ -1,4 +1,4 @@
-package net.rebel459.drops_backport.util.block;
+package net.rebel459.drops_backport.block;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
