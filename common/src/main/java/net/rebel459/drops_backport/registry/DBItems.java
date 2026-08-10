@@ -46,6 +46,7 @@ public final class DBItems {
     public static final ColoredItemSet CUSHION = ITEM_BUILDERS.coloredItemSet("cushion", ColoredItemPreset.DEFAULT)
             .creativeInventoryPlacement(CreativeModeTabs.FUNCTIONAL_BLOCKS, () -> Blocks.PINK_BED)
             .function(CushionItem::new)
+            .setComponent(() -> DataComponents.MAX_STACK_SIZE, 16)
             .build();
 
     private DBItems() {
