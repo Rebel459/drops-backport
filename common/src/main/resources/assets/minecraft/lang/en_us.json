@@ -236,5 +236,10 @@
   "subtitles.entity.cushion.break": "Cushion breaks",
   "subtitles.entity.cushion.get_up": "Gets up from Cushion",
   "subtitles.entity.cushion.place": "Cushion placed",
-  "subtitles.entity.cushion.sit": "Sits on Cushion"
+  "subtitles.entity.cushion.sit": "Sits on Cushion",
+  "filled_map.explorer_jungle": "Jungle Pyramid Map",
+  "filled_map.explorer_swamp": "Swamp Hut Map",
+  "filled_map.mansion": "Woodland Mansion Map",
+  "filled_map.monument": "Ocean Monument Map",
+  "filled_map.trial_chambers": "Buried Trial Chambers Map"
 }
