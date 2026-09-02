@@ -4,21 +4,24 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
+import net.rebel459.drops_backport.network.TeleportTrailPacket;
 import net.rebel459.drops_backport.registry.*;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.util.DBCreativeEntries;
+import net.rebel459.drops_backport.util.entity.SulfurCubeArchetypeListener;
 import net.rebel459.drops_backport.worldgen.DBWorldgenCodecs;
+import net.rebel459.unified.platform.UnifiedHelpers;
 
 public class DropsBackport {
 
     public static void initRegistries() {
         DBSoundEvents.init();
         DBAttributes.init();
-        DBSulfurCubeArchetypes.init();
         DBParticleTypes.init();
         DBEntityTypes.init();
         DBBlockEntityTypes.init();
@@ -32,9 +35,11 @@ public class DropsBackport {
     }
 
     public static void init() {
+        TeleportTrailPacket.init();
         DBBlocks.createProperties();
         DBStats.initCustomStats();
         DBCreativeEntries.init();
+        UnifiedHelpers.RELOAD_LISTENERS.addListener(SulfurCubeArchetypeListener.ID, new SulfurCubeArchetypeListener());
         DispenserBlock.registerBehavior(DBItems.SULFUR_CUBE_BUCKET.get(), new DefaultDispenseItemBehavior() {
             private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
 

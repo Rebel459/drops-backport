@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "minecraft:item/mineshaft_map"
+    "model": "minecraft:item/buried_mineshaft_map"
   }
 }

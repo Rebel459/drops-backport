@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "minecraft:item/abandoned_campsite_map"
+    "model": "minecraft:item/abandoned_camp_map"
   }
 }

@@ -210,11 +210,11 @@ public class ExplorerMapItemModel implements ItemModel {
     }
 
     public static void init() {
-        registerDecorationModel(DBMapDecorationTypes.ANCIENT_CITY, DropsBackport.vanillaId("ancient_city_map"));
-        registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMP, DropsBackport.vanillaId("abandoned_campsite_map"));
+        registerDecorationModel(DBMapDecorationTypes.ANCIENT_CITY, DropsBackport.vanillaId("buried_ancient_city_map"));
+        registerDecorationModel(DBMapDecorationTypes.ABANDONED_CAMP, DropsBackport.vanillaId("abandoned_camp_map"));
         registerDecorationModel(DBMapDecorationTypes.DESERT_PYRAMID, DropsBackport.vanillaId("desert_pyramid_map"));
-        registerDecorationModel(DBMapDecorationTypes.MINESHAFT, DropsBackport.vanillaId("mineshaft_map"));
-        registerDecorationModel(DBMapDecorationTypes.WARM_OCEAN_RUINS, DropsBackport.vanillaId("warm_ocean_ruins_map"));
+        registerDecorationModel(DBMapDecorationTypes.MINESHAFT, DropsBackport.vanillaId("buried_mineshaft_map"));
+        registerDecorationModel(DBMapDecorationTypes.OCEAN_RUIN_WARM, DropsBackport.vanillaId("warm_ocean_ruins_map"));
         registerDecorationModel(MapDecorationTypes.RED_X, DropsBackport.vanillaId("buried_treasure_map"));
         registerDecorationModel(MapDecorationTypes.DESERT_VILLAGE, DropsBackport.vanillaId("desert_village_map"));
         registerDecorationModel(MapDecorationTypes.JUNGLE_TEMPLE, DropsBackport.vanillaId("jungle_temple_map"));

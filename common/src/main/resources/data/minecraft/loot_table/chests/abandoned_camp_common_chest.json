@@ -326,14 +326,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.bamboo_jungle_abandoned_camp"
+                "translate": "filled_map.bamboo_jungle_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_bamboo_jungle",
+              "destination": "minecraft:on_camp_bamboo_jungle",
               "function": "minecraft:exploration_map"
             },
             {
@@ -367,14 +367,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.cherry_grove_abandoned_camp"
+                "translate": "filled_map.cherry_grove_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_cherry_grove",
+              "destination": "minecraft:on_camp_cherry_grove",
               "function": "minecraft:exploration_map"
             },
             {
@@ -408,14 +408,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.birch_forest_abandoned_camp"
+                "translate": "filled_map.birch_forest_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_birch_forest",
+              "destination": "minecraft:on_camp_birch_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -449,14 +449,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.dappled_forest_abandoned_camp"
+                "translate": "filled_map.dappled_forest_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_dappled_forest",
+              "destination": "minecraft:on_camp_dappled_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -490,14 +490,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.flower_forest_abandoned_camp"
+                "translate": "filled_map.flower_forest_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_flower_forest",
+              "destination": "minecraft:on_camp_flower_forest",
               "function": "minecraft:exploration_map"
             },
             {
@@ -531,14 +531,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.pale_garden_abandoned_camp"
+                "translate": "filled_map.pale_garden_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_pale_garden",
+              "destination": "minecraft:on_camp_pale_garden",
               "function": "minecraft:exploration_map"
             },
             {
@@ -572,14 +572,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.swamp_abandoned_camp"
+                "translate": "filled_map.swamp_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_swamp",
+              "destination": "minecraft:on_camp_swamp",
               "function": "minecraft:exploration_map"
             },
             {
@@ -613,14 +613,14 @@
           "functions": [
             {
               "name": {
-                "translate": "filled_map.windswept_forest_abandoned_camp"
+                "translate": "filled_map.windswept_forest_camp"
               },
               "target": "item_name",
               "function": "minecraft:set_name"
             },
             {
               "decoration": "minecraft:abandoned_camp",
-              "destination": "minecraft:on_abandoned_camp_windswept",
+              "destination": "minecraft:on_camp_windswept",
               "function": "minecraft:exploration_map"
             },
             {

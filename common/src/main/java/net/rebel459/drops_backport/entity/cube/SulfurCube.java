@@ -1,7 +1,6 @@
 package net.rebel459.drops_backport.entity.cube;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.Registries;
@@ -684,34 +683,26 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     private void removeArchetypeAttributeModifiers() {
         for (SulfurCubeArchetype archetype : SulfurCubeArchetype.REGISTERED) {
-            this.removeArchetypeAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, archetype, "add_knockback_resistance");
-            this.removeArchetypeAttributeModifier(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE, archetype, "add_explosion_knockback_resistance");
-            this.removeArchetypeAttributeModifier(DBAttributes.BOUNCINESS, archetype, "add_bounciness");
-            this.removeArchetypeAttributeModifier(DBAttributes.FRICTION_MODIFIER, archetype, "mul_friction_modifier");
-            this.removeArchetypeAttributeModifier(DBAttributes.AIR_DRAG_MODIFIER, archetype, "mul_air_drag_modifier");
+            archetype.attributeModifiers().forEach(this::removeArchetypeAttributeModifier);
         }
     }
 
     private void applyArchetypeAttributeModifiers(SulfurCubeArchetype archetype) {
-        this.addArchetypeAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, archetype, "add_knockback_resistance", -archetype.speed(), AttributeModifier.Operation.ADD_VALUE);
-        this.addArchetypeAttributeModifier(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE, archetype, "add_explosion_knockback_resistance", -archetype.speed(), AttributeModifier.Operation.ADD_VALUE);
-        this.addArchetypeAttributeModifier(DBAttributes.BOUNCINESS, archetype, "add_bounciness", archetype.bounce(), AttributeModifier.Operation.ADD_VALUE);
-        this.addArchetypeAttributeModifier(DBAttributes.FRICTION_MODIFIER, archetype, "mul_friction_modifier", archetype.friction() - 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-        this.addArchetypeAttributeModifier(DBAttributes.AIR_DRAG_MODIFIER, archetype, "mul_air_drag_modifier", archetype.airDrag() - 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        archetype.attributeModifiers().forEach(this::addArchetypeAttributeModifier);
     }
 
-    private void addArchetypeAttributeModifier(Holder<Attribute> attribute, SulfurCubeArchetype archetype, String suffix, double amount, AttributeModifier.Operation operation) {
-        AttributeInstance instance = this.getAttribute(attribute);
-        if (instance != null) instance.addOrUpdateTransientModifier(new AttributeModifier(archetypeModifierId(archetype, suffix), amount, operation));
+    private void addArchetypeAttributeModifier(SulfurCubeArchetype.AttributeEntry entry) {
+        AttributeInstance instance = this.getAttribute(entry.attribute());
+        if (instance != null) {
+            instance.addOrUpdateTransientModifier(entry.modifier());
+        }
     }
 
-    private void removeArchetypeAttributeModifier(Holder<Attribute> attribute, SulfurCubeArchetype archetype, String suffix) {
-        AttributeInstance instance = this.getAttribute(attribute);
-        if (instance != null) instance.removeModifier(archetypeModifierId(archetype, suffix));
-    }
-
-    private static Identifier archetypeModifierId(SulfurCubeArchetype archetype, String suffix) {
-        return Identifier.fromNamespaceAndPath(archetype.id().getNamespace(), archetype.id().getPath() + "_" + suffix);
+    private void removeArchetypeAttributeModifier(SulfurCubeArchetype.AttributeEntry entry) {
+        AttributeInstance instance = this.getAttribute(entry.attribute());
+        if (instance != null) {
+            instance.removeModifier(entry.modifier().id());
+        }
     }
 
     private void applyContactDamage(Entity entity) {

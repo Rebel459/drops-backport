@@ -98,6 +98,7 @@ public class Cushion extends BlockAttachedEntity {
 
     @Override
     public void tick() {
+        super.tick();
         if (this.level() instanceof ServerLevel level) {
             BlockPos blockPos = this.blockPosition();
             FluidState fluidState = level.getBlockState(blockPos).getFluidState();
@@ -161,7 +162,7 @@ public class Cushion extends BlockAttachedEntity {
     }
 
     public static boolean wouldSurviveAt(final Level level, final AABB boundingBox) {
-        return hasAnchorBelow(level, boundingBox) && !isCoveredByFullBlocks(level, boundingBox);
+        return hasAnchorBelow(level, boundingBox) && !isCoveredBySuffocatingBlocks(level, boundingBox);
     }
 
     private static boolean hasAnchorBelow(final Level level, final AABB boundingBox) {
@@ -194,9 +195,9 @@ public class Cushion extends BlockAttachedEntity {
         return false;
     }
 
-    private static boolean isCoveredByFullBlocks(final Level level, final AABB boundingBox) {
+    private static boolean isCoveredBySuffocatingBlocks(final Level level, final AABB boundingBox) {
         for (BlockPos blockPos : BlockPos.betweenClosed(nextDeflated(boundingBox))) {
-            if (!level.getBlockState(blockPos).isCollisionShapeFullBlock(level, blockPos)) {
+            if (!level.getBlockState(blockPos).isSuffocating(level, blockPos)) {
                 return false;
             }
         }
@@ -204,8 +205,8 @@ public class Cushion extends BlockAttachedEntity {
         return true;
     }
 
-    private static AABB nextDeflated(final AABB boundingBox) {
-        return boundingBox.deflate(1.0E-7);
+    private static AABB nextDeflated(AABB box) {
+        return new AABB(Math.nextUp(box.minX), Math.nextUp(box.minY), Math.nextUp(box.minZ), Math.nextDown(box.maxX), Math.nextDown(box.maxY), Math.nextDown(box.maxZ));
     }
 
     private static Block getWoolBlock(final DyeColor color) {

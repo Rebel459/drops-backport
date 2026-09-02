@@ -4,12 +4,19 @@
   "plugin": "net.rebel459.drops_backport.mixin.DBMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "block.BedBlockMixin",
     "block.DispenserBlockMixin",
+    "entity.ArmadilloMixin",
     "entity.AttributesMixin",
+    "entity.EnderManMixin",
     "entity.EntityMixin",
     "entity.LivingEntityMixin",
     "entity.OwnerHurtByTargetGoalMixin",
+    "entity.ShulkerMixin",
+    "entity.VillagerMixin",
     "integration.lithostitched.LithostitchedMixin",
+    "entity.PaintingMixin",
+    "item.TeleportRandomlyConsumeEffectMixin",
     "level.MapItemSavedDataMixin",
     "level.VibrationSystemMixin",
     "worldgen.BiomeDataMixin",
@@ -17,8 +24,11 @@
     "worldgen.OverworldBiomeBuilderMixin"
   ],
   "client": [
+    "client.AbstractSignRendererMixin",
     "client.ClientPacketListenerMixin",
-    "client.ItemModelsMixin"
+    "client.GameModeIconMixin",
+    "client.ItemModelsMixin",
+    "client.SignEditScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

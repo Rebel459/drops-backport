@@ -198,6 +198,9 @@ public class DBBlocks {
         UnifiedHelpers.DATA_COMPONENTS.addCompost(YELLOW_POPLAR_LEAVES, 0.3F);
         UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_SHRUB, 0.3F);
 
+        // Temporary
+        UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(POPLAR.getSlab(), 150);
+
         final FireBlock fire = (FireBlock) Blocks.FIRE;
         fire.setFlammable(RED_POPLAR_LEAVES.get(), 30, 60);
         fire.setFlammable(ORANGE_POPLAR_LEAVES.get(), 30, 60);

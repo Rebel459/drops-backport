@@ -3,6 +3,7 @@ package net.rebel459.drops_backport.mixin.block;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.rebel459.drops_backport.util.block.SulfurCubeBlockDispenseItemBehavior;
 import net.rebel459.drops_backport.tag.DBItemTags;
