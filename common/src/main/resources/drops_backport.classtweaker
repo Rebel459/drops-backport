@@ -24,3 +24,5 @@ accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockZ 
 accessible method net/minecraft/client/particle/FallingLeavesParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDLnet/minecraft/client/renderer/texture/TextureAtlasSprite;FFZZFF)V
 accessible method net/minecraft/world/level/block/FireBlock setFlammable (Lnet/minecraft/world/level/block/Block;II)V
 extendable method net/minecraft/world/entity/LivingEntity travelInFluid (Lnet/minecraft/world/phys/Vec3;)V
+accessible method net/minecraft/world/level/biome/OverworldBiomeBuilder addBiomes (Ljava/util/function/Consumer;)V
+accessible field net/minecraft/world/level/biome/OverworldBiomeBuilder MIDDLE_BIOMES_VARIANT [[Lnet/minecraft/resources/ResourceKey;

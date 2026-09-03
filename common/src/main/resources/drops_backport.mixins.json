@@ -28,6 +28,7 @@
     "client.ClientPacketListenerMixin",
     "client.GameModeIconMixin",
     "client.ItemModelsMixin",
+    "client.ItemModelResolverMixin",
     "client.SignEditScreenMixin"
   ],
   "injectors": {

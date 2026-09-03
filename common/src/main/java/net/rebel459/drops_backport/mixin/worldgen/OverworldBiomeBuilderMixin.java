@@ -44,17 +44,18 @@ public abstract class OverworldBiomeBuilderMixin {
     @Final
     private Climate.Parameter[] erosions;
 
-    @WrapOperation(
+    @Inject(
             method = "addUndergroundBiomes",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;addUndergroundBiome(Ljava/util/function/Consumer;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;FLnet/minecraft/resources/ResourceKey;)V",
-                    ordinal = 1
+                    ordinal = 1,
+                    shift = At.Shift.AFTER
             )
     )
-    private void addSulfurCaves(OverworldBiomeBuilder builder, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome, Operation<Void> original) {
-        original.call(builder, biomes, temperature, humidity, continentalness, erosion, weirdness, offset, biome);
-        if (!UnifiedPlatform.isModLoaded("lithostitched")) this.addUndergroundBiome(
+    private void addSulfurCaves(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, CallbackInfo ci) {
+        if (UnifiedPlatform.isModLoaded("lithostitched")) return;
+        this.addUndergroundBiome(
                 biomes,
                 this.FULL_RANGE,
                 this.FULL_RANGE,
@@ -68,6 +69,7 @@ public abstract class OverworldBiomeBuilderMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addDappledForest(CallbackInfo ci) {
+        if (UnifiedPlatform.isModLoaded("lithostitched")) return;
         this.MIDDLE_BIOMES_VARIANT[1][0] = DBBiomes.DAPPLED_FOREST;
     }
 }

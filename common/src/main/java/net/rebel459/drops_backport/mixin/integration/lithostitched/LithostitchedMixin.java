@@ -5,8 +5,10 @@ import dev.worldgen.lithostitched.api.event.AddBiomeInjectorsEvent;
 import dev.worldgen.lithostitched.api.event.AddWorldgenModifiersEvent;
 import dev.worldgen.lithostitched.api.util.InjectionType;
 import dev.worldgen.lithostitched.api.worldgen.biomeinjector.BiomeInjector;
+import dev.worldgen.lithostitched.api.worldgen.biomeinjector.ParameterBuilder;
 import dev.worldgen.lithostitched.api.worldgen.modifier.WorldgenModifier;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.rebel459.drops_backport.DropsBackport;
@@ -59,6 +61,18 @@ public class LithostitchedMixin {
                                             registry.getOrThrow(DBBiomes.SULFUR_CAVES)
                                     )
                             ))
+                    )
+            );
+
+            consumer.accept(
+                    DropsBackport.modId("dappled_forest"),
+                    BiomeInjector.builder(Level.OVERWORLD).replacePartially(
+                            registry.getOrThrow(Biomes.PLAINS),
+                            registry.getOrThrow(DBBiomes.DAPPLED_FOREST),
+                            ParameterBuilder.create()
+                                    .climateRange(BiomeInjector.ClimateParameter.TEMPERATURE, -0.45F, -0.15F)
+                                    .climateMax(BiomeInjector.ClimateParameter.HUMIDITY, -0.35F)
+                                    .climateMin(BiomeInjector.ClimateParameter.WEIRDNESS, 0.0F)
                     )
             );
         });
