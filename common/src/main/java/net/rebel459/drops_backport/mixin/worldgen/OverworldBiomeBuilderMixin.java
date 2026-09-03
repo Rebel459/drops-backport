@@ -1,7 +1,5 @@
 package net.rebel459.drops_backport.mixin.worldgen;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -20,10 +18,6 @@ import java.util.function.Consumer;
 
 @Mixin(OverworldBiomeBuilder.class)
 public abstract class OverworldBiomeBuilderMixin {
-
-    @Shadow
-    @Final
-    private ResourceKey<Biome>[][] MIDDLE_BIOMES_VARIANT;
 
     @Shadow
     protected abstract void addUndergroundBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome);
@@ -70,6 +64,6 @@ public abstract class OverworldBiomeBuilderMixin {
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addDappledForest(CallbackInfo ci) {
         if (UnifiedPlatform.isModLoaded("lithostitched")) return;
-        this.MIDDLE_BIOMES_VARIANT[1][0] = DBBiomes.DAPPLED_FOREST;
+        OverworldBiomeBuilder.class.cast(this).MIDDLE_BIOMES_VARIANT[1][0] = DBBiomes.DAPPLED_FOREST;
     }
 }
