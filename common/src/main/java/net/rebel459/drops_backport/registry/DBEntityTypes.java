@@ -30,9 +30,5 @@ public final class DBEntityTypes {
                     .updateInterval(Integer.MAX_VALUE)
     );
 
-    private DBEntityTypes() {
-    }
-
-    public static void init() {
-    }
+    public static void init() {}
 }

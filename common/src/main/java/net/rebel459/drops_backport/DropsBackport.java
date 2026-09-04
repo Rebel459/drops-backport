@@ -4,9 +4,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.rebel459.drops_backport.entity.cube.SulfurCube;
 import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
 import net.rebel459.drops_backport.network.TeleportTrailPacket;
 import net.rebel459.drops_backport.registry.*;
@@ -39,6 +43,12 @@ public class DropsBackport {
         DBStats.initCustomStats();
         DBCreativeEntries.init();
         UnifiedHelpers.RELOAD_LISTENERS.addListener(SulfurCubeArchetypeListener.ID, new SulfurCubeArchetypeListener());
+        SpawnPlacements.register(
+                DBEntityTypes.SULFUR_CUBE.get(),
+                SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                SulfurCube::checkSulfurCubeSpawnRules
+        );
         DispenserBlock.registerBehavior(DBItems.SULFUR_CUBE_BUCKET.get(), new DefaultDispenseItemBehavior() {
             private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
 

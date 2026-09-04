@@ -189,8 +189,7 @@ public class DBBlocks {
                 .mapColor(color);
     }
 
-    public static void init() {
-    }
+    public static void init() {}
 
     public static void createProperties() {
         UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_POPLAR_LEAVES, 0.3F);
