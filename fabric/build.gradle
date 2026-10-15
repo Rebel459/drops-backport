@@ -12,6 +12,17 @@ dependencies {
     compileOnly("maven.modrinth:lithostitched:$lithostitched_fabric")
 }
 
+fabricApi {
+    configureDataGeneration() {
+        client = true;
+        modId = "drops_backport"
+    }
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 loom {
     def aw = project(':common').file("src/main/resources/${mod_id}.classtweaker")
     if (aw.exists()) {

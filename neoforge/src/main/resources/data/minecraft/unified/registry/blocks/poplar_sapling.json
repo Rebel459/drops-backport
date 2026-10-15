@@ -1,0 +1,7 @@
+{
+  "type": "drops_backport:poplar_sapling",
+  "properties": {
+    "copy_from": "minecraft:oak_sapling",
+    "map_color": "plant"
+  }
+}

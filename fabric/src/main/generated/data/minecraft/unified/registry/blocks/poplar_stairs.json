@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stairs",
+  "base_block": "minecraft:poplar_planks",
+  "properties": {
+    "copy_from": "minecraft:poplar_planks"
+  }
+}

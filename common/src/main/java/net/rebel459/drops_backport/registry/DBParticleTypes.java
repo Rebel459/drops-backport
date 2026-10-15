@@ -10,8 +10,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.rebel459.drops_backport.DropsBackport;
 import net.rebel459.drops_backport.particle.GeyserBaseParticleOptions;
 import net.rebel459.drops_backport.particle.GeyserParticleOptions;
-import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.util.registry.Supplied;
+import net.rebel459.unified.api.core.Supplied;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 import java.util.function.Function;
 

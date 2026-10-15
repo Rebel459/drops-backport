@@ -3,13 +3,14 @@ package net.rebel459.drops_backport;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.rebel459.unified.platform.NeoForgeUnifiedRegistries;
+import net.rebel459.unified.neoforge.NeoForgeUnifiedBus;
 
 @Mod(DropsBackport.MOD_ID)
 public class DropsBackportNeoForge {
 
     public DropsBackportNeoForge(IEventBus modEventBus) {
-        NeoForgeUnifiedRegistries.registerBus(DropsBackport.VANILLA_ID, modEventBus);
+        NeoForgeUnifiedBus.register(DropsBackport.VANILLA_ID, modEventBus);
+        NeoForgeUnifiedBus.register(DropsBackport.MOD_ID, modEventBus);
         DropsBackport.initRegistries();
         modEventBus.addListener(DropsBackportNeoForge::commonSetup);
     }

@@ -51,7 +51,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.rebel459.drops_backport.registry.DBAttributes;
-import net.rebel459.drops_backport.registry.DBEntityTypes;
+import net.rebel459.drops_backport.registry.DBEntities;
 import net.rebel459.drops_backport.registry.DBItems;
 import net.rebel459.drops_backport.registry.DBParticleTypes;
 import net.rebel459.drops_backport.item.SulfurCubeBucketItem;
@@ -557,7 +557,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob partner) {
-        SulfurCube sulfurCube = DBEntityTypes.SULFUR_CUBE.get().create(level, EntitySpawnReason.BREEDING);
+        SulfurCube sulfurCube = DBEntities.SULFUR_CUBE.get().create(level, EntitySpawnReason.BREEDING);
         if (sulfurCube != null) {
             sulfurCube.setSize(1, true);
         }

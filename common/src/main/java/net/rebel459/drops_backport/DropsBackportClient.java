@@ -10,9 +10,9 @@ import net.rebel459.drops_backport.client.particle.*;
 import net.rebel459.drops_backport.client.particle.geyser.GeyserBaseParticle;
 import net.rebel459.drops_backport.client.particle.geyser.GeyserEruptionParticle;
 import net.rebel459.drops_backport.client.particle.geyser.GeyserPlumeParticle;
-import net.rebel459.drops_backport.registry.DBEntityTypes;
+import net.rebel459.drops_backport.registry.DBEntities;
 import net.rebel459.drops_backport.registry.DBParticleTypes;
-import net.rebel459.unified.platform.client.UnifiedClientHelpers;
+import net.rebel459.unified.api.client.core.UnifiedClientHelpers;
 
 public class DropsBackportClient {
 
@@ -34,8 +34,8 @@ public class DropsBackportClient {
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.GEYSER_PLUME, GeyserPlumeParticle.Provider::new);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.NOXIOUS_GAS, NoxiousGasParticle.Provider::new);
         UnifiedClientHelpers.PARTICLE_PROVIDERS.add(DBParticleTypes.NOXIOUS_GAS_CLOUD, _ -> new NoxiousGasCloudParticle.Provider());
-        UnifiedClientHelpers.ENTITY_RENDERERS.addEntityRenderer(DBEntityTypes.SULFUR_CUBE::get, SulfurCubeRenderer::new);
-        UnifiedClientHelpers.ENTITY_RENDERERS.addEntityRenderer(DBEntityTypes.CUSHION::get, CushionRenderer::new);
+        UnifiedClientHelpers.ENTITY_RENDERERS.addEntityRenderer(DBEntities.SULFUR_CUBE::get, SulfurCubeRenderer::new);
+        UnifiedClientHelpers.ENTITY_RENDERERS.addEntityRenderer(DBEntities.CUSHION::get, CushionRenderer::new);
     }
 
     public static void init() {}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:fence_gate",
+  "properties": {
+    "copy_from": "minecraft:poplar_planks",
+    "solid": true
+  },
+  "wood_type": "minecraft:poplar"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "properties": {
+    "copy_from": "minecraft:stone",
+    "destroy_time": 1.5,
+    "explosion_resistance": 6.0,
+    "map_color": "color_yellow",
+    "sound_type": {
+      "break_sound": "minecraft:block.sulfur.break",
+      "fall_sound": "minecraft:block.sulfur.fall",
+      "hit_sound": "minecraft:block.sulfur.hit",
+      "place_sound": "minecraft:block.sulfur.place",
+      "step_sound": "minecraft:block.sulfur.step"
+    }
+  }
+}

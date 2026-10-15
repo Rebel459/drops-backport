@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "properties": {
+    "copy_from": "minecraft:stone",
+    "destroy_time": 1.5,
+    "explosion_resistance": 6.0,
+    "map_color": "color_red",
+    "sound_type": {
+      "break_sound": "minecraft:block.cinnabar.break",
+      "fall_sound": "minecraft:block.cinnabar.fall",
+      "hit_sound": "minecraft:block.cinnabar.hit",
+      "place_sound": "minecraft:block.cinnabar.place",
+      "step_sound": "minecraft:block.cinnabar.step"
+    }
+  }
+}

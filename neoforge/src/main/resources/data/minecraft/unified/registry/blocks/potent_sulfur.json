@@ -1,0 +1,15 @@
+{
+  "type": "drops_backport:potent_sulfur",
+  "block_entity": "minecraft:potent_sulfur",
+  "properties": {
+    "copy_from": "minecraft:sulfur",
+    "map_color": "gold",
+    "sound_type": {
+      "break_sound": "minecraft:block.potent_sulfur.break",
+      "fall_sound": "minecraft:block.potent_sulfur.fall",
+      "hit_sound": "minecraft:block.potent_sulfur.hit",
+      "place_sound": "minecraft:block.potent_sulfur.place",
+      "step_sound": "minecraft:block.potent_sulfur.step"
+    }
+  }
+}

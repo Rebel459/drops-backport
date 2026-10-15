@@ -4,7 +4,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.rebel459.drops_backport.DropsBackport;
-import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 public class DBMapDecorationTypes {
 
@@ -20,6 +20,6 @@ public class DBMapDecorationTypes {
     }
 
     private static Holder<MapDecorationType> register(String string) {
-        return DECORATIONS.registerForHolder(string, () -> new MapDecorationType(DropsBackport.vanillaId(string), true, 0, true, false));
+        return DECORATIONS.register(string, () -> new MapDecorationType(DropsBackport.vanillaId(string), true, 0, true, false)).holder();
     }
 }

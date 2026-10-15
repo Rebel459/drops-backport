@@ -1,0 +1,117 @@
+{
+  "type": "minecraft:sulfur_cube",
+  "properties": {
+    "default_attributes": {
+      "attributes": [
+        {
+          "attribute": "minecraft:max_health",
+          "value": 8.0
+        },
+        {
+          "attribute": "minecraft:knockback_resistance",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:movement_speed",
+          "value": 0.4
+        },
+        {
+          "attribute": "minecraft:armor",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:armor_toughness",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:max_absorption",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:step_height",
+          "value": 0.6
+        },
+        {
+          "attribute": "minecraft:scale",
+          "value": 1.0
+        },
+        {
+          "attribute": "minecraft:gravity",
+          "value": 0.08
+        },
+        {
+          "attribute": "minecraft:safe_fall_distance",
+          "value": 3.0
+        },
+        {
+          "attribute": "minecraft:fall_damage_multiplier",
+          "value": 1.0
+        },
+        {
+          "attribute": "minecraft:jump_strength",
+          "value": 0.41999998688697815
+        },
+        {
+          "attribute": "minecraft:entity_interaction_range",
+          "value": 3.0
+        },
+        {
+          "attribute": "minecraft:oxygen_bonus",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:burning_time",
+          "value": 1.0
+        },
+        {
+          "attribute": "minecraft:explosion_knockback_resistance",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:water_movement_efficiency",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:movement_efficiency",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:attack_knockback",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:camera_distance",
+          "value": 4.0
+        },
+        {
+          "attribute": "minecraft:waypoint_transmit_range",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:air_drag_modifier",
+          "value": 1.0
+        },
+        {
+          "attribute": "minecraft:friction_modifier",
+          "value": 1.0
+        },
+        {
+          "attribute": "minecraft:bounciness",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:follow_range",
+          "value": 16.0
+        },
+        {
+          "attribute": "minecraft:attack_damage",
+          "value": 0.0
+        },
+        {
+          "attribute": "minecraft:tempt_range",
+          "value": 8.0
+        }
+      ]
+    }
+  }
+}

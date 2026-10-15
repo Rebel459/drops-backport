@@ -18,8 +18,8 @@ import net.rebel459.drops_backport.worldgen.feature.poplar.PoplarTrunkPlacer;
 import net.rebel459.drops_backport.worldgen.feature.poplar.ShelfMushroomDecorator;
 import net.rebel459.drops_backport.worldgen.feature.speleothem.SpeleothemClusterFeature;
 import net.rebel459.drops_backport.worldgen.feature.speleothem.SpeleothemFeature;
-import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.util.registry.Supplied;
+import net.rebel459.unified.api.core.Supplied;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 public final class DBWorldgenCodecs {
     private static final UnifiedRegistries.DeferredRegistry<Feature<?>> FEATURES =

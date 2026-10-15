@@ -18,15 +18,19 @@ import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.util.DBCreativeEntries;
 import net.rebel459.drops_backport.util.entity.SulfurCubeArchetypeListener;
 import net.rebel459.drops_backport.worldgen.DBWorldgenCodecs;
-import net.rebel459.unified.platform.UnifiedHelpers;
+import net.rebel459.unified.api.core.UnifiedData;
+import net.rebel459.unified.api.core.UnifiedHelpers;
 
 public class DropsBackport {
 
     public static void initRegistries() {
+        DBBlockCodecs.init();
+        DBItemCodecs.init();
+        DBDataComponents.init();
         DBSoundEvents.init();
         DBAttributes.init();
         DBParticleTypes.init();
-        DBEntityTypes.init();
+        DBEntities.init();
         DBBlockEntityTypes.init();
         DBBlocks.init();
         DBParticleTypes.init();
@@ -39,12 +43,11 @@ public class DropsBackport {
 
     public static void init() {
         TeleportTrailPacket.init();
-        DBBlocks.createProperties();
         DBStats.initCustomStats();
         DBCreativeEntries.init();
         UnifiedHelpers.RELOAD_LISTENERS.addListener(SulfurCubeArchetypeListener.ID, new SulfurCubeArchetypeListener());
         SpawnPlacements.register(
-                DBEntityTypes.SULFUR_CUBE.get(),
+                DBEntities.SULFUR_CUBE.get(),
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 SulfurCube::checkSulfurCubeSpawnRules
@@ -74,4 +77,6 @@ public class DropsBackport {
 
     public static final String MOD_ID = "drops_backport";
     public static final String VANILLA_ID = "minecraft";
+
+    public static UnifiedData DATA = UnifiedData.create(MOD_ID).namespace(VANILLA_ID).autoName("assets/" + MOD_ID + "/lang/en_us_overrides.json").build();
 }

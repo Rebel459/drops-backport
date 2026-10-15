@@ -1,0 +1,49 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": [
+        "minecraft:sulfur_spike",
+        "minecraft:potent_sulfur"
+      ],
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:sulfur"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:red_shrub",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:bush"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:shelf_mushroom",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:red_mushroom"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:straw_bed",
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:ender_eye"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_cube_bucket",
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:tadpole_bucket"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:music_disc_bounce",
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:music_disc_lava_chicken"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_cube_spawn_egg",
+      "tab": "minecraft:spawn_eggs",
+      "target": "minecraft:sniffer_spawn_egg"
+    }
+  ]
+}

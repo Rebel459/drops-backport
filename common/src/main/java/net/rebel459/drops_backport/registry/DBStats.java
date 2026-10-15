@@ -6,7 +6,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
 import net.rebel459.drops_backport.DropsBackport;
-import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 import java.util.ArrayList;
 import java.util.List;

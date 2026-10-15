@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:slab",
+  "properties": {
+    "copy_from": "minecraft:cinnabar_bricks"
+  }
+}

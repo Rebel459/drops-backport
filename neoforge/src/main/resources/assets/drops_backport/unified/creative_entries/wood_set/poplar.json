@@ -1,0 +1,85 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": [
+        "minecraft:poplar_planks",
+        "minecraft:poplar_stairs",
+        "minecraft:poplar_slab",
+        "minecraft:poplar_fence",
+        "minecraft:poplar_fence_gate",
+        "minecraft:poplar_door",
+        "minecraft:poplar_trapdoor",
+        "minecraft:poplar_pressure_plate",
+        "minecraft:poplar_button"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:pale_oak_button"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "minecraft:poplar_log",
+        "minecraft:poplar_wood",
+        "minecraft:stripped_poplar_log",
+        "minecraft:stripped_poplar_wood"
+      ],
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:pale_oak_button"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:poplar_log",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:pale_oak_log"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:yellow_poplar_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:orange_poplar_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:orange_poplar_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:orange_poplar_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:red_poplar_leaves",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:orange_poplar_leaves"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:poplar_sapling",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:pale_oak_sapling"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:poplar_shelf",
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:pale_oak_shelf"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "minecraft:poplar_sign",
+        "minecraft:poplar_hanging_sign"
+      ],
+      "tab": "minecraft:functional_blocks",
+      "target": "minecraft:pale_oak_hanging_sign"
+    },
+    {
+      "type": "insert_after",
+      "items": [
+        "minecraft:poplar_boat",
+        "minecraft:poplar_chest_boat"
+      ],
+      "tab": "minecraft:tools_and_utilities",
+      "target": "minecraft:pale_oak_chest_boat"
+    }
+  ]
+}

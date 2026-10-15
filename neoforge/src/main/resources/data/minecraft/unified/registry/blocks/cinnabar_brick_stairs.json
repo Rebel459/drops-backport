@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stairs",
+  "base_block": "minecraft:cinnabar_bricks",
+  "properties": {
+    "copy_from": "minecraft:cinnabar_bricks"
+  }
+}

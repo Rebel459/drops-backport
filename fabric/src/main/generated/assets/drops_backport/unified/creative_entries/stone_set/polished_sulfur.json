@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_sulfur_wall",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_sulfur"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_sulfur_slab",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_sulfur"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_sulfur_stairs",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_sulfur"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_sulfur",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_sulfur"
+    }
+  ]
+}

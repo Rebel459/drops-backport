@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": "minecraft:chiseled_sulfur",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cinnabar_brick_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_wall",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cinnabar_brick_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_slab",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cinnabar_brick_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_stairs",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cinnabar_brick_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:cinnabar_brick_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur",
+      "tab": "minecraft:natural_blocks",
+      "target": "minecraft:cinnabar"
+    }
+  ]
+}

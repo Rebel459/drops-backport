@@ -1,0 +1,15 @@
+{
+  "type": "drops_backport:shelf_mushroom",
+  "properties": {
+    "map_color": "terracotta_yellow",
+    "occlusion": false,
+    "push_reaction": "destroy",
+    "sound_type": {
+      "break_sound": "minecraft:block.shelf_mushroom.break",
+      "fall_sound": "minecraft:block.shelf_mushroom.fall",
+      "hit_sound": "minecraft:intentionally_empty",
+      "place_sound": "minecraft:block.shelf_mushroom.place",
+      "step_sound": "minecraft:block.shelf_mushroom.step"
+    }
+  }
+}

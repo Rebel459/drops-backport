@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:stairs",
+  "base_block": "minecraft:white_wool",
+  "properties": {
+    "copy_from": "minecraft:white_wool",
+    "flammability": {
+      "burn_odds": 60,
+      "ignite_odds": 30
+    },
+    "map_color": "color_magenta"
+  }
+}

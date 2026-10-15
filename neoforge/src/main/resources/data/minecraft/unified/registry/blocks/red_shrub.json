@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:bush",
+  "properties": {
+    "collision": false,
+    "destroy_time": 0.0,
+    "explosion_resistance": 0.0,
+    "flammability": {
+      "burn_odds": 100,
+      "ignite_odds": 60
+    },
+    "map_color": "crimson_nylium",
+    "push_reaction": "destroy",
+    "replaceable": true,
+    "sound_type": {
+      "break_sound": "minecraft:block.red_shrub.break",
+      "fall_sound": "minecraft:intentionally_empty",
+      "hit_sound": "minecraft:intentionally_empty",
+      "place_sound": "minecraft:block.red_shrub.place",
+      "step_sound": "minecraft:intentionally_empty"
+    }
+  }
+}

@@ -8,7 +8,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.rebel459.drops_backport.DropsBackport;
-import net.rebel459.unified.platform.UnifiedHelpers;
+import net.rebel459.unified.api.core.UnifiedHelpers;
 
 public record TeleportTrailPacket(BlockPos from, BlockPos to) implements CustomPacketPayload {
 

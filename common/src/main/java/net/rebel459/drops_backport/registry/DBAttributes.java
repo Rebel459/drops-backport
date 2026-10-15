@@ -5,23 +5,23 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.rebel459.drops_backport.DropsBackport;
-import net.rebel459.unified.platform.UnifiedRegistries;
+import net.rebel459.unified.api.core.UnifiedRegistries;
 
 public final class DBAttributes {
     private static final UnifiedRegistries.DeferredRegistry<Attribute> ATTRIBUTES = UnifiedRegistries.DeferredRegistry.create(DropsBackport.VANILLA_ID, BuiltInRegistries.ATTRIBUTE);
 
-    public static final Holder<Attribute> AIR_DRAG_MODIFIER = ATTRIBUTES.registerForHolder(
+    public static final Holder<Attribute> AIR_DRAG_MODIFIER = ATTRIBUTES.register(
             "air_drag_modifier",
             () -> new RangedAttribute("attribute.minecraft.air_drag_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
-    );
-    public static final Holder<Attribute> BOUNCINESS = ATTRIBUTES.registerForHolder(
+    ).holder();
+    public static final Holder<Attribute> BOUNCINESS = ATTRIBUTES.register(
             "bounciness",
             () -> new RangedAttribute("attribute.minecraft.bounciness", 0.0, 0.0, 1.0).setSyncable(true)
-    );
-    public static final Holder<Attribute> FRICTION_MODIFIER = ATTRIBUTES.registerForHolder(
+    ).holder();
+    public static final Holder<Attribute> FRICTION_MODIFIER = ATTRIBUTES.register(
             "friction_modifier",
             () -> new RangedAttribute("attribute.minecraft.friction_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
-    );
+    ).holder();
 
     private DBAttributes() {
     }

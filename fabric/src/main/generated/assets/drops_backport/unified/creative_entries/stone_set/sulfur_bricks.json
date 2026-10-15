@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_brick_wall",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:sulfur_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_brick_slab",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:sulfur_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_brick_stairs",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:sulfur_wall"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:sulfur_bricks",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:sulfur_wall"
+    }
+  ]
+}

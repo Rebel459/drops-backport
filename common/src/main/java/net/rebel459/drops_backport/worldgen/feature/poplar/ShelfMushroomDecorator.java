@@ -136,7 +136,7 @@ public class ShelfMushroomDecorator extends TreeDecorator {
     }
 
     private static boolean hasShelfMushroomAt(final TreeDecorator.Context context, final BlockPos pos) {
-        return context.checkBlock(pos, state -> state.is(DBBlocks.SHELF_MUSHROOM));
+        return context.checkBlock(pos, state -> state.is(DBBlocks.SHELF_MUSHROOM.key()));
     }
 
     private static boolean hasHorizontallyAdjacentShelfMushroom(final TreeDecorator.Context context, final BlockPos pos) {

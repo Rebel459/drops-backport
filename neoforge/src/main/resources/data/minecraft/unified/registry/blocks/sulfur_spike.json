@@ -1,0 +1,24 @@
+{
+  "type": "drops_backport:sulfur_spike",
+  "block_to_grow_on": "minecraft:sulfur",
+  "properties": {
+    "destroy_time": 1.5,
+    "dynamic_shape": true,
+    "explosion_resistance": 3.0,
+    "instrument": "basedrum",
+    "map_color": "color_yellow",
+    "occlusion": false,
+    "offset": "xz",
+    "push_reaction": "destroy",
+    "random_ticks": true,
+    "redstone_conductor": "unified:never",
+    "solid": true,
+    "sound_type": {
+      "break_sound": "minecraft:block.sulfur_spike.break",
+      "fall_sound": "minecraft:block.sulfur_spike.fall",
+      "hit_sound": "minecraft:block.sulfur_spike.hit",
+      "place_sound": "minecraft:block.sulfur_spike.place",
+      "step_sound": "minecraft:block.sulfur_spike.step"
+    }
+  }
+}

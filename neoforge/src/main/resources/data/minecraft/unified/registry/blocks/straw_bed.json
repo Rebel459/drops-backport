@@ -1,0 +1,21 @@
+{
+  "type": "drops_backport:straw_bed",
+  "properties": {
+    "destroy_time": 0.2,
+    "explosion_resistance": 0.2,
+    "flammability": {
+      "burn_odds": 60,
+      "ignite_odds": 30
+    },
+    "map_color": "color_yellow",
+    "occlusion": false,
+    "push_reaction": "destroy",
+    "sound_type": {
+      "break_sound": "minecraft:block.straw_bed.break",
+      "fall_sound": "minecraft:block.straw_bed.fall",
+      "hit_sound": "minecraft:block.straw_bed.hit",
+      "place_sound": "minecraft:block.straw_bed.place",
+      "step_sound": "minecraft:block.straw_bed.step"
+    }
+  }
+}

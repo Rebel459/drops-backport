@@ -19,6 +19,9 @@
     ],
     "client": [
       "net.rebel459.drops_backport.DropsBackportFabricClient"
+    ],
+    "fabric-datagen": [
+      "net.rebel459.drops_backport.datagen.DBDataGenerator"
     ]
   },
   "mixins": [

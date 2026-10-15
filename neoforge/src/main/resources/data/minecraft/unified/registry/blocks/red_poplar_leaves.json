@@ -1,0 +1,34 @@
+{
+  "type": "drops_backport:untinted_particle_leaves",
+  "leaf_particle": {
+    "type": "minecraft:red_poplar_leaves"
+  },
+  "leaf_particle_chance": 0.01,
+  "properties": {
+    "destroy_time": 0.2,
+    "explosion_resistance": 0.2,
+    "flammability": {
+      "burn_odds": 60,
+      "ignite_odds": 30
+    },
+    "map_color": "color_red",
+    "occlusion": false,
+    "push_reaction": "destroy",
+    "random_ticks": true,
+    "redstone_conductor": "unified:never",
+    "sound_type": {
+      "break_sound": "minecraft:block.poplar_leaves.break",
+      "fall_sound": "minecraft:block.poplar_leaves.fall",
+      "hit_sound": "minecraft:block.poplar_leaves.hit",
+      "place_sound": "minecraft:block.poplar_leaves.place",
+      "step_sound": "minecraft:block.poplar_leaves.step"
+    },
+    "suffocating": "unified:never",
+    "valid_spawn": "minecraft:ocelot_or_parrot",
+    "view_blocking": "unified:never"
+  },
+  "sound_player": {
+    "ambient_sound": "minecraft:block.poplar_leaves.ambient",
+    "satisfying_blocks": "minecraft:required_for_poplar_leaf_ambience"
+  }
+}

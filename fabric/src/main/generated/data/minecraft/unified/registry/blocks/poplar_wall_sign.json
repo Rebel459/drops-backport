@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:wall_sign",
+  "block_entity": "minecraft:sign",
+  "properties": {
+    "copy_from": "minecraft:poplar_sign",
+    "loot_table": "minecraft:blocks/poplar_sign"
+  },
+  "wood_type": "minecraft:poplar"
+}

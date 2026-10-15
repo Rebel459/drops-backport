@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_cinnabar_wall",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_cinnabar"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_cinnabar_slab",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_cinnabar"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_cinnabar_stairs",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_cinnabar"
+    },
+    {
+      "type": "insert_after",
+      "items": "minecraft:polished_cinnabar",
+      "tab": "minecraft:building_blocks",
+      "target": "minecraft:chiseled_cinnabar"
+    }
+  ]
+}

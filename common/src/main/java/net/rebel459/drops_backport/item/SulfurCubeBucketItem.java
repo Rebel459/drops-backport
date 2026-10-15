@@ -35,7 +35,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.rebel459.drops_backport.entity.cube.SulfurCube;
-import net.rebel459.drops_backport.registry.DBEntityTypes;
+import net.rebel459.drops_backport.registry.DBEntities;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -102,7 +102,7 @@ public class SulfurCubeBucketItem extends Item {
     }
 
     private boolean spawn(ServerLevel level, ItemStack stack, BlockPos pos) {
-        Entity entity = DBEntityTypes.SULFUR_CUBE.get().create(
+        Entity entity = DBEntities.SULFUR_CUBE.get().create(
                 level,
                 EntityType.createDefaultStackConfig(level, stack, null),
                 pos,

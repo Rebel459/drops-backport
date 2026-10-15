@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stairs",
+  "base_block": "minecraft:white_concrete",
+  "properties": {
+    "copy_from": "minecraft:white_concrete",
+    "map_color": "snow"
+  }
+}

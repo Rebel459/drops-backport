@@ -1,211 +1,207 @@
 package net.rebel459.drops_backport.registry;
 
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.rebel459.drops_backport.DropsBackport;
-import net.rebel459.drops_backport.block.PoplarSaplingBlock;
-import net.rebel459.drops_backport.block.ShelfMushroomBlock;
-import net.rebel459.drops_backport.util.block.AmbientLeavesBlockSoundPlayer;
-import net.rebel459.drops_backport.block.PotentSulfurBlock;
-import net.rebel459.drops_backport.block.bed.StrawBedBlock;
-import net.rebel459.drops_backport.block.speleothem.SulfurSpikeBlock;
 import net.rebel459.drops_backport.sound.DBSoundEvents;
 import net.rebel459.drops_backport.sound.DBSoundTypes;
 import net.rebel459.drops_backport.tag.DBBlockTags;
-import net.rebel459.drops_backport.block.leaves.UntintedParticleLeavesBlock;
-import net.rebel459.unified.platform.UnifiedHelpers;
-import net.rebel459.unified.platform.UnifiedRegistries;
-import net.rebel459.unified.util.builder.*;
-import net.rebel459.unified.util.registry.SuppliedBlock;
-
-import java.util.function.Supplier;
+import net.rebel459.drops_backport.util.block.AmbientLeavesBlockSoundPlayer;
+import net.rebel459.unified.api.asset.BlockAssets;
+import net.rebel459.unified.api.codec.ExtensibleCodecs;
+import net.rebel459.unified.api.core.SuppliedBlock;
+import net.rebel459.unified.api.core.UnifiedData;
+import net.rebel459.unified.api.data.registry.BlockGenerator;
+import net.rebel459.unified.api.data.set.*;
+import net.rebel459.unified.api.registry.UnifiedDataComponents;
+import net.rebel459.unified.api.registry.VanillaBlockCodecs;
+import net.rebel459.unified.impl.util.BlockItemTagId;
 
 public class DBBlocks {
 
-    public static UnifiedRegistries.Blocks BLOCKS = UnifiedRegistries.Blocks.create(DropsBackport.VANILLA_ID);
-    public static UnifiedRegistries.Blocks.Builders BLOCK_BUILDERS = BLOCKS.builders();
+    private static final BlockGenerator BLOCKS = DropsBackport.DATA.registries().blocks();
+    private static final UnifiedData.Sets SETS = DropsBackport.DATA.sets();
 
-    public static final ColoredBlockSet WOOL_STAIRS = BLOCK_BUILDERS.coloredBlockSet("wool_stairs", ColoredBlockPreset.WOOL)
-            .function(properties -> new StairBlock(Blocks.WHITE_WOOL.defaultBlockState(), properties))
+    public static final ColoredBlockSet WOOL_STAIRS = SETS.coloredBlockSet("wool_stairs", ColoredBlockPreset.WOOL)
+            .type(_ -> VanillaBlockCodecs.STAIRS.create(() -> Blocks.WHITE_WOOL))
             .creativeInventoryPlacement(() -> Blocks.PINK_WOOL)
+            .builder((_, builder) -> builder.data(data -> data.tag(BlockTags.WOOL)))
             .build();
-    public static final ColoredBlockSet WOOL_SLABS = BLOCK_BUILDERS.coloredBlockSet("wool_slab", ColoredBlockPreset.WOOL)
-            .function(SlabBlock::new)
+    public static final ColoredBlockSet WOOL_SLABS = SETS.coloredBlockSet("wool_slab", ColoredBlockPreset.WOOL)
+            .type(_ -> VanillaBlockCodecs.SLAB.create())
             .creativeInventoryPlacement(WOOL_STAIRS.getPink())
-            .setFlammability(30, 60, 50)
+            .builder((_, builder) -> builder
+                    .itemProperties(properties -> properties.component(UnifiedDataComponents.FURNACE_FUEL.get(), 50))
+                    .properties(properties -> properties.flammable(30, 60))
+                    .data(data -> data.tag(BlockTags.WOOL))
+            )
             .build();
 
-    public static final ColoredBlockSet CONCRETE_STAIRS = BLOCK_BUILDERS.coloredBlockSet("concrete_stairs", ColoredBlockPreset.CONCRETE)
-            .function(properties -> new StairBlock(Blocks.WHITE_CONCRETE.defaultBlockState(), properties))
+    public static final ColoredBlockSet CONCRETE_STAIRS = SETS.coloredBlockSet("concrete_stairs", ColoredBlockPreset.CONCRETE)
+            .type(_ -> VanillaBlockCodecs.STAIRS.create(() -> Blocks.WHITE_CONCRETE))
             .creativeInventoryPlacement(() -> Blocks.PINK_CONCRETE)
             .build();
-    public static final ColoredBlockSet CONCRETE_SLABS = BLOCK_BUILDERS.coloredBlockSet("concrete_slab", ColoredBlockPreset.CONCRETE)
-            .function(SlabBlock::new)
+    public static final ColoredBlockSet CONCRETE_SLABS = SETS.coloredBlockSet("concrete_slab", ColoredBlockPreset.CONCRETE)
+            .type(_ -> VanillaBlockCodecs.SLAB.create())
             .creativeInventoryPlacement(CONCRETE_STAIRS.getPink())
             .build();
 
-    public static final BlockSet CINNABAR = BLOCK_BUILDERS.blockSet("cinnabar", BlockPreset.DEFAULT, MapColor.COLOR_RED)
+    public static final StoneSet CINNABAR = SETS.stoneSet("cinnabar", StonePreset.DEFAULT, MapColor.COLOR_RED)
             .creativeInventoryPlacement(() -> Blocks.CUT_RED_SANDSTONE_SLAB, () -> Blocks.PRISMARINE)
             .setSoundType(DBSoundTypes.CINNABAR)
             .hasChiseled(true)
             .build();
-    public static final BlockSet POLISHED_CINNABAR = BLOCK_BUILDERS.blockSet("polished_cinnabar", BlockPreset.DEFAULT, MapColor.COLOR_RED)
+    public static final StoneSet POLISHED_CINNABAR = SETS.stoneSet("polished_cinnabar", StonePreset.DEFAULT, MapColor.COLOR_RED)
             .creativeInventoryPlacement(CINNABAR.getChiseled())
             .setSoundType(DBSoundTypes.CINNABAR)
             .build();
-    public static final BlockSet CINNABAR_BRICKS = BLOCK_BUILDERS.blockSet("cinnabar_bricks", BlockPreset.DEFAULT, MapColor.COLOR_RED)
+    public static final StoneSet CINNABAR_BRICKS = SETS.stoneSet("cinnabar_bricks", StonePreset.DEFAULT, MapColor.COLOR_RED)
             .creativeInventoryPlacement(POLISHED_CINNABAR.getWall())
             .setSoundType(DBSoundTypes.CINNABAR)
             .build();
 
-    public static final BlockSet SULFUR = BLOCK_BUILDERS.blockSet("sulfur", BlockPreset.DEFAULT, MapColor.COLOR_YELLOW)
+    public static final StoneSet SULFUR = SETS.stoneSet("sulfur", StonePreset.DEFAULT, MapColor.COLOR_YELLOW)
             .creativeInventoryPlacement(CINNABAR_BRICKS.getWall(), CINNABAR.getBase())
             .setSoundType(DBSoundTypes.SULFUR)
             .hasChiseled(true)
             .build();
-    public static final BlockSet POLISHED_SULFUR = BLOCK_BUILDERS.blockSet("polished_sulfur", BlockPreset.DEFAULT, MapColor.COLOR_YELLOW)
+    public static final StoneSet POLISHED_SULFUR = SETS.stoneSet("polished_sulfur", StonePreset.DEFAULT, MapColor.COLOR_YELLOW)
             .creativeInventoryPlacement(SULFUR.getChiseled())
             .setSoundType(DBSoundTypes.SULFUR)
             .build();
-    public static final BlockSet SULFUR_BRICKS = BLOCK_BUILDERS.blockSet("sulfur_bricks", BlockPreset.DEFAULT, MapColor.COLOR_YELLOW)
+    public static final StoneSet SULFUR_BRICKS = SETS.stoneSet("sulfur_bricks", StonePreset.DEFAULT, MapColor.COLOR_YELLOW)
             .creativeInventoryPlacement(SULFUR.getWall())
             .setSoundType(DBSoundTypes.SULFUR)
             .build();
 
-    public static final SuppliedBlock POTENT_SULFUR = BLOCKS.register("potent_sulfur",
-            PotentSulfurBlock::new,
-            () -> BlockBehaviour.Properties.ofFullCopy(SULFUR.getBase().get()).sound(DBSoundTypes.POTENT_SULFUR.get())
-                    .mapColor(MapColor.GOLD),
-            DBBlockEntityTypes.POTENT_SULFUR
+    public static final SuppliedBlock POTENT_SULFUR = BLOCKS.register(
+            "potent_sulfur",
+            DBBlockCodecs.POTENT_SULFUR.create(),
+            builder -> builder
+                    .properties(properties -> properties
+                            .copyFrom(SULFUR.getBase())
+                            .soundType(DBSoundTypes.POTENT_SULFUR.get())
+                            .mapColor(MapColor.GOLD)
+                    )
+                    .blockEntity(DBBlockEntityTypes.POTENT_SULFUR)
     );
 
-    public static final WoodSet POPLAR = BLOCK_BUILDERS.woodSet("poplar", WoodPreset.DEFAULT, MapColor.COLOR_BROWN, MapColor.COLOR_LIGHT_GRAY)
+    public static final WoodSet POPLAR = SETS.woodSet("poplar", WoodPreset.DEFAULT, BlockItemTagId.create(DropsBackport.vanillaId("poplar_logs")), MapColor.COLOR_BROWN, MapColor.COLOR_LIGHT_GRAY)
             .creativeInventoryPlacement(() -> Blocks.PALE_OAK_BUTTON, () -> Blocks.PALE_OAK_LOG, () -> Blocks.PALE_OAK_SHELF, () -> Blocks.PALE_OAK_HANGING_SIGN, () -> Items.PALE_OAK_CHEST_BOAT)
-            .setLeafSoundType(DBSoundTypes.POPLAR_LEAVES)
+            .setLeavesSoundType(DBSoundTypes.POPLAR_LEAVES)
             .setWoodSoundType(() -> SoundType.WOOD)
-            .createSapling(PoplarSaplingBlock::new, MapColor.PLANT, () -> Items.PALE_OAK_SAPLING)
+            .createSapling(DBBlockCodecs.POPLAR_SAPLING.create(), MapColor.PLANT, BlockAssets.PlantType.NOT_TINTED, () -> Items.PALE_OAK_SAPLING)
+            .createLeaves(
+                    WoodSet.Leaves.variant(
+                            "red",
+                            DBBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new DBBlockCodecs.ParticleLeaves(
+                                    0.01F,
+                                    DBParticleTypes.RED_POPLAR_LEAVES.get(),
+                                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE))
+                            ),
+                            MapColor.COLOR_RED,
+                            BlockAssets.LEAVES,
+                            (block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+                            () -> Items.PALE_OAK_LEAVES
+                    ),
+                    WoodSet.Leaves.variant(
+                            "orange",
+                            DBBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new DBBlockCodecs.ParticleLeaves(
+                                    0.01F,
+                                    DBParticleTypes.ORANGE_POPLAR_LEAVES.get(),
+                                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE))
+                            ),
+                            MapColor.COLOR_ORANGE,
+                            BlockAssets.LEAVES,
+                            (block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+                            "red"
+                    ),
+                    WoodSet.Leaves.variant(
+                            "yellow",
+                            DBBlockCodecs.UNTINTED_PARTICLE_LEAVES.create(() -> new DBBlockCodecs.ParticleLeaves(
+                                    0.01F,
+                                    DBParticleTypes.YELLOW_POPLAR_LEAVES.get(),
+                                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE))
+                            ),
+                            MapColor.COLOR_YELLOW,
+                            BlockAssets.LEAVES,
+                            (block, sapling, provider) -> provider.createLeavesDrops(block, sapling, 0.05F, 0.0625F, 0.083333336F, 0.1F),
+                            "orange"
+                    )
+            )
             .build();
 
-    public static final SuppliedBlock STRAW_BED = BLOCKS.register("straw_bed",
-            StrawBedBlock::new,
-            () -> BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_YELLOW)
-                    .sound(DBSoundTypes.STRAW_BED.get())
-                    .strength(0.2F)
-                    .noOcclusion()
-                    .ignitedByLava()
-                    .pushReaction(PushReaction.DESTROY)
-    );
-
-    public static final SuppliedBlock RED_POPLAR_LEAVES = BLOCKS.register(
-            "red_poplar_leaves",
-            p -> new UntintedParticleLeavesBlock(
-                    0.01F,
-                    DBParticleTypes.RED_POPLAR_LEAVES.get(),
-                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-                    p
-            ),
-            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_RED)
-    );
-    public static final SuppliedBlock ORANGE_POPLAR_LEAVES = BLOCKS.register(
-            "orange_poplar_leaves",
-            p -> new UntintedParticleLeavesBlock(
-                    0.01F,
-                    DBParticleTypes.ORANGE_POPLAR_LEAVES.get(),
-                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-                    p
-            ),
-            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_ORANGE)
-    );
-    public static final SuppliedBlock YELLOW_POPLAR_LEAVES = BLOCKS.register(
-            "yellow_poplar_leaves",
-            p -> new UntintedParticleLeavesBlock(
-                    0.01F,
-                    DBParticleTypes.YELLOW_POPLAR_LEAVES.get(),
-                    AmbientLeavesBlockSoundPlayer.of(DBSoundEvents.POPLAR_LEAVES_AMBIENT, DBBlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-                    p
-            ),
-            leavesProperties(DBSoundTypes.POPLAR_LEAVES, MapColor.COLOR_YELLOW)
+    public static final SuppliedBlock STRAW_BED = BLOCKS.register(
+            "straw_bed",
+            DBBlockCodecs.STRAW_BED.create(),
+            builder -> builder
+                    .properties(properties -> properties
+                            .mapColor(MapColor.COLOR_YELLOW)
+                            .soundType(DBSoundTypes.STRAW_BED.get())
+                            .strength(0.2F)
+                            .occlusion(false)
+                            .flammable(30, 60)
+                            .pushReaction(PushReaction.DESTROY)
+                    )
+                    .itemProperties(properties -> properties
+                            .stacksTo(16)
+                    )
     );
 
     public static final SuppliedBlock RED_SHRUB = BLOCKS.register(
             "red_shrub",
-            BushBlock::new,
-            () -> BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.CRIMSON_NYLIUM)
-                    .replaceable()
-                    .noCollision()
-                    .instabreak()
-                    .sound(DBSoundTypes.RED_SHRUB.get())
-                    .ignitedByLava()
-                    .pushReaction(PushReaction.DESTROY)
+            VanillaBlockCodecs.BUSH.create(),
+            builder -> builder
+                    .properties(properties -> properties
+                            .mapColor(MapColor.CRIMSON_NYLIUM)
+                            .replaceable(true)
+                            .collision(false)
+                            .instabreak()
+                            .soundType(DBSoundTypes.RED_SHRUB.get())
+                            .flammable(60, 100)
+                            .pushReaction(PushReaction.DESTROY)
+                    )
+                    .itemProperties(properties -> properties
+                            .component(UnifiedDataComponents.COMPOST.get(), 0.3F)
+                    )
     );
 
     public static final SuppliedBlock SHELF_MUSHROOM = BLOCKS.register(
             "shelf_mushroom",
-            ShelfMushroomBlock::new,
-            () -> BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.TERRACOTTA_YELLOW)
-                    .sound(DBSoundTypes.SHELF_MUSHROOM.get())
-                    .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY)
+            DBBlockCodecs.SHELF_MUSHROOM.create(),
+            builder -> builder
+                    .properties(properties -> properties
+                            .mapColor(MapColor.TERRACOTTA_YELLOW)
+                            .soundType(DBSoundTypes.SHELF_MUSHROOM.get())
+                            .occlusion(false)
+                            .pushReaction(PushReaction.DESTROY)
+                    )
     );
 
     public static final SuppliedBlock SULFUR_SPIKE = BLOCKS.register(
             "sulfur_spike",
-            p -> new SulfurSpikeBlock(SULFUR.getBase().defaultBlockState(), p),
-            () -> BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_YELLOW)
-                    .forceSolidOn()
-                    .instrument(NoteBlockInstrument.BASEDRUM)
-                    .noOcclusion()
-                    .sound(DBSoundTypes.SULFUR_SPIKE.get())
-                    .randomTicks()
-                    .strength(1.5F, 3.0F)
-                    .dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ)
-                    .pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor(Blocks::never)
-                    .noOcclusion()
+            DBBlockCodecs.SULFUR_SPIKE.create(SULFUR.getBase()),
+            builder -> builder
+                    .properties(properties -> properties
+                            .mapColor(MapColor.COLOR_YELLOW)
+                            .solid(true)
+                            .instrument(NoteBlockInstrument.BASEDRUM)
+                            .occlusion(false)
+                            .soundType(DBSoundTypes.SULFUR_SPIKE.get())
+                            .randomTicks(true)
+                            .strength(1.5F, 3.0F)
+                            .dynamicShape(true)
+                            .offset(BlockBehaviour.OffsetType.XZ)
+                            .pushReaction(PushReaction.DESTROY)
+                            .redstoneConductor(ExtensibleCodecs.STATE_PREDICATE.never().create())
+                    )
     );
 
-    private static Supplier<BlockBehaviour.Properties> leavesProperties(final Supplier<SoundType> soundType, MapColor color) {
-        return () -> BlockBehaviour.Properties.of()
-                .mapColor(MapColor.PLANT)
-                .strength(0.2F)
-                .randomTicks()
-                .sound(soundType.get())
-                .noOcclusion()
-                .isValidSpawn(Blocks::ocelotOrParrot)
-                .isSuffocating(Blocks::never)
-                .ignitedByLava()
-                .pushReaction(PushReaction.DESTROY)
-                .isRedstoneConductor(Blocks::never)
-                .mapColor(color);
-    }
-
     public static void init() {}
-
-    public static void createProperties() {
-        UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_POPLAR_LEAVES, 0.3F);
-        UnifiedHelpers.DATA_COMPONENTS.addCompost(ORANGE_POPLAR_LEAVES, 0.3F);
-        UnifiedHelpers.DATA_COMPONENTS.addCompost(YELLOW_POPLAR_LEAVES, 0.3F);
-        UnifiedHelpers.DATA_COMPONENTS.addCompost(RED_SHRUB, 0.3F);
-
-        // Temporary
-        UnifiedHelpers.DATA_COMPONENTS.addFurnaceFuel(POPLAR.getSlab(), 150);
-
-        final FireBlock fire = (FireBlock) Blocks.FIRE;
-        fire.setFlammable(RED_POPLAR_LEAVES.get(), 30, 60);
-        fire.setFlammable(ORANGE_POPLAR_LEAVES.get(), 30, 60);
-        fire.setFlammable(YELLOW_POPLAR_LEAVES.get(), 30, 60);
-        fire.setFlammable(RED_SHRUB.get(), 60, 100);
-
-        UnifiedHelpers.DATA_COMPONENTS.add(STRAW_BED.get(), DataComponents.MAX_STACK_SIZE, 16);
-    }
 }

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:slab",
+  "properties": {
+    "copy_from": "minecraft:white_concrete",
+    "map_color": "color_orange"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "door_close": "minecraft:block.iron_door.close",
+  "door_open": "minecraft:block.iron_door.open",
+  "sound_type": {
+    "break_sound": "minecraft:block.cinnabar.break",
+    "fall_sound": "minecraft:block.cinnabar.fall",
+    "hit_sound": "minecraft:block.cinnabar.hit",
+    "place_sound": "minecraft:block.cinnabar.place",
+    "step_sound": "minecraft:block.cinnabar.step"
+  },
+  "trapdoor_close": "minecraft:block.iron_trapdoor.close",
+  "trapdoor_open": "minecraft:block.iron_trapdoor.open"
+}

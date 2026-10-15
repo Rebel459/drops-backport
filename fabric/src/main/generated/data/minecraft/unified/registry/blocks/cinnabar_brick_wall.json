@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:wall",
+  "properties": {
+    "copy_from": "minecraft:cinnabar_bricks"
+  }
+}
