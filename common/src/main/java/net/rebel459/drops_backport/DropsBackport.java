@@ -78,5 +78,5 @@ public class DropsBackport {
     public static final String MOD_ID = "drops_backport";
     public static final String VANILLA_ID = "minecraft";
 
-    public static UnifiedData DATA = UnifiedData.create(MOD_ID).namespace(VANILLA_ID).autoName("assets/" + MOD_ID + "/lang/en_us_overrides.json").build();
+    public static UnifiedData DATA = UnifiedData.create(MOD_ID).namespace(VANILLA_ID).autoName().injectTranslations("assets/" + MOD_ID + "/lang/en_us_overrides.json").build();
 }
