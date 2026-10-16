@@ -35,19 +35,19 @@
     },
     {
       "type": "insert_after",
-      "items": "minecraft:yellow_poplar_leaves",
+      "items": "minecraft:red_poplar_leaves",
       "tab": "minecraft:natural_blocks",
-      "target": "minecraft:orange_poplar_leaves"
+      "target": "minecraft:pale_oak_leaves"
     },
     {
       "type": "insert_after",
       "items": "minecraft:orange_poplar_leaves",
       "tab": "minecraft:natural_blocks",
-      "target": "minecraft:orange_poplar_leaves"
+      "target": "minecraft:red_poplar_leaves"
     },
     {
       "type": "insert_after",
-      "items": "minecraft:red_poplar_leaves",
+      "items": "minecraft:yellow_poplar_leaves",
       "tab": "minecraft:natural_blocks",
       "target": "minecraft:orange_poplar_leaves"
     },
