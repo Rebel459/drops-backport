@@ -9,6 +9,7 @@
       "ignite_odds": 60
     },
     "map_color": "crimson_nylium",
+    "occlusion": false,
     "push_reaction": "destroy",
     "replaceable": true,
     "sound_type": {

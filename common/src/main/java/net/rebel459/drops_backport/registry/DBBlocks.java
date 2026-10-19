@@ -162,6 +162,7 @@ public class DBBlocks {
                             .mapColor(MapColor.CRIMSON_NYLIUM)
                             .replaceable(true)
                             .collision(false)
+                            .occlusion(false)
                             .instabreak()
                             .soundType(DBSoundTypes.RED_SHRUB.get())
                             .flammable(60, 100)
