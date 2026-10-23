@@ -12,13 +12,14 @@
     "entity.EntityMixin",
     "entity.LivingEntityMixin",
     "entity.OwnerHurtByTargetGoalMixin",
+    "entity.PaintingMixin",
     "entity.ShulkerMixin",
     "entity.VillagerMixin",
     "integration.lithostitched.LithostitchedMixin",
-    "entity.PaintingMixin",
     "item.TeleportRandomlyConsumeEffectMixin",
     "level.MapItemSavedDataMixin",
     "level.VibrationSystemMixin",
+    "recipe.ShapelessRecipeMixin",
     "worldgen.BiomeDataMixin",
     "worldgen.NoiseGeneratorSettingsMixin",
     "worldgen.OverworldBiomeBuilderMixin"
@@ -27,8 +28,8 @@
     "client.AbstractSignRendererMixin",
     "client.ClientPacketListenerMixin",
     "client.GameModeIconMixin",
-    "client.ItemModelsMixin",
     "client.ItemModelResolverMixin",
+    "client.ItemModelsMixin",
     "client.SignEditScreenMixin"
   ],
   "injectors": {

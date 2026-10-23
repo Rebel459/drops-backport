@@ -9,6 +9,7 @@ import net.rebel459.drops_backport.DropsBackport;
 public class DBItemTags {
     public static final TagKey<Item> SULFUR_CUBE_SWALLOWABLE = create("sulfur_cube_swallowable");
     public static final TagKey<Item> HAS_TELEPORT_TRAIL = TagKey.create(Registries.ITEM, DropsBackport.modId("has_teleport_trail"));
+    public static final TagKey<Item> MUSHROOMS = create("mushrooms");
 
     private static TagKey<Item> create(final String name) {
         return TagKey.create(Registries.ITEM, Identifier.withDefaultNamespace(name));

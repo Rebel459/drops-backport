@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "minecraft:mushroom_stew"
+        "recipe": "minecraft:mushroom_stew"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

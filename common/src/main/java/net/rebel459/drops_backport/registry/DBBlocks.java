@@ -21,7 +21,7 @@ import net.rebel459.unified.api.data.registry.BlockGenerator;
 import net.rebel459.unified.api.data.set.*;
 import net.rebel459.unified.api.registry.UnifiedDataComponents;
 import net.rebel459.unified.api.registry.VanillaBlockCodecs;
-import net.rebel459.unified.impl.util.BlockItemTagId;
+import net.rebel459.unified.api.util.BlockItemTagId;
 
 public class DBBlocks {
 
